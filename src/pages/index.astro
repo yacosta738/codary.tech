@@ -1,11 +1,71 @@
 ---
-import Welcome from "../components/Welcome.astro";
+import { getCollection } from "astro:content";
+import { mapArticles, mapTag } from "src/models/EntryMapper";
+import ArticleCard from "../components/ArticleCard.astro";
 import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const allArticles = await getCollection("articles");
+
+const featuredArticles = await mapArticles(
+	allArticles
+		.filter((article) => article.data.featured)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+		.slice(0, 3),
+);
+
+const allTags = await getCollection("tags");
+const popularTags = allTags.map(mapTag).slice(0, 10);
+
+const recentArticles = await mapArticles(
+	allArticles
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+		.slice(0, 6),
+);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Inicio">
+  <section class="mb-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">
+      Últimas Noticias de Tecnología
+    </h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {featuredArticles.map(article => (
+        <ArticleCard {...article} />
+      ))}
+    </div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <div class="lg:col-span-3">
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">
+          Artículos Recientes
+        </h2>
+        <div class="space-y-8">
+          {recentArticles.map(article => (
+            <ArticleCard {...article} />
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">
+          Etiquetas Populares
+        </h3>
+        <div class="flex flex-wrap gap-2">
+          {popularTags.map(tag => (
+            <a
+              href={`/etiqueta/${tag.id}`}
+              class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
+            >
+              {tag.title}
+            </a>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </div>
 </Layout>
