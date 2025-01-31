@@ -58,7 +58,7 @@ const recentArticles = await mapArticles(
         <div class="flex flex-wrap gap-2">
           {popularTags.map(tag => (
             <a
-              href={`/etiqueta/${tag.title.toLowerCase()}`}
+              href={`/etiqueta/${tag.id}`}
               class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
             >
               {tag.title}

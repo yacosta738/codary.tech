@@ -7,23 +7,24 @@ import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
 	const categories = await getCollection("categories");
 	return categories.map((cat) => {
-		const slug = cat.id;
+		const category = cat.id;
 		return {
-			params: { slug },
-			props: { category: cat.data.title },
+			params: { category },
+			props: { title: cat.data.title },
 		};
 	});
 }
 
-const { category } = Astro.props;
-const { slug } = Astro.params;
+const { title } = Astro.props;
+const { category } = Astro.params;
 
-const allArticles = await getCollection("articles");
-const mappedArticles = await mapArticles(allArticles);
-const articles = mappedArticles.filter((a) => a.category.id === slug);
+const allArticles = await getCollection("articles", ({ data }) => 
+  data.category?.id === category
+);
+const articles = await mapArticles(allArticles);
 ---
 
-<Layout title={category} description={`Artículos sobre ${category}`}>
+<Layout title={title} description={`Artículos sobre ${category}`}>
   <div class="max-w-4xl mx-auto">
     <h1 class="text-3xl font-bold text-gray-900 mb-6">{category}</h1>
 

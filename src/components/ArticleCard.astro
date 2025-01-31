@@ -1,12 +1,10 @@
 ---
 import { formatDate } from "@utils/dates";
 import type Article from "../models/Article";
-import { getArticlePath } from "../utils/paths";
 
 type Props = Article;
 
 const { id, title, excerpt, category, pubDate: date, image } = Astro.props;
-const articlePath = getArticlePath(id, date);
 ---
 
 <article class="bg-white rounded-lg shadow-md overflow-hidden">
@@ -23,13 +21,13 @@ const articlePath = getArticlePath(id, date);
       <time class="text-sm text-gray-500">{formatDate(date)}</time>
     </div>
     <h3 class="text-xl font-bold mb-2">
-      <a href={articlePath} class="hover:text-primary transition-colors">
+      <a href={`/${id}`} class="hover:text-primary transition-colors">
         {title}
       </a>
     </h3>
     <p class="text-gray-600 mb-4">{excerpt}</p>
     <a
-      href={articlePath}
+    href={`/${id}`}
       class="inline-flex items-center text-primary font-medium hover:underline"
     >
       Leer más

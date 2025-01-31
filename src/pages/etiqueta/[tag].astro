@@ -6,28 +6,27 @@ import { mapArticles } from "@models/EntryMapper";
 
 export async function getStaticPaths() {
 	const tags = await getCollection("tags");
-	return tags.map((tag) => {
-		const slug = tag.id;
+	return tags.map((articleTag) => {
+		const tag = articleTag.id;
 		return {
-			params: { slug },
-			props: { tag: tag.data.title },
+			params: { tag },
+			props: { title: articleTag.data.title },
 		};
 	});
 }
 
-const { tag } = Astro.props;
-const { slug } = Astro.params;
+const { title } = Astro.props;
+const { tag } = Astro.params;
 
-const allArticles = await getCollection("articles");
-const mappedArticles = await mapArticles(allArticles);
-const articles = mappedArticles.filter((a) =>
-	a.tags.map((t) => t.id).includes(slug),
+const allArticles = await getCollection("articles", ({ data }) => 
+  data.tags?.some(currentTag => currentTag.id === tag)
 );
+const articles = await mapArticles(allArticles);
 ---
 
-<Layout title={tag} description={`Artículos sobre ${tag}`}>
+<Layout title={title} description={`Artículos sobre ${title}`}>
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">{tag}</h1>
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">{title}</h1>
 
     <div class="space-y-8">
       {articles.length > 0 ? (
