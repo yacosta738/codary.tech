@@ -1,0 +1,51 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'web' }, props: { category: 'Desarrollo Web' } },
+    { params: { slug: 'ia' }, props: { category: 'Inteligencia Artificial' } },
+    { params: { slug: 'seguridad' }, props: { category: 'Ciberseguridad' } },
+    { params: { slug: 'startups' }, props: { category: 'Startups' } },
+  ];
+}
+
+const { category } = Astro.props;
+
+// Example articles filtered by category (in a real app, fetch from content collection)
+const articles = [
+  {
+    title: "ChatGPT: El futuro de la IA conversacional",
+    excerpt: "Descubre cómo la inteligencia artificial está transformando la manera en que interactuamos con la tecnología.",
+    category: "Inteligencia Artificial",
+    date: new Date("2024-03-15"),
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    slug: "chatgpt-futuro-ia"
+  },
+  {
+    title: "React vs Vue: Guía comparativa 2024",
+    excerpt: "Análisis detallado de los frameworks más populares para el desarrollo frontend.",
+    category: "Desarrollo Web",
+    date: new Date("2024-03-14"),
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+    slug: "react-vs-vue-2024"
+  }
+].filter(article => article.category === category);
+---
+
+<Layout title={category} description={`Artículos sobre ${category}`}>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">{category}</h1>
+
+    <div class="space-y-8">
+      {articles.length > 0 ? (
+        articles.map(article => <ArticleCard {...article} />)
+      ) : (
+        <p class="text-gray-600 text-center py-8">
+          No hay artículos disponibles en esta categoría.
+        </p>
+      )}
+    </div>
+  </div>
+</Layout>

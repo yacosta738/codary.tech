@@ -1,0 +1,114 @@
+local_backend: true
+
+logo_url: /logo.svg
+
+backend:
+  name: github
+  repo: yacosta738/codary.tech
+  branch: main
+  base_url: https://sveltia-cms-auth.yunielacosta738.workers.dev/
+
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '-'
+
+publish_mode: editorial_workflow
+
+media_folder: 'public/images'
+public_folder: '/images'
+
+collections:
+  - name: 'articles'
+    label: 'Articles'
+    folder: 'src/data/articles'
+    create: true
+    slug: '{{year}}/{{month}}/{{day}}/{{slug}}'
+    fields:
+      - name: 'title'
+        widget: 'string'
+        label: 'Title'
+      - name: 'excerpt'
+        widget: 'string'
+        label: 'Excerpt'
+      - name: 'pubDate'
+        widget: 'datetime'
+        label: 'Publish Date'
+      - name: 'author'
+        widget: 'relation'
+        collection: 'authors'
+        value_field: '{{slug}}'
+        search_fields: ['name']
+        display_fields: ['name']
+        multiple: false
+      - name: 'image'
+        widget: 'image'
+        label: 'Image'
+      - name: 'tags'
+        widget: 'relation'
+        collection: 'tags'
+        value_field: '{{slug}}'
+        search_fields: ['title']
+        display_fields: ['title']
+        multiple: true
+      - name: 'category'
+        widget: 'relation'
+        collection: 'categories'
+        value_field: '{{slug}}'
+        search_fields: ['title']
+        display_fields: ['title']
+        multiple: false
+      - name: 'featured'
+        widget: 'boolean'
+        label: 'Featured'
+        default: false
+      - name: 'body'
+        widget: 'markdown'
+        label: 'Body'
+
+  - name: categories
+    label: Categories
+    label_singular: Category
+    folder: src/data/categories
+    slug: '{{title}}'
+    create: true
+    fields:
+      - name: title
+        widget: string
+        label: Title
+      - name: order
+        widget: number
+        label: Order
+        required: false
+        value_type: int
+        min: -1000
+        max: 1000
+        step: 1
+
+  - name: tags
+    label: Tags
+    label_singular: Tag
+    folder: src/data/tags
+    slug: '{{title}}'
+    create: true
+    fields:
+      - name: title
+        widget: string
+        label: Title
+
+  - name: 'authors'
+    label: 'Authors'
+    folder: src/data/authors
+    slug: '{{name}}'
+    create: true
+    extension: json
+    fields:
+      - name: 'name'
+        widget: 'string'
+        label: 'Name'
+      - name: 'email'
+        widget: 'string'
+        label: 'Email'
+      - name: 'avatar'
+        widget: 'image'
+        label: 'Avatar'

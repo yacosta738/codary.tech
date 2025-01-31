@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+// Get the search query from URL
+const query = Astro.url.searchParams.get('q')?.toLowerCase() || '';
+
+// Example articles (in a real app, you would fetch these from your content collection)
+const allArticles = [
+  {
+    title: "ChatGPT: El futuro de la IA conversacional",
+    excerpt: "Descubre cómo la inteligencia artificial está transformando la manera en que interactuamos con la tecnología.",
+    category: "Inteligencia Artificial",
+    date: new Date("2024-03-15"),
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995",
+    slug: "chatgpt-futuro-ia"
+  },
+  {
+    title: "React vs Vue: Guía comparativa 2024",
+    excerpt: "Análisis detallado de los frameworks más populares para el desarrollo frontend.",
+    category: "Desarrollo Web",
+    date: new Date("2024-03-14"),
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee",
+    slug: "react-vs-vue-2024"
+  },
+  {
+    title: "Ciberseguridad: Tendencias para 2024",
+    excerpt: "Las amenazas más importantes y cómo proteger tu empresa en la era digital.",
+    category: "Ciberseguridad",
+    date: new Date("2024-03-13"),
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7",
+    slug: "ciberseguridad-tendencias-2024"
+  }
+];
+
+// Filter articles based on search query
+const searchResults = query
+  ? allArticles.filter(article =>
+      article.title.toLowerCase().includes(query) ||
+      article.excerpt.toLowerCase().includes(query) ||
+      article.category.toLowerCase().includes(query)
+    )
+  : [];
+---
+
+<Layout title={`Búsqueda: ${query}`} description={`Resultados de búsqueda para: ${query}`}>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">
+      {query
+        ? `Resultados para "${query}"`
+        : "Buscar artículos"
+      }
+    </h1>
+
+    {query && (
+      <p class="text-gray-600 mb-8">
+        Se encontraron {searchResults.length} artículo{searchResults.length === 1 ? '' : 's'}
+      </p>
+    )}
+
+    <div class="space-y-8">
+      {searchResults.length > 0
+        ? searchResults.map(article => (
+            <ArticleCard {...article} />
+          ))
+        : query && (
+            <div class="text-center py-8">
+              <p class="text-gray-600">No se encontraron artículos que coincidan con tu búsqueda.</p>
+              <p class="text-gray-500 mt-2">Intenta con otros términos o explora nuestras categorías.</p>
+            </div>
+          )
+      }
+    </div>
+  </div>
+</Layout>

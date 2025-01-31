@@ -1,0 +1,46 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, baseUrl } = Astro.props;
+
+const prevPage = currentPage > 1 ? currentPage - 1 : null;
+const nextPage = currentPage < totalPages ? currentPage + 1 : null;
+---
+
+<nav class="flex justify-center space-x-2 my-8" aria-label="Paginación">
+  {prevPage && (
+    <a
+      href={`${baseUrl}${prevPage > 1 ? `/${prevPage}` : ''}`}
+      class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+    >
+      Anterior
+    </a>
+  )}
+
+  {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+    <a
+      href={`${baseUrl}${page > 1 ? `/${page}` : ''}`}
+      class:list={[
+        "px-4 py-2 text-sm font-medium border rounded-md",
+        page === currentPage
+          ? "bg-primary text-white border-primary"
+          : "text-gray-700 bg-white border-gray-300 hover:bg-gray-50"
+      ]}
+    >
+      {page}
+    </a>
+  ))}
+
+  {nextPage && (
+    <a
+      href={`${baseUrl}/${nextPage}`}
+      class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50"
+    >
+      Siguiente
+    </a>
+  )}
+</nav>

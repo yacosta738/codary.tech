@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+  - repo: https://github.com/lycheeverse/lychee.git
+    rev: v0.15.1
+    hooks:
+      - id: lychee
+        # Optionally include additional CLI arguments
+        args: ["--no-progress", "--exclude-path", "node_modules", "--exclude-path", "public/admin"]

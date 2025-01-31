@@ -1,0 +1,44 @@
+---
+import SearchInput from './SearchInput.astro';
+import Logo from './Logo.astro';
+
+const categories = [
+  { name: 'Desarrollo Web', slug: 'web' },
+  { name: 'Inteligencia Artificial', slug: 'ia' },
+  { name: 'Ciberseguridad', slug: 'seguridad' },
+  { name: 'Startups', slug: 'startups' },
+];
+---
+
+<header class="bg-white shadow-sm">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between h-16">
+      <Logo />
+
+      <div class="hidden md:flex space-x-6">
+        {categories.map(category => (
+          <a
+            href={`/categoria/${category.slug}`}
+            class="text-gray-600 hover:text-primary transition-colors"
+          >
+            {category.name}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <div class="hidden md:block w-64">
+          <SearchInput />
+        </div>
+        <button
+          class="md:hidden"
+          aria-label="Menú"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>

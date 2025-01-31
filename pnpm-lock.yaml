@@ -23,6 +23,18 @@ importers:
       astro:
         specifier: ^5.2.0
         version: 5.2.0(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.32.1)(typescript@5.7.3)(yaml@2.7.0)
+      date-fns:
+        specifier: 3.3.1
+        version: 3.3.1
+      date-fns-tz:
+        specifier: 2.0.0
+        version: 2.0.0(date-fns@3.3.1)
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
+      reading-time:
+        specifier: ^1.5.0
+        version: 1.5.0
       tailwindcss:
         specifier: ^4.0.1
         version: 4.0.1
@@ -908,6 +920,14 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
+  date-fns-tz@2.0.0:
+    resolution: {integrity: sha512-OAtcLdB9vxSXTWHdT8b398ARImVwQMyjfYGkKD2zaGpHseG2UPHbHjXELReErZFxWdSLph3c2zOaaTyHfOhERQ==}
+    peerDependencies:
+      date-fns: '>=2.0.0'
+
+  date-fns@3.3.1:
+    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
+
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
@@ -1663,6 +1683,9 @@ packages:
   readdirp@4.1.1:
     resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
     engines: {node: '>= 14.18.0'}
+
+  reading-time@1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
 
   recma-build-jsx@1.0.0:
     resolution: {integrity: sha512-8GtdyqaBcDfva+GUKDr3nev3VpKAhup1+RvkMvUxURHpW7QyIvk9F5wz7Vzo06CEMSilw6uArgRqhpiUcWp8ew==}
@@ -3116,6 +3139,12 @@ snapshots:
 
   cssesc@3.0.0: {}
 
+  date-fns-tz@2.0.0(date-fns@3.3.1):
+    dependencies:
+      date-fns: 3.3.1
+
+  date-fns@3.3.1: {}
+
   debug@4.4.0:
     dependencies:
       ms: 2.1.3
@@ -4187,6 +4216,8 @@ snapshots:
       picomatch: 2.3.1
 
   readdirp@4.1.1: {}
+
+  reading-time@1.5.0: {}
 
   recma-build-jsx@1.0.0:
     dependencies:
