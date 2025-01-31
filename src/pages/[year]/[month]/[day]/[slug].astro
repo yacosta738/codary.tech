@@ -1,27 +1,30 @@
 ---
 import "@styles/github-markdown.css";
-import { render } from 'astro:content';
-import Layout from '@layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import { mapArticle } from '@models/EntryMapper';
-import formatDate from '@utils/dates';
+import { render } from "astro:content";
+import { getCollection } from "astro:content";
+import Icon from "@components/Icon.astro";
+import Layout from "@layouts/Layout.astro";
+import { mapArticle } from "@models/EntryMapper";
+import { formatDate } from "@utils/dates";
 
 export async function getStaticPaths() {
-    const articles = await getCollection('articles');
+	const articles = await getCollection("articles");
 
-    return Promise.all(articles.map(async (entry) => {
-        const article = await mapArticle(entry);
-        const date = article.pubDate;
-        return {
-            params: {
-                year: date.getFullYear().toString(),
-                month: String(date.getMonth() + 1).padStart(2, '0'),
-                day: String(date.getDate()).padStart(2, '0'),
-                slug: entry.id.split('/').pop()
-            },
-            props: { article }
-        };
-    }));
+	return Promise.all(
+		articles.map(async (entry) => {
+			const article = await mapArticle(entry);
+			const date = article.pubDate;
+			return {
+				params: {
+					year: date.getFullYear().toString(),
+					month: String(date.getMonth() + 1).padStart(2, "0"),
+					day: String(date.getDate()).padStart(2, "0"),
+					slug: entry.id.split("/").pop(),
+				},
+				props: { article },
+			};
+		}),
+	);
 }
 
 const { article } = Astro.props;
@@ -126,7 +129,7 @@ const { Content, remarkPluginFrontmatter } = await render(article.entry);
         </div>
      <!--category-->
 			<div class="mx-1 mb-8 flex items-center justify-center text-sm">
-				<!-- <Icon name="ic:outline-category" class="mr-2 h-5" /> -->
+				<Icon icon="ic:outline-category" class="mr-2 h-5" />
 				<a
 							href={`/categoria/${article.category.title.toLowerCase()}`}
 							class="inline-link mx-1"
@@ -135,7 +138,7 @@ const { Content, remarkPluginFrontmatter } = await render(article.entry);
 						</a>
 			</div>
 			<div class="mx-1 mb-8 flex items-center justify-center text-sm">
-				<!-- <Icon name="clarity:tags-solid-alerted" class="mr-2 h-5" /> -->
+				<Icon icon="clarity:tags-solid-alerted" class="mr-2 h-5" />
 				{
 					article.tags.map((tag) => (
 						<a href={`etiqueta/${tag.title}`} class="inline-link mx-1">

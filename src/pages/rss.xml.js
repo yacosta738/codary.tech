@@ -1,19 +1,27 @@
-import rss from '@astrojs/rss';
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
 
+/**
+ * Generates RSS feed for the blog
+ * @param {import('astro').APIContext} context
+ */
 export async function GET(context) {
-  return rss({
-    title: 'TecNoticias',
-    description: 'Las últimas noticias sobre tecnología, programación y desarrollo web',
-    site: context.site,
-    items: [
-      {
-        title: 'ChatGPT: El futuro de la IA conversacional',
-        pubDate: new Date('2024-03-15'),
-        description: 'Descubre cómo la inteligencia artificial está transformando la manera en que interactuamos con la tecnología.',
-        link: '/articulo/chatgpt-futuro-ia',
-      },
-      // Add more items here
-    ],
-    customData: `<language>es-es</language>`,
-  });
+	const articles = await getCollection("articles");
+
+	const sortedArticles = articles.sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+
+	return rss({
+		title: "Codary",
+		description:
+			"Las últimas noticias sobre tecnología, programación y desarrollo web",
+		site: context.site,
+		items: sortedArticles.map((post) => ({
+			title: post.data.title,
+			pubDate: post.data.pubDate,
+			description: post.data.description,
+			link: `/${post.id}/`,
+		})),
+	});
 }

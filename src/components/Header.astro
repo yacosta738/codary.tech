@@ -1,13 +1,16 @@
 ---
-import SearchInput from './SearchInput.astro';
-import Logo from './Logo.astro';
+import { getCollection } from "astro:content";
+import Icon from "./Icon.astro";
+import Logo from "./Logo.astro";
+import SearchInput from "./SearchInput.astro";
 
-const categories = [
-  { name: 'Desarrollo Web', slug: 'web' },
-  { name: 'Inteligencia Artificial', slug: 'ia' },
-  { name: 'Ciberseguridad', slug: 'seguridad' },
-  { name: 'Startups', slug: 'startups' },
-];
+const categoriesCollection = await getCollection("categories");
+const categories = categoriesCollection
+	.sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+	.map((cat) => ({
+		name: cat.data.title,
+		slug: cat.id,
+	}));
 ---
 
 <header class="bg-white shadow-sm">
@@ -30,6 +33,7 @@ const categories = [
         <div class="hidden md:block w-64">
           <SearchInput />
         </div>
+        <Icon icon="material-symbols:rss-feed" class="h-6 w-6 text-red-600" />
         <button
           class="md:hidden"
           aria-label="Menú"

@@ -1,0 +1,44 @@
+---
+import "iconify-icon";
+
+interface Props {
+	icon: string;
+	mode?: string;
+	inline?: boolean;
+	width?: string | number;
+	height?: string | number;
+	flip?: string;
+	rotate?: string | number;
+	class?: string;
+}
+
+const {
+	icon,
+	mode,
+	inline,
+	width,
+	height,
+	flip,
+	rotate,
+	class: className,
+} = Astro.props;
+---
+
+<iconify-icon
+  icon={icon}
+  mode={mode}
+  inline={inline}
+  width={width}
+  height={height}
+  flip={flip}
+  rotate={rotate}
+  class={className}
+/>
+
+<style>
+iconify-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+</style>

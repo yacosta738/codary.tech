@@ -4,14 +4,14 @@
 	"exclude": ["dist"],
 	"compilerOptions": {
 		"strictNullChecks": true, // add if using `base` template
-    	"allowJs": true, // required, and included with all Astro templates
+		"allowJs": true, // required, and included with all Astro templates
 		"baseUrl": ".",
 		"paths": {
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
 			"@models/*": ["src/models/*"],
 			"@utils/*": ["src/utils/*"],
-			"@styles/*": ["src/styles/*"],
+			"@styles/*": ["src/styles/*"]
 		}
 	}
 }

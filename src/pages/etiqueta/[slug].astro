@@ -1,38 +1,40 @@
 ---
 import { getCollection } from "astro:content";
+import ArticleCard from "@components/ArticleCard.astro";
+import Layout from "@layouts/Layout.astro";
 import { mapArticles } from "@models/EntryMapper";
-import ArticleCard from "../../components/ArticleCard.astro";
-import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-	const categories = await getCollection("categories");
-	return categories.map((cat) => {
-		const slug = cat.id;
+	const tags = await getCollection("tags");
+	return tags.map((tag) => {
+		const slug = tag.id;
 		return {
 			params: { slug },
-			props: { category: cat.data.title },
+			props: { tag: tag.data.title },
 		};
 	});
 }
 
-const { category } = Astro.props;
+const { tag } = Astro.props;
 const { slug } = Astro.params;
 
 const allArticles = await getCollection("articles");
 const mappedArticles = await mapArticles(allArticles);
-const articles = mappedArticles.filter((a) => a.category.id === slug);
+const articles = mappedArticles.filter((a) =>
+	a.tags.map((t) => t.id).includes(slug),
+);
 ---
 
-<Layout title={category} description={`Artículos sobre ${category}`}>
+<Layout title={tag} description={`Artículos sobre ${tag}`}>
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-gray-900 mb-6">{category}</h1>
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">{tag}</h1>
 
     <div class="space-y-8">
       {articles.length > 0 ? (
         articles.map(article => <ArticleCard {...article} />)
       ) : (
         <p class="text-gray-600 text-center py-8">
-          No hay artículos disponibles en esta categoría.
+          No hay artículos disponibles con esta etiqueta.
         </p>
       )}
     </div>

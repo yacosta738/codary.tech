@@ -1,22 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import { getCollection } from 'astro:content';
-import { mapArticles, mapTag } from 'src/models/EntryMapper';
+import { getCollection } from "astro:content";
+import { mapArticles, mapTag } from "src/models/EntryMapper";
+import ArticleCard from "../components/ArticleCard.astro";
+import Layout from "../layouts/Layout.astro";
 
-const allArticles = await getCollection('articles');
+const allArticles = await getCollection("articles");
 
-const featuredArticles = await mapArticles(allArticles
-	.filter(article => article.data.featured)
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3));
+const featuredArticles = await mapArticles(
+	allArticles
+		.filter((article) => article.data.featured)
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+		.slice(0, 3),
+);
 
-const allTags = await getCollection('tags');
+const allTags = await getCollection("tags");
 const popularTags = allTags.map(mapTag).slice(0, 10);
 
-const recentArticles = await mapArticles(allArticles
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 6));
+const recentArticles = await mapArticles(
+	allArticles
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+		.slice(0, 6),
+);
 ---
 
 <Layout title="Inicio">

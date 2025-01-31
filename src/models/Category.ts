@@ -1,4 +1,5 @@
 export default interface Category {
-    title: string;
-    order?: number;
+	id: string;
+	title: string;
+	order?: number;
 }
