@@ -27,11 +27,11 @@ importers:
         specifier: ^5.2.1
         version: 5.2.2(jiti@2.4.2)(lightningcss@1.29.1)(rollup@4.32.1)(typescript@5.7.3)(yaml@2.7.0)
       date-fns:
-        specifier: 3.3.1
-        version: 3.3.1
+        specifier: 3.6.0
+        version: 3.6.0
       date-fns-tz:
         specifier: 2.0.0
-        version: 2.0.0(date-fns@3.3.1)
+        version: 2.0.0(date-fns@3.6.0)
       iconify-icon:
         specifier: ^2.3.0
         version: 2.3.0
@@ -937,8 +937,8 @@ packages:
     peerDependencies:
       date-fns: '>=2.0.0'
 
-  date-fns@3.3.1:
-    resolution: {integrity: sha512-y8e109LYGgoQDveiEBD3DYXKba1jWf5BA8YU1FL5Tvm0BTdEfy54WLCwnuYWZNnzzvALy/QQ4Hov+Q9RVRv+Zw==}
+  date-fns@3.6.0:
+    resolution: {integrity: sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==}
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -3168,11 +3168,11 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  date-fns-tz@2.0.0(date-fns@3.3.1):
+  date-fns-tz@2.0.0(date-fns@3.6.0):
     dependencies:
-      date-fns: 3.3.1
+      date-fns: 3.6.0
 
-  date-fns@3.3.1: {}
+  date-fns@3.6.0: {}
 
   debug@4.4.0:
     dependencies:
