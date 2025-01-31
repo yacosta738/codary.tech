@@ -37,6 +37,13 @@ export async function mapArticle(
 	const category = await getEntry(articleData.data.category);
 	const tags = await getEntries(articleData.data.tags);
 
+	if (!author) {
+		throw new Error(`Author not found for article: ${articleData.id}`);
+	}
+	if (!category) {
+		throw new Error(`Category not found for article: ${articleData.id}`);
+	}
+
 	return {
 		id: articleData.id,
 		title: articleData.data.title,
