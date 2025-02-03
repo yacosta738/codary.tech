@@ -1,0 +1,22 @@
+{
+  "brand_name": "Codary",
+  "title": "Codary",
+  "description": "Aprende y mantente al día con las últimas novedades en tecnología y programación",
+  "tag_title": "Codary - Todas las Etiquetas",
+  "tag_description": "Codary - Todas las etiquetas y el número de artículos relacionados con cada etiqueta",
+  "search_title": "Codary - Site Search",
+  "search_description": "Codary - Search articles by title, description, and content",
+  "footer": {
+    "links": [
+      {
+        "title": "About",
+        "url": "/about"
+      }
+    ]
+  },
+  "social": {
+    "label": "RSS",
+    "icon": "tabler:rss",
+    "url": "/rss.xml"
+  }
+}
