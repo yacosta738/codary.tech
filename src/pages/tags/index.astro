@@ -1,20 +1,19 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { Tags_TITLE, Tags_DESCRIPTION } from "src/site.config";
 import { getArticles } from "@models/Article";
+import { Tags_DESCRIPTION, Tags_TITLE } from "src/site.config";
 
 const allArticles = await getArticles();
 
 const tagCounts: { [key: string]: number } = {};
 for (const article of allArticles) {
-  for (const tag of article.tags || []) {
-    if (tag.id in tagCounts) {
-      tagCounts[tag.id] += 1;
-    } else {
-      tagCounts[tag.id] = 1;
-    }
-  }
+	for (const tag of article.tags || []) {
+		if (tag.id in tagCounts) {
+			tagCounts[tag.id] += 1;
+		} else {
+			tagCounts[tag.id] = 1;
+		}
+	}
 }
 
 const tags = Object.keys(tagCounts);

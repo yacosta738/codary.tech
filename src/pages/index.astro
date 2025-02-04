@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import HeroCard from "@components/HeroCard.astro";
 import Card from "@components/CommonCard.astro";
+import HeroCard from "@components/HeroCard.astro";
 import Pagination from "@components/Pagination.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "src/site.config";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
+import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
 
 const allArticles = await getArticles();
 const sortedArticles = allArticles.sort(
-  (a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf()
+	(a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
 );
 
 const heroArticle = sortedArticles[0];

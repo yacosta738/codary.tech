@@ -1,3 +1,4 @@
+import type { CollectionEntry } from "astro:content";
 /**
  * Represents an article in the system
  * @interface Article
@@ -17,14 +18,13 @@
 import type Author from "@models/Author/Author";
 import type Category from "@models/Category/Category";
 import type Tag from "@models/Tag/Tag";
-import type { CollectionEntry } from "astro:content";
 
 export default interface Article {
 	id: string;
 	title: string;
 	description: string;
 	author: Author;
-	cover: {image: string, alt: string};
+	cover: { image: string; alt: string };
 	tags: Tag[];
 	category: Category;
 	featured: boolean;

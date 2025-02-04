@@ -15,37 +15,37 @@ export const Tags_DESCRIPTION = config.tag_description;
 
 // Tags Page Metadata, src/pages/tags/[tag]/[page].astro
 export function getTagMetadata(tag: string) {
-  return {
-    title: `All articles on '${tag}' tag in Codary`,
-    description: `Explore articles about ${tag} for different perspectives and in-depth analysis.`,
-  };
+	return {
+		title: `All articles on '${tag}' tag in Codary`,
+		description: `Explore articles about ${tag} for different perspectives and in-depth analysis.`,
+	};
 }
 
 // Category Page Metadata, src/pages/category/[category]/[page].astro
 export function getCategoryMetadata(category: string) {
-  return {
-    title: `All articles in '${category}' category in Codary`,
-    description: `Browse all articles under the ${category} category in Codary`,
-  };
+	return {
+		title: `All articles in '${category}' category in Codary`,
+		description: `Browse all articles under the ${category} category in Codary`,
+	};
 }
 
 // Header Links, src/components/Header.astro
 export const HeaderLinks = categories.map((category) => ({
-  href: `/category/${category.id}/1/`,
-  title: category.title,
+	href: `/category/${category.id}/1/`,
+	title: category.title,
 }));
 
 // Footer Links, src/components/Footer.astro
 export const FooterLinks = config.footer.links.map((link) => ({
-  href: link.url,
-  title: link.title,
+	href: link.url,
+	title: link.title,
 }));
 
 // Social Links, src/components/Footer.astro
 export const SocialLinks = config.social.map((link) => ({
-  href: link.url,
-  icon: link.icon,
-  label: link.label,
+	href: link.url,
+	icon: link.icon,
+	label: link.label,
 }));
 
 // Search Page Metadata, src/pages/search.astro

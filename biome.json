@@ -16,7 +16,8 @@
 			".yarn",
 			"dist",
 			"out",
-			"public"
+			"public",
+			"src/styles/global.css"
 		]
 	},
 	"formatter": {

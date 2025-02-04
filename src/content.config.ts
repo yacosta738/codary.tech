@@ -52,26 +52,30 @@ const config = defineCollection({
 		search_title: z.string(),
 		search_description: z.string(),
 		footer: z.object({
-			links: z.array(z.object({
-				title: z.string(),
-				url: z.string(),
-			})),
+			links: z.array(
+				z.object({
+					title: z.string(),
+					url: z.string(),
+				}),
+			),
 		}),
-		social: z.array(z.object({
-			label: z.string(),
-			icon: z.string(),
-			url: z.string(),
-		})),
+		social: z.array(
+			z.object({
+				label: z.string(),
+				icon: z.string(),
+				url: z.string(),
+			}),
+		),
 	}),
 });
 
 const dynamicPages = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/dynamic-pages" }),
 	schema: z.object({
-	  title: z.string(),
-	  description: z.string()
+		title: z.string(),
+		description: z.string(),
 	}),
-  });
+});
 
 export const collections = {
 	articles,

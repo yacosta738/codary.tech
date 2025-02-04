@@ -1,6 +1,6 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
-import { SITE_TITLE, SITE_DESCRIPTION } from "src/site.config";
+import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
 
 /**
  * Generates RSS feed for the blog
@@ -25,7 +25,7 @@ export async function GET(context) {
 			description: post.data.description,
 			link: `/${post.id}/`,
 			content: post.body,
-      		customData: post.data.customData,
+			customData: post.data.customData,
 		})),
 	});
 }

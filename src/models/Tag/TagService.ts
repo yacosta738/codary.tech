@@ -13,10 +13,9 @@ import { toTags } from "./TagMapper";
  * @returns {Promise<Tag[]>} A promise that resolves to an array of Tag objects
  */
 export async function getTags(): Promise<Tag[]> {
-    const tags = await getCollection("tags");
-    return toTags(tags);
+	const tags = await getCollection("tags");
+	return toTags(tags);
 }
-
 
 /**
  * Retrieves a specific tag by its ID.
@@ -25,6 +24,6 @@ export async function getTags(): Promise<Tag[]> {
  * @returns {Promise<Tag | undefined>} A promise that resolves to a Tag object if found, undefined otherwise
  */
 export async function getTagById(id: string): Promise<Tag | undefined> {
-    const tags = await getTags();
-    return tags.find(tag => tag.id === id);
+	const tags = await getTags();
+	return tags.find((tag) => tag.id === id);
 }

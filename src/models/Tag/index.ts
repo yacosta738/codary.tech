@@ -1,3 +1,3 @@
-export * from './Tag';
-export * from './TagMapper';
-export * from './TagService';
+export * from "./Tag";
+export * from "./TagMapper";
+export * from "./TagService";

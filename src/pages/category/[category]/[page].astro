@@ -1,41 +1,40 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
 import PostCard from "@components/CommonCard.astro";
 import Pagination from "@components/Pagination.astro";
-import { getCategoryMetadata } from "src/site.config";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
 import { getCategories } from "@models/Category";
+import { getCategoryMetadata } from "src/site.config";
 
 export async function getStaticPaths() {
-  const allArticles = await getArticles();
-  const categories = await getCategories();
+	const allArticles = await getArticles();
+	const categories = await getCategories();
 
-  return categories.flatMap((category) => {
-    const filteredPosts = allArticles.filter((article) =>
-      article.category.id === category.id,
-    );
-    filteredPosts.sort(
-      (a, b) =>
-        new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
-    );
+	return categories.flatMap((category) => {
+		const filteredPosts = allArticles.filter(
+			(article) => article.category.id === category.id,
+		);
+		filteredPosts.sort(
+			(a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
+		);
 
-    const pageSize = 12;
-    const totalPages = Math.ceil(filteredPosts.length / pageSize);
+		const pageSize = 12;
+		const totalPages = Math.ceil(filteredPosts.length / pageSize);
 
-    return Array.from({ length: totalPages }, (_, index) => ({
-      params: { 
-        category: category.id, 
-        page: (index + 1).toString() 
-      },
-      props: {
-        page: {
-          data: filteredPosts.slice(index * pageSize, (index + 1) * pageSize),
-          currentPage: index + 1,
-          lastPage: totalPages,
-        },
-      },
-    }));
-  });
+		return Array.from({ length: totalPages }, (_, index) => ({
+			params: {
+				category: category.id,
+				page: (index + 1).toString(),
+			},
+			props: {
+				page: {
+					data: filteredPosts.slice(index * pageSize, (index + 1) * pageSize),
+					currentPage: index + 1,
+					lastPage: totalPages,
+				},
+			},
+		}));
+	});
 }
 
 const params = Astro.params;

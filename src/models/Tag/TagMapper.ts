@@ -12,10 +12,10 @@ import type Tag from "./Tag";
  * @returns {Tag} A Tag object with id and title
  */
 export function toTag(tagData: CollectionEntry<"tags">): Tag {
-    return {
-        id: tagData.id,
-        title: tagData.data.title,
-    };
+	return {
+		id: tagData.id,
+		title: tagData.data.title,
+	};
 }
 /**
  * Converts an array of tag collection entries to Tag objects
@@ -23,5 +23,5 @@ export function toTag(tagData: CollectionEntry<"tags">): Tag {
  * @returns {Promise<Tag[]>} Promise that resolves to an array of Tag objects
  */
 export async function toTags(tags: CollectionEntry<"tags">[]): Promise<Tag[]> {
-    return tags.map(toTag);
+	return tags.map(toTag);
 }

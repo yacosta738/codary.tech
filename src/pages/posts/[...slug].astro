@@ -1,17 +1,17 @@
 ---
 import { render } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import RelatedPostsCard from "@components/RelatedPostsCard.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import OptimizedCover from "@components/OptimizedPicture.astro";
+import RelatedPostsCard from "@components/RelatedPostsCard.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
 
 export async function getStaticPaths() {
-  const articles = await getArticles();
-  return articles.map((article) => ({
-    params: { slug: article.id },
-    props: article,
-  }));
+	const articles = await getArticles();
+	return articles.map((article) => ({
+		params: { slug: article.id },
+		props: article,
+	}));
 }
 
 const article = Astro.props;

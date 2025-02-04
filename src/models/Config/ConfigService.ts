@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import type {Config} from "./Config";
+import type { Config } from "./Config";
 import { toConfig } from "./ConfigMapper";
 
 /**
@@ -8,6 +8,6 @@ import { toConfig } from "./ConfigMapper";
  * @returns {Promise<Config>} A promise that resolves to a Config object
  */
 export async function getConfig(): Promise<Config> {
-    const config = await getCollection("config");
-    return toConfig(config[0]);
+	const config = await getCollection("config");
+	return toConfig(config[0]);
 }

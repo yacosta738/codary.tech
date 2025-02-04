@@ -9,9 +9,9 @@
 import type { CollectionEntry } from "astro:content";
 
 export default interface Page {
-  id: string;
-  title: string;
-  description: string;
-  content: string;
-  entry: CollectionEntry<"dynamicPages">;
+	id: string;
+	title: string;
+	description: string;
+	content: string;
+	entry: CollectionEntry<"dynamicPages">;
 }

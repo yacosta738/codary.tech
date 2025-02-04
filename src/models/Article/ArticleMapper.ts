@@ -1,13 +1,12 @@
-
 import { type CollectionEntry, getEntries, getEntry } from "astro:content";
-import type Article from "./Article";
-import { toTag } from "@models/Tag";
 import { toAuthor } from "@models/Author";
 import { toCategory } from "@models/Category";
+import { toTag } from "@models/Tag";
+import type Article from "./Article";
 
 /**
  * Maps a collection entry of type "articles" to an Article object.
- * 
+ *
  * @param articleData - The collection entry containing article data
  * @throws {Error} If the author is not found for the article
  * @throws {Error} If the category is not found for the article
@@ -32,7 +31,7 @@ export async function toArticle(
 		title: articleData.data.title,
 		description: articleData.data.description,
 		author: toAuthor(author),
-		cover: {image: articleData.data.cover, alt: articleData.data.coverAlt},
+		cover: { image: articleData.data.cover, alt: articleData.data.coverAlt },
 		tags: tags.map(toTag),
 		category: toCategory(category),
 		featured: articleData.data.featured,
@@ -45,7 +44,7 @@ export async function toArticle(
 
 /**
  * Converts an array of article collection entries to an array of Article objects.
- * 
+ *
  * @param articles - Array of collection entries of type "articles"
  * @returns Promise containing an array of mapped Article objects
  */

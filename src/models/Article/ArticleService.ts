@@ -13,8 +13,8 @@ import { toArticles } from "./ArticleMapper";
  * @returns {Promise<Article[]>} A promise that resolves to an array of Article objects
  */
 export async function getArticles(): Promise<Article[]> {
-    const articles = await getCollection("articles");
-    return toArticles(articles);
+	const articles = await getCollection("articles");
+	return toArticles(articles);
 }
 
 /**
@@ -24,6 +24,6 @@ export async function getArticles(): Promise<Article[]> {
  * @returns {Promise<Article | undefined>} A promise that resolves to either an Article object if found, or undefined if not found
  */
 export async function getArticleById(id: string): Promise<Article | undefined> {
-    const articles = await getArticles();
-    return articles.find(article => article.id === id);
+	const articles = await getArticles();
+	return articles.find((article) => article.id === id);
 }

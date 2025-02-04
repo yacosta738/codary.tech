@@ -7,13 +7,13 @@ import type Category from "./Category";
  * @returns A Category model object
  */
 export function toCategory(
-    categoryData: CollectionEntry<"categories">,
+	categoryData: CollectionEntry<"categories">,
 ): Category {
-    return {
-        id: categoryData.id,
-        title: categoryData.data.title,
-        order: categoryData.data.order,
-    };
+	return {
+		id: categoryData.id,
+		title: categoryData.data.title,
+		order: categoryData.data.order,
+	};
 }
 
 /**
@@ -22,7 +22,7 @@ export function toCategory(
  * @returns Promise resolving to an array of Category models
  */
 export async function toCategories(
-    categories: CollectionEntry<"categories">[],
+	categories: CollectionEntry<"categories">[],
 ): Promise<Category[]> {
-    return categories.map(toCategory);
+	return categories.map(toCategory);
 }

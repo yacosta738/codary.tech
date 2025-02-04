@@ -1,4 +1,3 @@
-
 import type { CollectionEntry } from "astro:content";
 import type Author from "./Author";
 
@@ -9,12 +8,12 @@ import type Author from "./Author";
  */
 
 export function toAuthor(authorData: CollectionEntry<"authors">): Author {
-    return {
-        id: authorData.id,
-        name: authorData.data.name,
-        email: authorData.data.email,
-        avatar: authorData.data.avatar,
-    };
+	return {
+		id: authorData.id,
+		name: authorData.data.name,
+		email: authorData.data.email,
+		avatar: authorData.data.avatar,
+	};
 }
 
 /**
@@ -23,5 +22,5 @@ export function toAuthor(authorData: CollectionEntry<"authors">): Author {
  * @returns Array of Author model objects
  */
 export function toAuthors(authors: CollectionEntry<"authors">[]): Author[] {
-    return authors.map(toAuthor);
+	return authors.map(toAuthor);
 }

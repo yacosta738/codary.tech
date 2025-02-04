@@ -1,39 +1,39 @@
 {
-  "brand_name": "Codary",
-  "title": "Codary",
-  "description": "Aprende y mantente al día con las últimas novedades en tecnología y programación",
-  "tag_title": "Codary - Todas las Etiquetas",
-  "tag_description": "Codary - Todas las etiquetas y el número de artículos relacionados con cada etiqueta",
-  "search_title": "Codary - Site Search",
-  "search_description": "Codary - Search articles by title, description, and content",
-  "footer": {
-    "links": [
-      {
-        "title": "About",
-        "url": "/about/"
-      }
-    ]
-  },
-  "social": [
-    {
-      "label": "RSS",
-      "icon": "tabler:rss",
-      "url": "/rss.xml"
-    },
-    {
-      "label": "Twitter",
-      "icon": "tabler:brand-twitter",
-      "url": "https://twitter.com/yacosta738"
-    },
-    {
-      "label": "GitHub",
-      "icon": "tabler:brand-github",
-      "url": "https://github.com/yacosta738"
-    },
-    {
-      "label": "LinkedIn",
-      "icon": "tabler:brand-linkedin",
-      "url": "https://www.linkedin.com/in/yacosta738/"
-    }
-  ]
+	"brand_name": "Codary",
+	"title": "Codary",
+	"description": "Aprende y mantente al día con las últimas novedades en tecnología y programación",
+	"tag_title": "Codary - Todas las Etiquetas",
+	"tag_description": "Codary - Todas las etiquetas y el número de artículos relacionados con cada etiqueta",
+	"search_title": "Codary - Site Search",
+	"search_description": "Codary - Search articles by title, description, and content",
+	"footer": {
+		"links": [
+			{
+				"title": "About",
+				"url": "/about/"
+			}
+		]
+	},
+	"social": [
+		{
+			"label": "RSS",
+			"icon": "tabler:rss",
+			"url": "/rss.xml"
+		},
+		{
+			"label": "Twitter",
+			"icon": "tabler:brand-twitter",
+			"url": "https://twitter.com/yacosta738"
+		},
+		{
+			"label": "GitHub",
+			"icon": "tabler:brand-github",
+			"url": "https://github.com/yacosta738"
+		},
+		{
+			"label": "LinkedIn",
+			"icon": "tabler:brand-linkedin",
+			"url": "https://www.linkedin.com/in/yacosta738/"
+		}
+	]
 }
