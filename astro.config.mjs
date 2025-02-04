@@ -5,19 +5,19 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://codary.tech",
-	trailingSlash: "always",
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
 	},
 
 	image: {
+		service: passthroughImageService(),
 		remotePatterns: [
 			{
 				protocol: "https",
