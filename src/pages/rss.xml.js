@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
+import { SITE_TITLE, SITE_DESCRIPTION } from "src/site.config";
 
 /**
  * Generates RSS feed for the blog
@@ -13,15 +14,18 @@ export async function GET(context) {
 	);
 
 	return rss({
-		title: "Codary",
-		description:
-			"Las últimas noticias sobre tecnología, programación y desarrollo web",
+		title: SITE_TITLE,
+		description: SITE_DESCRIPTION,
 		site: context.site,
+		customData: "<language>es-ES</language>",
+		trailingSlash: true,
 		items: sortedArticles.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.pubDate,
 			description: post.data.description,
 			link: `/${post.id}/`,
+			content: post.body,
+      		customData: post.data.customData,
 		})),
 	});
 }

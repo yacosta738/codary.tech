@@ -1,0 +1,50 @@
+---
+import OptimizedCover from "@components/OptimizedPicture.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import type Category from "@models/Category/Category";
+import type Article from "@models/Article/Article";
+import { getArticles } from "@models/Article";
+
+interface Props {
+  currentCategory: Category;
+  currentSlug: string;
+}
+
+const { currentCategory, currentSlug } = Astro.props;
+
+async function getRelatedArticlesByCategory(): Promise<Article[]> {
+  const articlesCollection = await getArticles();
+  return articlesCollection
+    .filter(
+      (articlePost) =>
+        articlePost.category === currentCategory &&
+        articlePost.id !== currentSlug,
+    )
+    .sort(
+      (a, b) =>
+        new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
+    )
+    .slice(0, 3);
+}
+
+const relatedArticles = await getRelatedArticlesByCategory();
+---
+
+<div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+  {
+    relatedArticles.map((article) => (
+      <div class="relative mb-4 overflow-hidden rounded-xl bg-white transition-transform duration-500 hover:-translate-y-1 hover:scale-105 dark:bg-neutral-900">
+        <a href={`/posts/${article.id}/`}>
+          <OptimizedCover src={article.cover.image} alt={article.cover.alt} />
+          <div class="absolute bottom-0 end-0 start-0 bg-linear-to-t p-4 md:p-5">
+            <div class="mt-16 flex items-center gap-4 text-xs text-white">
+              <span>{article.tags.map(tag => tag.title).join(" ")}</span>
+              <FormattedDate date={article.pubDate} />
+            </div>
+            <h2 class="mt-2 text-lg font-bold text-white">{article.title}</h2>
+          </div>
+        </a>
+      </div>
+    ))
+  }
+</div>

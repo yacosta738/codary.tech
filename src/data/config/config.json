@@ -10,13 +10,30 @@
     "links": [
       {
         "title": "About",
-        "url": "/about"
+        "url": "/about/"
       }
     ]
   },
-  "social": {
-    "label": "RSS",
-    "icon": "tabler:rss",
-    "url": "/rss.xml"
-  }
+  "social": [
+    {
+      "label": "RSS",
+      "icon": "tabler:rss",
+      "url": "/rss.xml"
+    },
+    {
+      "label": "Twitter",
+      "icon": "tabler:brand-twitter",
+      "url": "https://twitter.com/yacosta738"
+    },
+    {
+      "label": "GitHub",
+      "icon": "tabler:brand-github",
+      "url": "https://github.com/yacosta738"
+    },
+    {
+      "label": "LinkedIn",
+      "icon": "tabler:brand-linkedin",
+      "url": "https://www.linkedin.com/in/yacosta738/"
+    }
+  ]
 }
