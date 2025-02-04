@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
 	return allTags.flatMap((tag) => {
 		const filteredPosts = allArticles.filter((article) =>
-			article.tags.includes(tag),
+			article.tags.some((articleTag) => articleTag.id === tag.id),
 		);
 		filteredPosts.sort(
 			(a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 		const totalPages = Math.ceil(filteredPosts.length / pageSize);
 
 		return Array.from({ length: totalPages }, (_, index) => ({
-			params: { tag: tag.title, page: (index + 1).toString() },
+			params: { tag: tag.id, page: (index + 1).toString() },
 			props: {
 				page: {
 					data: filteredPosts.slice(index * pageSize, (index + 1) * pageSize),

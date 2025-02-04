@@ -49,7 +49,12 @@ const computedBasePath = basePath ? ensureTrailingSlash(basePath) : "/page/";
         <Icon name="tabler:chevron-left" class="icon-base" />
       </a>
     ) : (
-      ""
+      <span
+        aria-disabled="true"
+        class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-1.5 rounded-lg px-2.5 py-2 text-sm text-neutral-400 cursor-not-allowed"
+      >
+        <Icon name="tabler:chevron-left" class="icon-base" />
+      </span>
     )
   }
   <ul class="flex items-center gap-x-1">
@@ -82,7 +87,12 @@ const computedBasePath = basePath ? ensureTrailingSlash(basePath) : "/page/";
         <Icon name="tabler:chevron-right" class="icon-base" />
       </a>
     ) : (
-      ""
+      <span
+        aria-disabled="true"
+        class="inline-flex min-h-[38px] min-w-[38px] items-center justify-center gap-x-1.5 rounded-lg px-2.5 py-2 text-sm text-neutral-400 cursor-not-allowed"
+      >
+        <Icon name="tabler:chevron-right" class="icon-base" />
+      </span>
     )
   }
 </nav>
