@@ -1,6 +1,6 @@
 ---
-title: Morbi tristique
-description: Lorem ipsum dolor sit amet
+title: Morbi tristique 100
+description: Lorem ipsum dolor sit amet 00
 category: desarrollo-web
 tags:
   - react

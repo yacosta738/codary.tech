@@ -1,5 +1,5 @@
 ---
-title: Eendpoint
+title: Endpoint Recipes
 description: Learn how to create endpoints that serve any kind of data
 category: inteligencia-artificial
 tags:
