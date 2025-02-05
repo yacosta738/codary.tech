@@ -9,20 +9,31 @@ import type Category from "./Category";
 export function toCategory(
 	categoryData: CollectionEntry<"categories">,
 ): Category {
+	if (!categoryData?.data) {
+		throw new Error("Invalid category data: data object is missing");
+	}
+
+	const { data } = categoryData;
+	if (!data.title) {
+		throw new Error("Invalid category data: title is required");
+	}
+
 	return {
 		id: categoryData.id,
-		title: categoryData.data.title,
-		order: categoryData.data.order,
+		title: data.title,
+		order: data.order ?? Number.MAX_SAFE_INTEGER, // Default to end of list
 	};
 }
 
 /**
  * Maps an array of category collection entries to an array of Category models
  * @param categories - Array of category collection entries
- * @returns Promise resolving to an array of Category models
+ * @returns Array of Category model objects
  */
-export async function toCategories(
+export function toCategories(
 	categories: CollectionEntry<"categories">[],
-): Promise<Category[]> {
-	return categories.map(toCategory);
+): Category[] {
+	return categories
+		.map(toCategory)
+		.sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 }

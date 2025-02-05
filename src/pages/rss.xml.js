@@ -1,6 +1,9 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
+import MarkdownIt from "markdown-it";
+import sanitizeHtml from "sanitize-html";
 import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
+const parser = new MarkdownIt();
 
 /**
  * Generates RSS feed for the blog
@@ -24,7 +27,9 @@ export async function GET(context) {
 			pubDate: post.data.pubDate,
 			description: post.data.description,
 			link: `/${post.id}/`,
-			content: post.body,
+			content: sanitizeHtml(parser.render(post.body), {
+				allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+			}),
 			customData: post.data.customData,
 		})),
 	});

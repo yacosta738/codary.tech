@@ -9,5 +9,8 @@ import { toConfig } from "./ConfigMapper";
  */
 export async function getConfig(): Promise<Config> {
 	const config = await getCollection("config");
+	if (!config.length) {
+		throw new Error("Site configuration is missing");
+	}
 	return toConfig(config[0]);
 }

@@ -8,11 +8,20 @@ import type Author from "./Author";
  */
 
 export function toAuthor(authorData: CollectionEntry<"authors">): Author {
+	if (!authorData?.data) {
+		throw new Error("Invalid author data: data object is missing");
+	}
+
+	const { data } = authorData;
+	if (!data.name) {
+		throw new Error("Invalid author data: name is required");
+	}
+
 	return {
 		id: authorData.id,
-		name: authorData.data.name,
-		email: authorData.data.email,
-		avatar: authorData.data.avatar,
+		name: data.name,
+		email: data.email ?? "", // Provide default for optional fields
+		avatar: data.avatar ?? "", // Provide default for optional fields
 	};
 }
 

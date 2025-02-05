@@ -14,9 +14,9 @@
  * console.log(categories); // Array of Category objects
  * ```
  */
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import type Category from "./Category";
-import { toCategories } from "./CategoryMapper";
+import { toCategories, toCategory } from "./CategoryMapper";
 
 export const getCategories = async (): Promise<Array<Category>> => {
 	const categoriesCollection = await getCollection("categories");
@@ -38,6 +38,11 @@ export const getCategories = async (): Promise<Array<Category>> => {
 export const getCategoryById = async (
 	categoryId: string,
 ): Promise<Category | undefined> => {
-	const allCategoriesCollection = await getCategories();
-	return allCategoriesCollection.find((category) => category.id === categoryId);
+	try {
+		const entry = await getEntry("categories", categoryId);
+		return entry ? toCategory(entry) : undefined;
+	} catch (error) {
+		console.error(`Failed to fetch category ${categoryId}:`, error);
+		throw new Error(`Failed to fetch category ${categoryId}`);
+	}
 };

@@ -8,6 +8,9 @@
  * formatDate(new Date('2023-01-01'))
  */
 const formatDate = (date: Date | string) => {
+	if (typeof date === "string" && Number.isNaN(Date.parse(date))) {
+		throw new Error("Invalid date string provided");
+	}
 	const dateObject = new Date(date);
 	return new Intl.DateTimeFormat("es-ES", {
 		year: "numeric",
