@@ -32,5 +32,6 @@ export async function GET(context) {
 			}),
 			customData: post.data.customData,
 		})),
+		stylesheet: "/rss/styles.xsl",
 	});
 }
