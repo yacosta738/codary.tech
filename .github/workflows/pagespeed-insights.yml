@@ -9,19 +9,30 @@ jobs:
     outputs:
       preview_url: ${{ steps.extract-url.outputs.url }}
     steps:
-      - name: Extraer URL de Cloudflare
+      - name: Extract Cloudflare URL
         id: extract-url
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           COMMENTS=$(curl -s -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")
+          if [ -z "$COMMENTS" ]; then
+            echo "Error: No comments found in the pull request"
+            exit 1
+          fi
           CLOUDFLARE_URL=$(echo "$COMMENTS" | jq -r '.[] | select(.body | contains("cloudflare-pages")) | .body' | grep -o 'https://[a-zA-Z0-9.-]*\.cloudflare-pages\.dev' | head -1)
+          if [ -z "$CLOUDFLARE_URL" ]; then
+            echo "Error: No Cloudflare URL found in comments"
+            exit 1
+          fi
           echo "url=$CLOUDFLARE_URL" >> $GITHUB_OUTPUT
-      - name: Usar la URL
+      - name: Use extracted URL
         run: |
           echo "URL obtenida: ${{ steps.extract-url.outputs.url }}"
-
+          if [ -z "${{ steps.extract-url.outputs.url }}" ]; then
+            echo "Error: URL is empty"
+            exit 1
+          fi
   lighthouse:
     needs: get-cloudflare-url
     runs-on: ubuntu-latest
