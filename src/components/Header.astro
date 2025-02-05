@@ -14,20 +14,9 @@ import { HeaderLinks, SITE_TITLE } from "src/site.config";
     </div>
 
     <div class="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
-      <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent text-black hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 transition disabled:opacity-50 disabled:pointer-events-none" onclick="window.location.href='/search/'">
+      <button type="button" aria-label="Search" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent text-black hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 transition disabled:opacity-50 disabled:pointer-events-none" onclick="window.location.href='/search/'">
         <Icon name="tabler:search" class="icon-base" />
       </button>
-
-      <!-- <button type="button" class="hs-dark-mode hs-dark-mode-active:hidden inline-flex items-center gap-x-2 py-2 px-3 rounded-full text-sm text-black hover:bg-white/20"
-      onclick="document.dispatchEvent(new CustomEvent('set-theme', { detail: 'dark' }))"
-      >
-        <Icon name="tabler:sun-filled" class="icon-base" />
-      </button>
-      <button type="button" class="hs-dark-mode hs-dark-mode-active:inline-flex hidden items-center gap-x-2 py-2 px-3 rounded-full text-sm text-white hover:bg-white/20" 
-      onclick="document.dispatchEvent(new CustomEvent('set-theme', { detail: 'light' }))"
-      >
-        <Icon name="tabler:moon-filled" class="icon-base" />
-      </button> -->
       <ThemeToggle />
 
       <div class="md:hidden">
@@ -36,7 +25,7 @@ import { HeaderLinks, SITE_TITLE } from "src/site.config";
           <Icon name="tabler:menu-order" class="hs-collapse-open:block hidden shrink-0 size-4"></Icon>
         </button>
       </div>
-      
+
     </div>
 
     <div id="navbar-collapse-with-animation" class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
