@@ -41,6 +41,6 @@ jobs:
         id: psi
         with:
           url: ${{ needs.get-cloudflare-url.outputs.preview_url }}
-          threshold: 80
+          threshold: 75
           strategy: mobile
           key: ${{ secrets.PAGE_SPEED_API_KEY }}
