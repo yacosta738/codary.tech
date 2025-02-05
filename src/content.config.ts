@@ -5,10 +5,12 @@ const articles = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/data/articles" }),
 	schema: z.object({
 		title: z.string(),
-		excerpt: z.string(),
+		description: z.string(),
 		pubDate: z.date(),
+		lastModified: z.date().optional(),
 		author: reference("authors"),
-		image: z.string(),
+		cover: z.string(),
+		coverAlt: z.string(),
 		tags: z.array(reference("tags")),
 		category: reference("categories"),
 		featured: z.boolean().default(false),
@@ -39,9 +41,47 @@ const authors = defineCollection({
 	}),
 });
 
+const config = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.json", base: "./src/data/config" }),
+	schema: z.object({
+		brand_name: z.string(),
+		title: z.string(),
+		description: z.string(),
+		tag_title: z.string(),
+		tag_description: z.string(),
+		search_title: z.string(),
+		search_description: z.string(),
+		footer: z.object({
+			links: z.array(
+				z.object({
+					title: z.string(),
+					url: z.string(),
+				}),
+			),
+		}),
+		social: z.array(
+			z.object({
+				label: z.string(),
+				icon: z.string(),
+				url: z.string(),
+			}),
+		),
+	}),
+});
+
+const dynamicPages = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/dynamic-pages" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+	}),
+});
+
 export const collections = {
 	articles,
 	tags,
 	categories,
 	authors,
+	config,
+	dynamicPages,
 };

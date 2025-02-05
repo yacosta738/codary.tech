@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+	href: string;
+	class?: string;
+	exact?: boolean;
+}
+
+const { href, class: className, exact = false, ...props } = Astro.props;
+
+if (!href) {
+	throw new Error("Link component requires href property");
+}
+
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+
+const isActive = exact
+	? href === pathname
+	: href === pathname || href === `/${subpath?.[0]}`;
+---
+
+<a
+  href={href}
+  class:list={[className, { active: isActive }]}
+  aria-current={isActive ? "page" : undefined}
+  {...props}
+>
+  <slot />
+</a>
+
+<style>
+  a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .active {
+    font-weight: 600;
+  }
+</style>

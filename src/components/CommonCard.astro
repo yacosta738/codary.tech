@@ -1,0 +1,30 @@
+---
+import FormattedDate from "@components/FormattedDate.astro";
+import OptimizedCover from "@components/OptimizedPicture.astro";
+import type Article from "@models/Article/Article";
+
+interface Props {
+	article: Article;
+}
+
+const { article } = Astro.props;
+---
+
+<div
+  class="relative overflow-hidden rounded-xl bg-white transition-transform duration-500 hover:-translate-y-1 hover:scale-105 dark:bg-neutral-900"
+>
+  <a href={`/posts/${article.id}/`} class="block">
+    <OptimizedCover src={article.cover.image} alt={article.cover.alt} />
+    <div class="absolute bottom-0 end-0 start-0 bg-linear-to-t p-5 md:p-6">
+      <div class="mt-16 flex items-center gap-4 text-xs text-white" role="contentinfo" aria-label="Article metadata">
+        <ul role="list" aria-label="Article tags" class="flex gap-1">
+          {article.tags.map(tag => (
+            <li role="listitem">{tag.title}</li>
+          ))}
+        </ul>
+        <FormattedDate date={article.pubDate} />
+      </div>
+      <h3 class="mt-2 text-lg font-bold text-white drop-shadow-lg">{article.title}</h3>
+    </div>
+  </a>
+</div>
