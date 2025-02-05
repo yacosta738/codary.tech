@@ -11,7 +11,8 @@
 			"@layouts/*": ["src/layouts/*"],
 			"@models/*": ["src/models/*"],
 			"@utils/*": ["src/utils/*"],
-			"@styles/*": ["src/styles/*"]
+			"@styles/*": ["src/styles/*"],
+			"@consts": ["src/site.config.ts"]
 		}
 	}
 }
