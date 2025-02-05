@@ -44,11 +44,11 @@ const { Content } = await render(article.entry);
           }
         </div>
         <div class="flex justify-between">
-          <small
-            >Publish on <FormattedDate date={article.pubDate} />，Update on <FormattedDate
-              date={new Date().toISOString()}
+            <small
+            >Publicado el <FormattedDate date={article.pubDate} />, Actualizado el <FormattedDate
+            date={article.lastModified ?? article.pubDate}
             /></small
-          >
+            >
         </div>
     </article>
     <div class="mt-4">

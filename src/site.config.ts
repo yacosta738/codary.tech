@@ -16,16 +16,16 @@ export const Tags_DESCRIPTION = config.tag_description;
 // Tags Page Metadata, src/pages/tags/[tag]/[page].astro
 export function getTagMetadata(tag: string) {
 	return {
-		title: `All articles on '${tag}' tag in Codary`,
-		description: `Explore articles about ${tag} for different perspectives and in-depth analysis.`,
+		title: `Todos los artículos con la etiqueta '${tag}' en ${BRAND_NAME}`,
+		description: `Explora artículos sobre ${tag} para diferentes perspectivas y análisis en profundidad en ${BRAND_NAME}.`,
 	};
 }
 
 // Category Page Metadata, src/pages/category/[category]/[page].astro
 export function getCategoryMetadata(category: string) {
 	return {
-		title: `All articles in '${category}' category in Codary`,
-		description: `Browse all articles under the ${category} category in Codary`,
+		title: `Todos los artículos en la categoría '${category}' en ${BRAND_NAME}`,
+		description: `Explora todos los artículos bajo la categoría ${category} en ${BRAND_NAME}`,
 	};
 }
 
@@ -49,5 +49,5 @@ export const SocialLinks = config.social.map((link) => ({
 }));
 
 // Search Page Metadata, src/pages/search.astro
-export const SEARCH_PAGE_TITLE = `${SITE_TITLE} - Site Search`;
-export const SEARCH_PAGE_DESCRIPTION = `Search all content on ${SITE_TITLE}`;
+export const SEARCH_PAGE_TITLE = `${SITE_TITLE} - Búsqueda del sitio`;
+export const SEARCH_PAGE_DESCRIPTION = `Busca todo el contenido en ${SITE_TITLE}`;
