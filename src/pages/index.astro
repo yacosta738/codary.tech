@@ -1,71 +1,46 @@
 ---
-import { getCollection } from "astro:content";
-import { mapArticles, mapTag } from "src/models/EntryMapper";
-import ArticleCard from "../components/ArticleCard.astro";
-import Layout from "../layouts/Layout.astro";
+import Card from "@components/CommonCard.astro";
+import HeroCard from "@components/HeroCard.astro";
+import Pagination from "@components/Pagination.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getArticles } from "@models/Article";
+import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
 
-const allArticles = await getCollection("articles");
-
-const featuredArticles = await mapArticles(
-	allArticles
-		.filter((article) => article.data.featured)
-		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-		.slice(0, 3),
+const allArticles = await getArticles();
+const sortedArticles = allArticles.sort(
+	(a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
 );
 
-const allTags = await getCollection("tags");
-const popularTags = allTags.map(mapTag).slice(0, 10);
+const heroArticle = sortedArticles[0];
+const featuredArticles = sortedArticles.slice(1, 3);
+const regularArticles = sortedArticles.slice(3);
 
-const recentArticles = await mapArticles(
-	allArticles
-		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-		.slice(0, 6),
-);
+const postsPerPage = 15;
+const totalPages = Math.ceil(sortedArticles.length / postsPerPage);
+const basePath = "/page/";
 ---
 
-<Layout title="Inicio">
-  <section class="mb-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">
-      Últimas Noticias de Tecnología
-    </h1>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {featuredArticles.map(article => (
-        <ArticleCard {...article} />
-      ))}
-    </div>
-  </section>
-
-  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-    <div class="lg:col-span-3">
-      <section>
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">
-          Artículos Recientes
-        </h2>
-        <div class="space-y-8">
-          {recentArticles.map(article => (
-            <ArticleCard {...article} />
-          ))}
-        </div>
-      </section>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <div class="grid grid-cols-1">
+    <div class="col-span-1 mb-4">
+      {heroArticle && <HeroCard article={heroArticle} />}
     </div>
 
-    <aside class="lg:col-span-1">
-      <div class="bg-white rounded-lg shadow-md p-6">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">
-          Etiquetas Populares
-        </h3>
-        <div class="flex flex-wrap gap-2">
-          {popularTags.map(tag => (
-            <a
-              href={`/etiqueta/${tag.id}`}
-              class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-primary hover:text-white transition-colors"
-            >
-              {tag.title}
-            </a>
-          ))}
-        </div>
-      </div>
-    </aside>
+    <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
+      {featuredArticles.map((post) => <Card article={post} />)}
+    </div>
+
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {regularArticles.map((post) => <Card article={post} />)}
+    </div>
   </div>
-</Layout>
+
+  <Pagination
+    currentPage={1}
+    lastPage={totalPages}
+    urlPrev={null}
+    urlNext={totalPages > 1 ? `/page/2` : null}
+    basePath={basePath}
+    maxDisplayedPages={5}
+  />
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="themeToggle"
+  type="button"
+  class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+  aria-label="Toggle theme"
+>
+  <Icon 
+    id="themeIconLight" 
+    class="w-5 h-5 theme-icon theme-icon-light" 
+    name="tabler:sun-filled" 
+  />
+  <Icon 
+    id="themeIconDark" 
+    class="w-5 h-5 theme-icon theme-icon-dark" 
+    name="tabler:moon-filled" 
+  />
+</button>
+
+<style>
+  :global(.dark) {
+    color-scheme: dark;
+  }
+
+  .theme-icon {
+    position: absolute;
+    transition: opacity 0.3s ease;
+  }
+
+  :global(.dark) .theme-icon-light {
+    opacity: 0;
+  }
+
+  :global(.dark) .theme-icon-dark {
+    opacity: 1;
+  }
+
+  .theme-icon-dark {
+    opacity: 0;
+  }
+
+  .theme-icon-light {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  const button = document.getElementById("themeToggle") as HTMLButtonElement;
+  const theme = localStorage.getItem("theme") || "light";
+  
+  function setTheme(theme: "light" | "dark") {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    localStorage.setItem("theme", theme);
+  }
+
+  // Set initial theme
+  setTheme(theme as "light" | "dark");
+
+  button.addEventListener("click", () => {
+    const currentTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
+    setTheme(currentTheme);
+  });
+</script>
