@@ -9,18 +9,28 @@ jobs:
     outputs:
       preview_url: ${{ steps.extract-url.outputs.url }}
     steps:
-      - name: Extraer URL de Cloudflare
+      - name: Construct Cloudflare Preview URL
         id: extract-url
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          COMMENTS=$(curl -s -H "Authorization: token $GH_TOKEN" \
-            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments")
-          CLOUDFLARE_URL=$(echo "$COMMENTS" | jq -r '.[] | select(.body | contains("cloudflare-pages")) | .body' | grep -o 'https://[a-zA-Z0-9.-]*\.cloudflare-pages\.dev' | head -1)
-          echo "url=$CLOUDFLARE_URL" >> $GITHUB_OUTPUT
-      - name: Usar la URL
+          # Use GITHUB_HEAD_REF for pull requests; otherwise extract branch name from GITHUB_REF.
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            BRANCH="$GITHUB_HEAD_REF"
+          else
+            BRANCH="${GITHUB_REF#refs/heads/}"
+          fi
+          echo "Original branch name: $BRANCH"
+
+          # URL-ize the branch name:
+          # Replace any character that is not a letter or digit with a hyphen, then convert to lowercase.
+          SAFE_BRANCH=$(echo "$BRANCH" | sed 's/[^a-zA-Z0-9]/-/g' | tr '[:upper:]' '[:lower:]')
+          echo "URL-ized branch name: $SAFE_BRANCH"
+
+          PREVIEW_URL="https://${SAFE_BRANCH}.codary-tech.pages.dev"
+          echo "url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "Preview URL: $PREVIEW_URL"
+      - name: Display obtained URL
         run: |
-          echo "URL obtenida: ${{ steps.extract-url.outputs.url }}"
+          echo "Obtained URL: ${{ steps.extract-url.outputs.url }}"
 
   lighthouse:
     needs: get-cloudflare-url
