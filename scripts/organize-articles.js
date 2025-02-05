@@ -63,9 +63,15 @@ function processFile(filePath, fileName) {
 		}
 
 		const newPath = path.join(newDir, fileName);
-		fs.renameSync(filePath, newPath);
+		if (fs.existsSync(newPath)) {
+			console.warn(`⚠️  File already exists at ${newPath} - skipping`);
+			return;
+		}
+		if (!DRY_RUN) {
+			fs.renameSync(filePath, newPath);
+		}
 		console.log(
-			`✅ Moved: ${fileName} -> ${newPath.replace(ARTICLES_DIR, "")}`,
+			`${DRY_RUN ? "[DRY RUN] Would move" : "✅ Moved"}: ${fileName} -> ${newPath.replace(ARTICLES_DIR, "")}`,
 		);
 	} catch (error) {
 		console.error(`❌ Error processing ${fileName}:`, error.message);
