@@ -17,7 +17,11 @@ const { article } = Astro.props;
     <OptimizedCover src={article.cover.image} alt={article.cover.alt} />
     <div class="absolute bottom-0 end-0 start-0 bg-linear-to-t p-5 md:p-6">
       <div class="mt-16 flex items-center gap-4 text-xs text-white" role="contentinfo" aria-label="Article metadata">
-        <span role="list" aria-label="Article tags">{article.tags.map(tag => tag.title).join(" ")}</span>
+        <ul role="list" aria-label="Article tags" class="flex gap-1">
+          {article.tags.map(tag => (
+            <li role="listitem">{tag.title}</li>
+          ))}
+        </ul>
         <FormattedDate date={article.pubDate} />
       </div>
       <h3 class="mt-2 text-lg font-bold text-white drop-shadow-lg">{article.title}</h3>
