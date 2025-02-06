@@ -1,28 +1,47 @@
-# Pull Request Template
+<!-- Thank you for contributing to our Astro project! 🌠 -->
 
 ## Description
+<!-- Clearly explain the purpose of this PR and the changes made -->
 
-<!-- Describe the changes proposed in this pull request. -->
-
-## Related Issue(s)
-
-<!-- List any related issue numbers (e.g., Fixes #123). -->
-
-## Proposed Changes
-
-<!-- Please list the changes that have been made. -->
-// ...existing code/comments...
-
-## How to Test
-
-<!-- Provide steps to test the changes. -->
-// ...existing code/comments...
+## Type of Change
+<!-- Check the boxes that apply -->
+- [ ] 🛠️ Bug Fix
+- [ ] ✨ New Feature
+- [ ] ♻️ Refactor
+- [ ] 📚 Documentation
+- [ ] 🧪 Test
+- [ ] 🔧 Configuration/Tools
+- [ ] 🗑️ Code/File Removal
 
 ## Checklist
+- [ ] I have run `pnpm lint` and there are no errors
+- [ ] I have run `pnpm test` and all tests pass
+- [ ] I have updated the relevant documentation
+- [ ] I have added tests to cover my changes
+- [ ] My changes do not introduce new warnings/errors
+- [ ] I have tested on multiple browsers (if applicable)
 
-- [ ] My code follows the style guidelines of this project.
-- [ ] I have performed a self-review of my own code.
-- [ ] I have commented my code, particularly in hard-to-understand areas.
-- [ ] I have made corresponding changes to the documentation.
-- [ ] My changes generate no new warnings.
-- [ ] I have added tests that prove my fix is effective or that my feature works.
+## Relevant Changes
+<!-- Describe the main files/features affected -->
+- **Modified Components:**
+- **Affected Routes:**
+- **Updated Styles:**
+- **New Dependencies:**
+  - `package@version` (reason)
+
+## Screenshots (if applicable)
+<!-- Before/After for visual changes -->
+
+## Steps to Verify
+<!-- Instructions to review the changes -->
+1. `pnpm install`
+2. `pnpm dev`
+3. Visit [relevant route](http://localhost:3000/route)
+
+## Additional Notes
+<!-- Any special considerations, breaking changes, etc. -->
+
+## Related Issues
+<!-- Link issues with # -->
+Closes #
+Refs #
