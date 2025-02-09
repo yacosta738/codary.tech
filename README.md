@@ -1,5 +1,20 @@
 # Codary.tech
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Node Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](package.json)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue)](package.json)
+[![Astro](https://img.shields.io/badge/Astro-5.2.5-FF5D01)](package.json)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+[![Link Checking](https://github.com/yacosta738/codary.tech/actions/workflows/links.yml/badge.svg)](https://github.com/yacosta738/codary.tech/actions/workflows/links.yml)
+[![Lighthouse CI](https://github.com/yacosta738/codary.tech/actions/workflows/pagespeed-insights.yml/badge.svg)](https://github.com/yacosta738/codary.tech/actions/workflows/pagespeed-insights.yml)
+
+> 🚀 Un blog técnico moderno construido con Astro, enfocado en rendimiento y experiencia de usuario.
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/yacosta738/codary.tech)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/yacosta738/codary.tech)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/yacosta738/codary.tech?devcontainer_path=.devcontainer/basics/devcontainer.json)
+
 **Codary.tech** es el sitio web oficial basado en el [Astro Starter Kit: Basics](https://astro.build). Está construido con tecnologías modernas para ofrecer un sitio rápido, escalable y fácil de mantener.
 
 ## Tabla de Contenidos
@@ -9,14 +24,26 @@
   - [Descripción](#descripción)
   - [Características](#características)
   - [Tecnologías Utilizadas](#tecnologías-utilizadas)
-  - [Estructura del Proyecto](#estructura-del-proyecto)
+  - [Entorno de Desarrollo](#entorno-de-desarrollo)
+    - [Requisitos del Sistema](#requisitos-del-sistema)
+    - [Configuración del Editor](#configuración-del-editor)
+  - [Guía de Desarrollo](#guía-de-desarrollo)
+    - [Estructura de Branches](#estructura-de-branches)
+    - [Flujo de Trabajo](#flujo-de-trabajo)
+    - [Convenciones de Código](#convenciones-de-código)
+  - [Solución de Problemas](#solución-de-problemas)
+    - [Problemas Comunes](#problemas-comunes)
+    - [Logs y Debugging](#logs-y-debugging)
   - [Requisitos Previos](#requisitos-previos)
   - [Instalación](#instalación)
   - [Scripts y Comandos](#scripts-y-comandos)
   - [Despliegue](#despliegue)
   - [Contribuciones](#contribuciones)
+    - [Proceso de Pull Request](#proceso-de-pull-request)
+    - [Guías de Estilo](#guías-de-estilo)
   - [Licencia](#licencia)
   - [Contacto](#contacto)
+  - [Contribuciones en el Repositorio](#contribuciones-en-el-repositorio)
 
 ## Descripción
 
@@ -31,29 +58,80 @@ Este proyecto es el sitio web de **Codary.tech**. Basado en Astro, aprovecha lo 
 
 ## Tecnologías Utilizadas
 
+![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-f0db4f?logo=javascript&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white)
+![MDX](https://img.shields.io/badge/MDX-000000?logo=mdx&logoColor=white)
+
 - [Astro](https://astro.build) – Framework moderno para crear sitios web estáticos.
 - [TypeScript](https://www.typescriptlang.org) – Superset de JavaScript con tipado estático.
 - [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript) – Lenguaje de programación esencial para la web.
 - [CSS](https://developer.mozilla.org/es/docs/Web/CSS) – Para el estilizado de la interfaz.
 - [MDX](https://mdxjs.com) – Permite integrar JSX en archivos Markdown.
 
-## Estructura del Proyecto
+## Entorno de Desarrollo
 
-La organización del repositorio es la siguiente:
+### Requisitos del Sistema
 
-```
-/
-├── public/               # Archivos estáticos (imágenes, favicons, etc.)
-├── src/                  # Código fuente del proyecto
-│   ├── layouts/          # Layouts de la aplicación
-│   └── pages/            # Páginas del sitio web
-├── scripts/              # Scripts y herramientas auxiliares
-├── .github/              # Configuraciones de GitHub (workflows, issues, etc.)
-├── astro.config.mjs      # Configuración principal de Astro
-├── package.json          # Dependencias y scripts del proyecto
-├── pnpm-lock.yaml        # Archivo de lock para pnpm
-└── tsconfig.json         # Configuración de TypeScript
-```
+- Sistema Operativo: Windows, macOS, o Linux
+- Node.js: v14.x o superior
+- pnpm v8.x o superior (aunque también puedes usar npm/yarn)
+- Git
+
+### Configuración del Editor
+
+Recomendamos Visual Studio Code con las siguientes extensiones:
+- Biome
+- Astro
+- Tailwind CSS IntelliSense
+
+## Guía de Desarrollo
+
+### Estructura de Branches
+
+- `main`: Rama principal de producción
+- `feature/*`: Ramas para nuevas funcionalidades
+- `fix/*`: Ramas para correcciones de bugs
+
+### Flujo de Trabajo
+
+1. Crea una nueva rama desde `main`
+   ```bash
+   git checkout -b feature/nueva-funcionalidad main
+   # o
+   git checkout -b fix/bug-correccion main
+   ```
+2. Desarrolla tu funcionalidad o corrección
+3. Ejecuta tests y linting
+4. Crea un Pull Request hacia `main`
+
+### Convenciones de Código
+
+- Seguimos [Conventional Commits](https://www.conventionalcommits.org/)
+- Usamos ESLint y Prettier para formato de código
+- Los tests son obligatorios para nuevas funcionalidades
+
+## Solución de Problemas
+
+### Problemas Comunes
+
+1. **Error: Cannot find module 'xyz'**
+   ```bash
+   pnpm install
+   ```
+
+2. **Error de puerto en uso**
+   ```bash
+   lsof -i :4321
+   kill -9 <PID>
+   ```
+
+### Logs y Debugging
+
+- Logs de desarrollo: `npm run dev -- --verbose`
+- Análisis de bundle: `npm run analyze`
 
 ## Requisitos Previos
 
@@ -76,14 +154,11 @@ La organización del repositorio es la siguiente:
 
 3. **Instala las dependencias:**
 
-   Con npm:
-   ```bash
-   npm install
-   ```
-   O, si prefieres pnpm:
    ```bash
    pnpm install
    ```
+
+   > También puedes usar npm o yarn si lo prefieres
 
 ## Scripts y Comandos
 
@@ -92,32 +167,32 @@ Desde la raíz del proyecto, utiliza los siguientes comandos:
 - **Instalar dependencias:**
 
   ```bash
-  npm install
+  pnpm install
   ```
 
 - **Iniciar el servidor de desarrollo:**
 
   ```bash
-  npm run dev
+  pnpm dev
   ```
   Accede a `http://localhost:4321` para ver el sitio en funcionamiento.
 
 - **Construir el sitio para producción:**
 
   ```bash
-  npm run build
+  pnpm build
   ```
 
 - **Previsualizar la build de producción:**
 
   ```bash
-  npm run preview
+  pnpm preview
   ```
 
 - **Ejecutar comandos de Astro:**
 
   ```bash
-  npm run astro -- --help
+  pnpm astro --help
   ```
 
 ## Despliegue
@@ -153,12 +228,45 @@ Para desplegar el sitio en producción:
 
 4. Envía un *pull request* describiendo los cambios realizados.
 
+### Proceso de Pull Request
+
+1. **Fork y Clone**
+   ```bash
+   git clone https://github.com/your-username/codary.tech.git
+   ```
+
+2. **Configura el Repositorio**
+   ```bash
+   git remote add upstream https://github.com/yacosta738/codary.tech.git
+   ```
+
+3. **Crea una Rama**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+4. **Commit y Push**
+   ```bash
+   git commit -m "feat: add amazing feature"
+   git push origin feature/amazing-feature
+   ```
+
+### Guías de Estilo
+
+- **JavaScript/TypeScript**: [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+- **Commits**: [Conventional Commits](https://www.conventionalcommits.org/)
+- **Documentación**: Documenta cualquier nueva funcionalidad o cambio
+
 ## Licencia
 
-Actualmente este proyecto **no especifica una licencia**. Si deseas utilizar o modificar el código, por favor contacta al autor para definir los términos de uso.
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ## Contacto
 
 - **Autor:** [yacosta738](https://github.com/yacosta738)
 - **Sitio Web:** [codary.tech](https://codary.tech)
 - **Soporte y Consultas:** Abre un issue en el repositorio o contacta al autor a través de sus redes sociales.
+
+## Contribuciones en el Repositorio
+
+![Repositorio Analytics](https://repobeats.axiom.co/api/embed/ebbf1ef036c66e40f1101a1853eb07adc32e9baa.svg "Repo analytics image")

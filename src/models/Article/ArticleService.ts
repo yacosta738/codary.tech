@@ -8,12 +8,12 @@ import type Article from "./Article";
 import { toArticles } from "./ArticleMapper";
 
 /**
- * Retrieves all articles from the content collection
+ * Retrieves all non-draft articles from the content collection
  * @async
- * @returns {Promise<Article[]>} A promise that resolves to an array of Article objects
+ * @returns {Promise<Article[]>} A promise that resolves to an array of non-draft Article objects
  */
 export async function getArticles(): Promise<Article[]> {
-	const articles = await getCollection("articles");
+	const articles = await getCollection("articles", ({ data }) => !data.draft);
 	return toArticles(articles);
 }
 

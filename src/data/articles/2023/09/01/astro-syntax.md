@@ -9,6 +9,7 @@ pubDate: 2023-09-01
 cover: https://images.unsplash.com/photo-1517544845501-bb7810f64d76?w=1960&h=1102&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fGJsYWNrfGVufDB8MHwwfHx8Mg%3D%3D
 coverAlt: AstroVerse-Aliases
 author: yuniel-acosta-perez
+draft: false
 ---
 
 **If you know HTML, you already know enough to write your first Astro component.**
