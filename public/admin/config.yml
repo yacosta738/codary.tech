@@ -70,6 +70,10 @@ collections:
         widget: 'boolean'
         label: 'Featured'
         default: false
+      - name: 'draft'
+        widget: 'boolean'
+        label: 'Draft'
+        default: true
       - name: 'body'
         widget: 'markdown'
         label: 'Body'

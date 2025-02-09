@@ -10,6 +10,7 @@ import type { CollectionEntry } from "astro:content";
  * @property {Tag[]} tags - Array of tags associated with the article
  * @property {Category} category - Category the article belongs to
  * @property {boolean} featured - Indicates if the article is featured
+ * @property {boolean} draft - Indicates if the article is a draft
  * @property {string} body - Main content of the article
  * @property {Date} pubDate - Publication date of the article
  * @property {Date} [lastModified] - Last modification date of the article (optional)
@@ -28,6 +29,7 @@ export default interface Article {
 	tags: Tag[];
 	category: Category;
 	featured: boolean;
+	draft: boolean;
 	body: string;
 	pubDate: Date;
 	lastModified?: Date;

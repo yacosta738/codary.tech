@@ -14,6 +14,7 @@ const articles = defineCollection({
 		tags: z.array(reference("tags")),
 		category: reference("categories"),
 		featured: z.boolean().default(false),
+		draft: z.boolean().default(true),
 	}),
 });
 

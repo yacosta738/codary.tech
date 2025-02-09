@@ -9,6 +9,7 @@ pubDate: 2023-09-02
 cover: https://images.unsplash.com/photo-1516724562728-afc824a36e84?w=1960&h=1102&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGJsYWNrfGVufDB8MHwwfHx8Mg%3D%3D
 coverAlt: AstroVerse-Content Collections
 author: yuniel-acosta-perez
+draft: false
 ---
 
 **Content collections** are the best way to manage and author content in any Astro project. Collections help to organize your documents, validate your frontmatter, and provide automatic TypeScript type-safety for all of your content.

@@ -10,7 +10,7 @@ const parser = new MarkdownIt();
  * @param {import('astro').APIContext} context
  */
 export async function GET(context) {
-	const articles = await getCollection("articles");
+	const articles = await getCollection("articles", ({ data }) => !data.draft);
 
 	const sortedArticles = articles.sort(
 		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
