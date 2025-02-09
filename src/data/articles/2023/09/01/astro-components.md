@@ -9,6 +9,7 @@ pubDate: 2023-09-01
 cover: https://images.unsplash.com/photo-1511140973288-19bf21d7e771?w=1960&h=1102&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fGJsYWNrfGVufDB8MHwwfHx8Mg%3D%3D
 coverAlt: AstroVerse-Aliases
 author: yuniel-acosta-perez
+draft: false
 ---
 
 **Astro components** are the basic building blocks of any Astro project. They are HTML-only templating components with no client-side runtime. You can spot an Astro component by its file extension: `.astro`.

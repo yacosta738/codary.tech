@@ -35,6 +35,7 @@ export async function toArticle(
 		tags: tags.map(toTag),
 		category: toCategory(category),
 		featured: articleData.data.featured,
+		draft: articleData.data.draft,
 		body: articleData.body ?? "",
 		pubDate: articleData.data.pubDate,
 		lastModified: articleData.data.lastModified,

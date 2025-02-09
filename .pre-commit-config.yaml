@@ -18,10 +18,16 @@ repos:
         entry: pnpm
         args: ['run', 'organize']
         language: system
-        pass_filenames: false      
+        pass_filenames: false
       - id: run-check-script
         name: run-check-script
         entry: pnpm
         args: ['run', 'check']
+        language: system
+        pass_filenames: false
+      - id: run-structure-script
+        name: run-structure-script
+        entry: pnpm
+        args: ['run', 'structure']
         language: system
         pass_filenames: false
