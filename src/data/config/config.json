@@ -11,6 +11,14 @@
 			{
 				"title": "About",
 				"url": "/about/"
+			},
+			{
+				"title": "Política de Privacidad",
+				"url": "/privacy-policy/"
+			},
+			{
+				"title": "Política de Cookies",
+				"url": "/cookie-policy/"
 			}
 		]
 	},
