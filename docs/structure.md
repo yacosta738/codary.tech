@@ -77,7 +77,9 @@
 │   │   ├───config/
 │   │   │   └───config.json
 │   │   ├───dynamic-pages/
-│   │   │   └───about.md
+│   │   │   ├───about.md
+│   │   │   ├───cookie-policy.md
+│   │   │   └───privacy-policy.md
 │   │   ├───tags/
 │   │   │   ├───ai.md
 │   │   │   ├───aws.md
