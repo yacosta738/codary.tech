@@ -79,7 +79,8 @@
 │   │   ├───dynamic-pages/
 │   │   │   ├───about.md
 │   │   │   ├───cookie-policy.md
-│   │   │   └───privacy-policy.md
+│   │   │   ├───privacy-policy.md
+│   │   │   └───terms-of-use.md
 │   │   ├───tags/
 │   │   │   ├───ai.md
 │   │   │   ├───aws.md
