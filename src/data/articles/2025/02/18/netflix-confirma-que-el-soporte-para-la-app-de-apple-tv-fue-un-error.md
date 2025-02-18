@@ -15,19 +15,19 @@ draft: true
 ---
 # Netflix Confirma que el Soporte para la App de Apple TV Fue un Error
 
-En una noticia sorprendente, Netflix ha confirmado que su breve integración con la aplicación de Apple TV no fue intencional, sino un error técnico que rápidamente fue revertido. Según informes de _The Verge_, esta integración accidental permitió a los usuarios agregar contenido de Netflix a sus listas de reproducción dentro de la app de Apple TV, ofreciendo una experiencia más unificada [[1]].
+En una noticia sorprendente, Netflix ha confirmado que su breve integración con la aplicación de Apple TV no fue intencional, sino un error técnico que rápidamente fue revertido. Según informes de _The Verge_, esta integración accidental permitió a los usuarios agregar contenido de Netflix a sus listas de reproducción dentro de la app de Apple TV, ofreciendo una experiencia más unificada [^1].
 
 ## ¿Qué Sucedió?
 
-Durante un período corto, los usuarios pudieron disfrutar de funcionalidades adicionales al interactuar con Netflix desde la app de Apple TV. Esto incluía la posibilidad de añadir series y películas de Netflix a las listas de reproducción personalizadas disponibles en la plataforma de Apple. Sin embargo, esta característica no duró mucho tiempo, ya que Netflix rápidamente identificó el problema y lo corrigió [[2]].
+Durante un período corto, los usuarios pudieron disfrutar de funcionalidades adicionales al interactuar con Netflix desde la app de Apple TV. Esto incluía la posibilidad de añadir series y películas de Netflix a las listas de reproducción personalizadas disponibles en la plataforma de Apple. Sin embargo, esta característica no duró mucho tiempo, ya que Netflix rápidamente identificó el problema y lo corrigió [^2].
 
-El portavoz de Netflix explicó que esta integración no formaba parte de sus planes actuales y que cualquier indicio de compatibilidad con la app de Apple TV fue simplemente un malentendido técnico. Este incidente ha generado especulaciones sobre futuras colaboraciones entre ambas compañías, aunque por ahora parece que no hay intención oficial de trabajar juntos en este ámbito [[3]].
+El portavoz de Netflix explicó que esta integración no formaba parte de sus planes actuales y que cualquier indicio de compatibilidad con la app de Apple TV fue simplemente un malentendido técnico. Este incidente ha generado especulaciones sobre futuras colaboraciones entre ambas compañías, aunque por ahora parece que no hay intención oficial de trabajar juntos en este ámbito [^3].
 
 ## Reacciones de los Usuarios
 
-Para muchos usuarios, esta integración accidental representó una oportunidad única de experimentar cómo podría ser una colaboración entre dos gigantes del entretenimiento digital. La capacidad de gestionar contenido de diferentes servicios de streaming desde una sola aplicación es algo que muchos consumidores han pedido durante años. Sin embargo, con el retiro de estas funciones, queda claro que Netflix prefiere mantener su independencia en cuanto a la distribución de su contenido [[4]].
+Para muchos usuarios, esta integración accidental representó una oportunidad única de experimentar cómo podría ser una colaboración entre dos gigantes del entretenimiento digital. La capacidad de gestionar contenido de diferentes servicios de streaming desde una sola aplicación es algo que muchos consumidores han pedido durante años. Sin embargo, con el retiro de estas funciones, queda claro que Netflix prefiere mantener su independencia en cuanto a la distribución de su contenido [^4].
 
-Además, algunos expertos han señalado que este tipo de integración podría desviar la lealtad de los consumidores hacia dispositivos específicos, como los televisores o reproductores que utilicen sistemas operativos cerrados, en lugar de fomentar la lealtad hacia el servicio de streaming en sí mismo [[5]].
+Además, algunos expertos han señalado que este tipo de integración podría desviar la lealtad de los consumidores hacia dispositivos específicos, como los televisores o reproductores que utilicen sistemas operativos cerrados, en lugar de fomentar la lealtad hacia el servicio de streaming en sí mismo [^5].
 
 ## Implicaciones para el Futuro
 
@@ -37,7 +37,12 @@ Este incidente también subraya la importancia de pruebas rigurosas en el desarr
 
  **Fuentes:**
 
-- [The Verge: Netflix says its brief Apple TV app integration was a mistake](<https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake>) [[1]]
-- Confirmación de Netflix sobre el error técnico [[2]]
-- Análisis sobre la posible colaboración futura entre ambas empresas [[3]]
-- Reacciones de los usuarios ante la integración accidental [[4]] - Impacto en la lealtad del consumidor hacia dispositivos específicos [[5]]
+[^1]: [The Verge: Netflix says its brief Apple TV app integration was a mistake](<https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake>) 
+
+[^2]: Confirmación de Netflix sobre el error técnico 
+
+[^3]: Análisis sobre la posible colaboración futura entre ambas empresas 
+
+[^4] : Reacciones de los usuarios ante la integración accidental 
+
+[^5]: Impacto en la lealtad del consumidor hacia dispositivos específicos
