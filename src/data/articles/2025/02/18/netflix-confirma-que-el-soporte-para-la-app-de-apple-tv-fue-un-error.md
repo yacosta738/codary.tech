@@ -7,14 +7,15 @@ author: yuniel-acosta-perez
 cover: /images/pexels-jakub-zerdzicki-30366457.jpg
 coverAlt: Captura de pantalla de la app de Apple TV mostrando contenido de Netflix antes del retiro del soporte.
 tags:
-  - ai
-category: desarrollo-web
+  - apple
+  - netflix
+category: streaming
 featured: false
 draft: true
 ---
 # Netflix Confirma que el Soporte para la App de Apple TV Fue un Error
 
-En una noticia sorprendente, Netflix ha confirmado que su breve integración con la aplicación de Apple TV no fue intencional, sino un error técnico que rápidamente fue revertido. Según informes de *The Verge*, esta integración accidental permitió a los usuarios agregar contenido de Netflix a sus listas de reproducción dentro de la app de Apple TV, ofreciendo una experiencia más unificada [[1]].
+En una noticia sorprendente, Netflix ha confirmado que su breve integración con la aplicación de Apple TV no fue intencional, sino un error técnico que rápidamente fue revertido. Según informes de _The Verge_, esta integración accidental permitió a los usuarios agregar contenido de Netflix a sus listas de reproducción dentro de la app de Apple TV, ofreciendo una experiencia más unificada [[1]].
 
 ## ¿Qué Sucedió?
 
@@ -35,6 +36,7 @@ Aunque esta situación se resolvió rápidamente, deja abierta la pregunta sobre
 Este incidente también subraya la importancia de pruebas rigurosas en el desarrollo de software, especialmente cuando se trata de plataformas tan grandes y utilizadas como Netflix y Apple TV. Cualquier error, por pequeño que sea, puede tener repercusiones significativas en la experiencia del usuario final.
 
  **Fuentes:**
+
 - [The Verge: Netflix says its brief Apple TV app integration was a mistake](<https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake>) [[1]]
 - Confirmación de Netflix sobre el error técnico [[2]]
 - Análisis sobre la posible colaboración futura entre ambas empresas [[3]]
