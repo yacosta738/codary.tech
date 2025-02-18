@@ -28,10 +28,18 @@
 │   ├───admin/
 │   │   └───config.yml
 │   ├───images/
+│   │   ├───.DS_Store
 │   │   ├───blog-placeholder-1.avif
 │   │   ├───blog-placeholder-2.avif
 │   │   ├───blog-placeholder-3.avif
-│   │   └───blog-placeholder-4.avif
+│   │   ├───blog-placeholder-4.avif
+│   │   ├───cloudflare-vs-laliga.webp
+│   │   ├───pexels-fauxels-3183150.jpg
+│   │   ├───rust-programming-language.webp
+│   │   ├───whoAMI-cover.webp
+│   │   ├───whoami.webp
+│   │   ├───xAI.webp
+│   │   └───youtube-privacy.webp
 │   ├───rss/
 │   │   └───styles.xsl
 │   ├───.DS_Store
@@ -58,9 +66,6 @@
 │   │   └───ThemeToggle.astro
 │   ├───data/
 │   │   ├───articles/
-│   │   │   ├───2023/
-│   │   │   │   └───09/
-│   │   │   │       └───...
 │   │   │   ├───2025/
 │   │   │   │   ├───02/
 │   │   │   │   │   └───...
@@ -73,6 +78,7 @@
 │   │   │   ├───ciberseguridad.md
 │   │   │   ├───desarrollo-web.md
 │   │   │   ├───inteligencia-artificial.md
+│   │   │   ├───redes-sociales.md
 │   │   │   └───startups.md
 │   │   ├───config/
 │   │   │   └───config.json
@@ -84,15 +90,22 @@
 │   │   ├───tags/
 │   │   │   ├───ai.md
 │   │   │   ├───aws.md
+│   │   │   ├───cloudflare.md
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
+│   │   │   ├───hacking.md
 │   │   │   ├───javascript.md
 │   │   │   ├───kubernetes.md
 │   │   │   ├───node-js.md
+│   │   │   ├───politicas-de-seguridad.md
 │   │   │   ├───python.md
 │   │   │   ├───react.md
+│   │   │   ├───rust.md
+│   │   │   ├───tooling.md
 │   │   │   ├───typescript.md
-│   │   │   └───vue.md
+│   │   │   ├───vue.md
+│   │   │   ├───web-assembly.md
+│   │   │   └───youtube.md
 │   │   └───.DS_Store
 │   ├───layouts/
 │   │   └───BaseLayout.astro
