@@ -43,6 +43,6 @@ Este incidente también subraya la importancia de pruebas rigurosas en el desarr
 
 [^3]: Análisis sobre la posible colaboración futura entre ambas empresas 
 
-[^4] : Reacciones de los usuarios ante la integración accidental 
+[^4]: Reacciones de los usuarios ante la integración accidental 
 
 [^5]: Impacto en la lealtad del consumidor hacia dispositivos específicos
