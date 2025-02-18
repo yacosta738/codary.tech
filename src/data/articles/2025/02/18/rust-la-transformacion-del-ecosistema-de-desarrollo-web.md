@@ -4,7 +4,7 @@ description: Explora cómo Rust está reemplazando herramientas tradicionales de
 pubDate: 2025-02-18T14:57:00
 lastModified: 2025-02-18T14:57:00
 author: yuniel-acosta-perez
-cover: /images/rust-programming-language.webp
+cover: /images/rust-programming-language.avif
 coverAlt: Representación visual de Rust integrándose en el ecosistema de desarrollo web.
 tags:
   - javascript
@@ -65,15 +65,16 @@ El impacto de Rust en el ecosistema de desarrollo web es indiscutible. Proyectos
 En resumen, aunque Rust no pretende reemplazar completamente a JavaScript, sí está transformando radicalmente las herramientas que lo rodean, estableciéndose como un actor crucial en la evolución del desarrollo web moderno.
 
  **Fuentes:**
-  - [Rust is Eating JavaScript](https://leerob.com/n/rust)
-  - Guía para escribir artículos fáciles de leer [[2]]
-  - Rust helps developers write fast software [[3]]
-  - Rust's adoption in systems programming [[4]]
-  - Memory management approach of Rust [[5]]
-  - Tools like Webpack and Babel [[6]]
-  - Performance improvements with SWC [[7]]
-  - Deno as a modern runtime [[8]]
-  - Esbuild's speed advantages [[9]]
-  - Rust and WebAssembly integration [[10]]
-  - Challenges in adopting Rust [[11]]
-  - Future projects powered by Rust [[12]]
+
+- [Rust is Eating JavaScript](https://leerob.com/n/rust)
+- Guía para escribir artículos fáciles de leer [[2]]
+- Rust helps developers write fast software [[3]]
+- Rust's adoption in systems programming [[4]]
+- Memory management approach of Rust [[5]]
+- Tools like Webpack and Babel [[6]]
+- Performance improvements with SWC [[7]]
+- Deno as a modern runtime [[8]]
+- Esbuild's speed advantages [[9]]
+- Rust and WebAssembly integration [[10]]
+- Challenges in adopting Rust [[11]]
+- Future projects powered by Rust [[12]]

@@ -4,7 +4,7 @@ description: Investigadores descubren el ataque 'whoAMI', una técnica que explo
 pubDate: 2025-02-17T19:34:00
 lastModified: 2025-02-17T19:32:00
 author: yuniel-acosta-perez
-cover: /images/whoAMI-cover.webp
+cover: /images/whoAMI-cover.avif
 coverAlt: whoami
 tags:
   - aws
@@ -33,7 +33,7 @@ AWS fue notificada del problema el 16 de septiembre de 2024 y abordó la vulnera
 
 Para mitigar este riesgo, AWS ha introducido una nueva configuración llamada "Allowed AMIs", que permite a los administradores limitar el descubrimiento y uso de AMIs dentro de sus cuentas. Se recomienda a los clientes evaluar e implementar esta medida de seguridad.
 
-![whoAMI](/images/whoami.webp "whoAMI")
+![whoAMI](/images/whoami.avif "whoAMI")
 
 Además, HashiCorp Terraform ha tomado acciones al respecto. En la versión 5.77.0 de su proveedor de AWS, se ha agregado una advertencia para los usuarios que utilicen `most_recent = true` sin un filtro de propietario. Se espera que esta advertencia se convierta en un error obligatorio en la versión 6.0.0.
 

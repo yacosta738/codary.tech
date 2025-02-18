@@ -4,7 +4,7 @@ description: Exploramos cómo la inteligencia artificial democratizada puede niv
 pubDate: 2025-02-18T15:28:00
 lastModified: 2025-02-18T15:28:00
 author: yuniel-acosta-perez
-cover: /images/pexels-fauxels-3183150.jpg
+cover: /images/la-democratizacion-de-la-ia-cerrando-brechas-transformando-la-educacion-y-personalizando-experiencias.avif
 coverAlt: Una ilustración que muestra una red neuronal conectada a diferentes sectores como negocios, educación y usuarios finales.
 tags:
   - ai

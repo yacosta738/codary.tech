@@ -4,7 +4,7 @@ description: Descubre cómo YouTube está implementando políticas más estricta
 pubDate: 2025-02-18T00:53:00
 lastModified: 2025-02-18T00:53:00
 author: yuniel-acosta-perez
-cover: /images/youtube-privacy.webp
+cover: /images/youtube-privacy.avif
 coverAlt: Captura de pantalla mostrando el proceso de verificación de teléfono en YouTube.
 tags:
   - youtube
@@ -13,7 +13,6 @@ category: redes-sociales
 featured: false
 draft: false
 ---
-
 # Introducción
 
 En un esfuerzo por mejorar la seguridad y autenticidad de sus usuarios, YouTube ha intensificado sus medidas de verificación de cuentas. Una de estas medidas incluye la solicitud de verificación telefónica a los propietarios de canales, lo que puede resultar en la sobrescritura permanente de ciertos detalles personales asociados con la [cuenta](https://news.ycombinator.com/item?id=43073836).

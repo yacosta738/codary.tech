@@ -33,13 +33,13 @@
 │   │   ├───blog-placeholder-2.avif
 │   │   ├───blog-placeholder-3.avif
 │   │   ├───blog-placeholder-4.avif
-│   │   ├───cloudflare-vs-laliga.webp
-│   │   ├───pexels-fauxels-3183150.jpg
-│   │   ├───rust-programming-language.webp
-│   │   ├───whoAMI-cover.webp
-│   │   ├───whoami.webp
-│   │   ├───xAI.webp
-│   │   └───youtube-privacy.webp
+│   │   ├───cloudflare-vs-laliga.avif
+│   │   ├───la-democratizacion-de-la-ia.avif
+│   │   ├───rust-programming-language.avif
+│   │   ├───whoAMI-cover.avif
+│   │   ├───whoami.avif
+│   │   ├───xAI.avif
+│   │   └───youtube-privacy.avif
 │   ├───rss/
 │   │   └───styles.xsl
 │   ├───.DS_Store

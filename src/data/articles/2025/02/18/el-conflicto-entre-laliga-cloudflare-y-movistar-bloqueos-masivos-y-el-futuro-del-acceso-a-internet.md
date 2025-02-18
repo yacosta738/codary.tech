@@ -4,7 +4,7 @@ description: Exploramos la disputa entre LaLiga, Cloudflare y Movistar que ha ll
 pubDate: 2025-02-18T12:25:00
 lastModified: 2025-02-18T12:25:00
 author: yuniel-acosta-perez
-cover: /images/cloudflare-vs-laliga.webp
+cover: /images/cloudflare-vs-laliga.avif
 coverAlt: LaLiga vs Cloudflare
 tags:
   - cloudflare
@@ -43,6 +43,7 @@ Desde una perspectiva jurídica, el caso refleja tensiones crecientes entre la p
 El conflicto entre LaLiga, Cloudflare y Movistar pone de relieve importantes debates sobre propiedad intelectual, seguridad digital y libertad de acceso en la era moderna. Mientras tanto, los usuarios continúan pagando el precio de esta guerra, enfrentándose a interrupciones frecuentes en sus actividades diarias en línea. Es crucial que todas las partes involucradas encuentren un equilibrio justo que preserve tanto los derechos de propiedad como el acceso universal a Internet.
 
 **Fuentes:**
+
 - [1] Cloudflare y LaLiga están en guerra por los últimos bloqueos de... (ADSLZone)
 - [3] Movistar y La Liga desatan un apagón digital histórico en Internet al vetar direcciones IP de Cloudflare (El Español)
 - [4] Nota informativa | LALIGA
