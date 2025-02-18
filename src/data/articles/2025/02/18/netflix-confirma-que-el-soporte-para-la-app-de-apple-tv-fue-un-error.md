@@ -11,7 +11,7 @@ tags:
   - netflix
 category: streaming
 featured: false
-draft: true
+draft: false
 ---
 # Netflix Confirma que el Soporte para la App de Apple TV Fue un Error
 
@@ -37,7 +37,7 @@ Este incidente también subraya la importancia de pruebas rigurosas en el desarr
 
  **Fuentes:**
 
-[^1]: [The Verge: Netflix says its brief Apple TV app integration was a mistake](<https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake>) 
+[^1]: [The Verge: Netflix says its brief Apple TV app integration was a mistake](https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake)[ ](https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake)
 
 [^2]: Confirmación de Netflix sobre el error técnico 
 
