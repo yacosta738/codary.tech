@@ -29,11 +29,13 @@
 │   │   └───config.yml
 │   ├───images/
 │   │   ├───.DS_Store
+│   │   ├───apple-tv-netflix.avif
 │   │   ├───blog-placeholder-1.avif
 │   │   ├───blog-placeholder-2.avif
 │   │   ├───blog-placeholder-3.avif
 │   │   ├───blog-placeholder-4.avif
 │   │   ├───cloudflare-vs-laliga.avif
+│   │   ├───iphone-16e-finish-unselect-gallery.avif
 │   │   ├───la-democratizacion-de-la-ia.avif
 │   │   ├───rust-programming-language.avif
 │   │   ├───whoAMI-cover.avif
@@ -79,7 +81,9 @@
 │   │   │   ├───desarrollo-web.md
 │   │   │   ├───inteligencia-artificial.md
 │   │   │   ├───redes-sociales.md
-│   │   │   └───startups.md
+│   │   │   ├───smartphones.md
+│   │   │   ├───startups.md
+│   │   │   └───streaming.md
 │   │   ├───config/
 │   │   │   └───config.json
 │   │   ├───dynamic-pages/
@@ -89,18 +93,22 @@
 │   │   │   └───terms-of-use.md
 │   │   ├───tags/
 │   │   │   ├───ai.md
+│   │   │   ├───apple.md
 │   │   │   ├───aws.md
 │   │   │   ├───cloudflare.md
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
 │   │   │   ├───hacking.md
+│   │   │   ├───iphone.md
 │   │   │   ├───javascript.md
 │   │   │   ├───kubernetes.md
+│   │   │   ├───netflix.md
 │   │   │   ├───node-js.md
 │   │   │   ├───politicas-de-seguridad.md
 │   │   │   ├───python.md
 │   │   │   ├───react.md
 │   │   │   ├───rust.md
+│   │   │   ├───smartphones.md
 │   │   │   ├───tooling.md
 │   │   │   ├───typescript.md
 │   │   │   ├───vue.md

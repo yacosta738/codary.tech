@@ -4,7 +4,7 @@ description: La integración breve entre Netflix y la app de Apple TV ha sido co
 pubDate: 2025-02-18T23:28:00
 lastModified: 2025-02-18T23:27:00
 author: yuniel-acosta-perez
-cover: /images/pexels-jakub-zerdzicki-30366457.jpg
+cover: /images/apple-tv-netflix.avif
 coverAlt: Captura de pantalla de la app de Apple TV mostrando contenido de Netflix antes del retiro del soporte.
 tags:
   - apple
@@ -13,8 +13,6 @@ category: streaming
 featured: false
 draft: false
 ---
-# Netflix Confirma que el Soporte para la App de Apple TV Fue un Error
-
 En una noticia sorprendente, Netflix ha confirmado que su breve integración con la aplicación de Apple TV no fue intencional, sino un error técnico que rápidamente fue revertido. Según informes de _The Verge_, esta integración accidental permitió a los usuarios agregar contenido de Netflix a sus listas de reproducción dentro de la app de Apple TV, ofreciendo una experiencia más unificada [^1].
 
 ## ¿Qué Sucedió?
@@ -39,10 +37,10 @@ Este incidente también subraya la importancia de pruebas rigurosas en el desarr
 
 [^1]: [The Verge: Netflix says its brief Apple TV app integration was a mistake](https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake)[ ](https://www.theverge.com/news/613307/netflix-apple-tv-app-support-mistake)
 
-[^2]: Confirmación de Netflix sobre el error técnico 
+[^2]: Confirmación de Netflix sobre el error técnico
 
-[^3]: Análisis sobre la posible colaboración futura entre ambas empresas 
+[^3]: Análisis sobre la posible colaboración futura entre ambas empresas
 
-[^4]: Reacciones de los usuarios ante la integración accidental 
+[^4]: Reacciones de los usuarios ante la integración accidental
 
 [^5]: Impacto en la lealtad del consumidor hacia dispositivos específicos
