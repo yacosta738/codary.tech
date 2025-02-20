@@ -9,8 +9,8 @@ import { defineConfig, envField, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 import fs from "node:fs";
-import opengraphImages from "astro-opengraph-images";
-import { customOgMediaLayout } from "./src/customRenderer";
+import opengraphImages, { presets } from "astro-opengraph-images";
+// import { customOgMediaLayout } from "./src/customRenderer.tsx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -64,7 +64,7 @@ export default defineConfig({
 					},
 				],
 			},
-			render: customOgMediaLayout,
+			render: presets.gradients,
 		}),
 	],
 	vite: {
