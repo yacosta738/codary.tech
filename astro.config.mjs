@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 // @ts-check
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig, envField, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 import fs from "node:fs";
@@ -18,7 +18,11 @@ export default defineConfig({
 		prefetchAll: true,
 		defaultStrategy: "viewport",
 	},
-
+	env: {
+		schema: {
+			AHREFS_KEY: envField.string({ context: "client", access: "public" }),
+		},
+	},
 	image: {
 		service: passthroughImageService(),
 		remotePatterns: [
