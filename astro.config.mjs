@@ -20,7 +20,10 @@ export default defineConfig({
 	},
 	env: {
 		schema: {
-			AHREFS_KEY: envField.string({ context: "client", access: "public" }),
+			AHREFS_KEY: envField.string({
+				context: "client",
+				access: "public",
+			}),
 		},
 	},
 	image: {
@@ -65,12 +68,6 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
-		build: {
-			assetsDir: "assets",
-			modulePreload: {
-				polyfill: true,
-			},
-		},
 	},
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
