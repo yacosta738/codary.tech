@@ -177,6 +177,7 @@
 │   │   └───remark-reading-time.mjs
 │   ├───.DS_Store
 │   ├───content.config.ts
+│   ├───customRenderer.tsx
 │   └───site.config.ts
 ├───.gitignore
 ├───.lycheeignore
