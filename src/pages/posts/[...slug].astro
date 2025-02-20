@@ -16,6 +16,8 @@ export async function getStaticPaths() {
 
 const article = Astro.props;
 const { Content } = await render(article.entry);
+const { image, alt } = article.cover;
+const isRemoteImage = image.startsWith("http");
 ---
 
 <BaseLayout title={article.title} description={article.description}>
@@ -27,7 +29,7 @@ const { Content } = await render(article.entry);
         <div>
           {
             article.cover && (
-              <OptimizedCover src={article.cover.image} alt={article.cover.alt} />
+              <OptimizedCover src={image} alt={alt} />
             )
           }
         </div>

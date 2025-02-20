@@ -44,6 +44,12 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
+		build: {
+			assetsDir: "assets",
+			modulePreload: {
+				polyfill: true,
+			},
+		},
 	},
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
