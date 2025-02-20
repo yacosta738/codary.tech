@@ -38,7 +38,7 @@ const isRemoteImage = image.startsWith("http");
         </div>
         <div class="prose-a:no-underline">
           {
-            article.tags.map((tag) => (
+            article.tags.map((tag: { id: string; title: string }) => (
               <span class="mb-2 mr-2 inline-block rounded-full bg-neutral-200 px-3 py-1 text-sm hover:bg-neutral-500 dark:bg-neutral-600">
                 <a href={`/tags/${tag.id}/1/`}>{tag.title}</a>
               </span>

@@ -5,8 +5,11 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 // @ts-check
-import { defineConfig, passthroughImageService } from "astro/config";
+import { defineConfig, envField, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+
+import fs from "node:fs";
+import opengraphImages, { presets } from "astro-opengraph-images";
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,7 +18,14 @@ export default defineConfig({
 		prefetchAll: true,
 		defaultStrategy: "viewport",
 	},
-
+	env: {
+		schema: {
+			AHREFS_KEY: envField.string({
+				context: "client",
+				access: "public",
+			}),
+		},
+	},
 	image: {
 		service: passthroughImageService(),
 		remotePatterns: [
@@ -35,21 +45,29 @@ export default defineConfig({
 				debug: false,
 			},
 		}),
-
 		icon({
 			include: {
 				tabler: ["*"],
 			},
 		}),
+		opengraphImages({
+			options: {
+				fonts: [
+					{
+						name: "Roboto",
+						weight: 400,
+						style: "normal",
+						data: fs.readFileSync(
+							"node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff",
+						),
+					},
+				],
+			},
+			render: presets.blackAndWhite,
+		}),
 	],
 	vite: {
 		plugins: [tailwindcss()],
-		build: {
-			assetsDir: "assets",
-			modulePreload: {
-				polyfill: true,
-			},
-		},
 	},
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
