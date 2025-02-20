@@ -8,6 +8,8 @@ import pagefind from "astro-pagefind";
 import { defineConfig, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
+import opengraphImages, { presets } from "astro-opengraph-images";
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://codary.tech",
@@ -35,11 +37,25 @@ export default defineConfig({
 				debug: false,
 			},
 		}),
-
 		icon({
 			include: {
 				tabler: ["*"],
 			},
+		}),
+		opengraphImages({
+			options: {
+				fonts: [
+					{
+						name: "Roboto",
+						weight: 400,
+						style: "normal",
+						data: fs.readFileSync(
+							"node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff",
+						),
+					},
+				],
+			},
+			render: presets.blackAndWhite,
 		}),
 	],
 	vite: {

@@ -1,16 +1,20 @@
 ---
+import { getImagePath } from "astro-opengraph-images";
+
 interface Props {
 	title: string;
 	description: string;
 	image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { url, site } = Astro;
+const openGraphImageUrl = getImagePath({ url, site });
+const canonicalURL = new URL(url.pathname, site);
 
 const {
 	title,
 	description,
-	image = "/images/blog-placeholder-1.avif",
+	image = openGraphImageUrl ?? "/images/blog-placeholder-1.avif",
 } = Astro.props;
 ---
 
@@ -45,5 +49,5 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- ahrefs Web Analytics --> 
+<!-- ahrefs Web Analytics -->
 <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="0MeniV9VEUwC6rBGrCDwxQ" async></script>
