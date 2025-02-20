@@ -8,6 +8,7 @@ import pagefind from "astro-pagefind";
 import { defineConfig, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
+import fs from "node:fs";
 import opengraphImages, { presets } from "astro-opengraph-images";
 
 // https://astro.build/config
