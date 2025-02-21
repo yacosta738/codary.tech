@@ -4,7 +4,7 @@ description: La startup Humane, que recaudó $230 millones para su dispositivo w
 pubDate: 2025-02-21T23:10:00
 lastModified: 2025-02-21T23:10:00
 author: yuniel-acosta-perez
-cover: /images/blog-placeholder-4.avif
+cover: /images/Representación conceptual del HumaneAI Pin.avif
 coverAlt: Representación conceptual del Humane AI Pin sobre un fondo tecnológico minimalista con tonos azules y neón.
 tags:
   - ai
