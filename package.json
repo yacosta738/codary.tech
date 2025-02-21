@@ -43,7 +43,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
 		"@tailwindcss/typography": "^0.5.16",
-		"@types/sharp": "^0.31.1",
+		"@types/sharp": "^0.32.0",
 		"gray-matter": "^4.0.3",
 		"markdown-it": "^14.1.0",
 		"satori": "^0.12.1",
