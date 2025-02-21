@@ -8,9 +8,10 @@ cover: /images/Representación conceptual del HumaneAI Pin.avif
 coverAlt: Representación conceptual del Humane AI Pin sobre un fondo tecnológico minimalista con tonos azules y neón.
 tags:
   - ai
+  - dispositivos-wearable
 category: startups
 featured: false
-draft: true
+draft: false
 ---
 ## El Fracaso del Humane AI Pin: Una Lección en el Desarrollo de Tecnología Innovadora
 
