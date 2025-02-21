@@ -8,13 +8,10 @@ import pagefind from "astro-pagefind";
 import { defineConfig, envField, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
-import fs from "node:fs";
-import opengraphImages, { presets } from "astro-opengraph-images";
-// import { customOgMediaLayout } from "./src/customRenderer.tsx";
-
 // https://astro.build/config
 export default defineConfig({
 	site: "https://codary.tech",
+	compressHTML: true,
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
@@ -50,21 +47,6 @@ export default defineConfig({
 			include: {
 				tabler: ["*"],
 			},
-		}),
-		opengraphImages({
-			options: {
-				fonts: [
-					{
-						name: "Roboto",
-						weight: 400,
-						style: "normal",
-						data: fs.readFileSync(
-							"node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff",
-						),
-					},
-				],
-			},
-			render: presets.gradients,
 		}),
 	],
 	vite: {

@@ -3,6 +3,8 @@
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"],
 	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
 		"strictNullChecks": true, // add if using `base` template
 		"allowJs": true, // required, and included with all Astro templates
 		"baseUrl": ".",
@@ -12,7 +14,7 @@
 			"@models/*": ["src/models/*"],
 			"@utils/*": ["src/utils/*"],
 			"@styles/*": ["src/styles/*"],
-			"@consts": ["src/site.config.ts"]
+			"@consts": ["src/site.config.ts", "src/content.config.ts"]
 		}
 	}
 }

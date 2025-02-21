@@ -1,6 +1,6 @@
 ---
 import { AHREFS_KEY } from "astro:env/client";
-import { getImagePath } from "astro-opengraph-images";
+import { getOgImagePath } from "@utils/openGraph";
 
 interface Props {
 	title: string;
@@ -9,13 +9,14 @@ interface Props {
 }
 
 const { url, site } = Astro;
-const openGraphImageUrl = getImagePath({ url, site });
+// const openGraphImageUrl = getImagePath({ url, site });
 const canonicalURL = new URL(url.pathname, site);
+const ogImage = new URL(getOgImagePath(url.pathname), url.origin).href;
 
 const {
 	title,
 	description,
-	image = openGraphImageUrl ?? new URL("/images/blog-placeholder-1.avif", url),
+	image = ogImage ?? new URL("/images/blog-placeholder-1.avif", url),
 } = Astro.props;
 
 console.log({ title, description, image });
@@ -47,6 +48,7 @@ console.log({ title, description, image });
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@CodaryTech" />
 <meta property="twitter:url" content={url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />

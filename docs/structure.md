@@ -34,6 +34,7 @@
 │   │   ├───blog-placeholder-2.avif
 │   │   ├───blog-placeholder-3.avif
 │   │   ├───blog-placeholder-4.avif
+│   │   ├───cloudflare-vs-laliga-2.webp
 │   │   ├───cloudflare-vs-laliga.avif
 │   │   ├───iphone-16e-finish-unselect-gallery.avif
 │   │   ├───la-democratizacion-de-la-ia.avif
@@ -50,6 +51,9 @@
 │   └───organize-articles.js
 ├───src/
 │   ├───assets/
+│   │   ├───font/
+│   │   │   ├───JetBrainsMono-Bold.ttf
+│   │   │   └───PlusJakartaSans-Bold.ttf
 │   │   ├───astro.svg
 │   │   └───background.svg
 │   ├───components/
@@ -80,6 +84,7 @@
 │   │   │   ├───ciberseguridad.md
 │   │   │   ├───desarrollo-web.md
 │   │   │   ├───inteligencia-artificial.md
+│   │   │   ├───internet.md
 │   │   │   ├───redes-sociales.md
 │   │   │   ├───smartphones.md
 │   │   │   ├───startups.md
@@ -99,7 +104,9 @@
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
 │   │   │   ├───hacking.md
+│   │   │   ├───internet.md
 │   │   │   ├───iphone.md
+│   │   │   ├───isp.md
 │   │   │   ├───javascript.md
 │   │   │   ├───kubernetes.md
 │   │   │   ├───netflix.md
@@ -153,6 +160,8 @@
 │   │   ├───category/
 │   │   │   └───[category]/
 │   │   │       └───[page].astro
+│   │   ├───open-graph/
+│   │   │   └───[...slug].png.ts
 │   │   ├───page/
 │   │   │   └───[page].astro
 │   │   ├───posts/
@@ -174,10 +183,10 @@
 │   │   └───global.css
 │   ├───utils/
 │   │   ├───dates.ts
+│   │   ├───openGraph.tsx
 │   │   └───remark-reading-time.mjs
 │   ├───.DS_Store
 │   ├───content.config.ts
-│   ├───customRenderer.tsx
 │   └───site.config.ts
 ├───.gitignore
 ├───.lycheeignore
