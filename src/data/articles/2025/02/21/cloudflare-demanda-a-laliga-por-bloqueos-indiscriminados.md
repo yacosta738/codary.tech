@@ -8,7 +8,9 @@ cover: /images/blog-placeholder-3.avif
 coverAlt: Imagen representando la demanda de Cloudflare contra LaLiga por bloqueos indiscriminados.
 tags:
   - cloudflare
-category: startups
+  - isp
+  - internet
+category: internet
 featured: false
 draft: true
 ---
