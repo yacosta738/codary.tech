@@ -44,14 +44,13 @@ El litigio abre un importante debate sobre el equilibrio entre la protección de
 > El litigio abre un importante debate sobre el equilibrio entre la protección de los derechos de autor y la preservación del acceso libre a Internet. Mientras algunos sostienen que es necesario frenar las retransmisiones ilegales para proteger los intereses comerciales, otros consideran que la actual estrategia de bloqueo masivo compromete la esencia de la red, afectando a usuarios y empresas inocentes. [^4]
 > 
 
+### **Conclusión**
+
+La demanda de Cloudflare contra LaLiga pone de manifiesto la necesidad de encontrar un equilibrio entre la protección de los derechos de autor y el acceso libre a Internet. La resolución de este conflicto será crucial para definir cómo se abordarán futuras medidas contra la piratería, asegurando que no se perjudique a usuarios y empresas legítimas en el proceso.
+
 ### **Fuentes**
 
  [^1]: [Cloudflare demanda a LaLiga por bloqueos indiscriminados por la piratería del fútbol](https://www.mundoplus.tv/tv-digital/cloudflare-demanda-a-laliga-por-bloqueos-indiscriminados-por-la-pirateria-del-futbol/) 
 [^2]: [Cloudflare demanda a LaLiga: no todo vale para luchar contra la piratería](https://www.teknofilo.com/cloudflare-demanda-a-laliga-no-todo-vale-para-luchar-contra-la-pirateria/)
  [^3]: [Cloudflare inicia acciones legales contra LaLiga por sus bloqueos de IPs: "son torpes e ineficaces"](https://www.xataka.com/empresas-y-economia/cloudflare-inicia-acciones-legales-laliga-sus-bloqueos-ips-torpes-e-ineficaces)
- [^4]: [Cloudflare lleva a los tribunales a LaLiga por los bloqueos indiscriminados contra la piratería](https://www.eldiario.es/tecnologia/cloudflare-lleva-tribunales-laliga-bloqueos-indiscriminados-pirateria_1_12065352.html) 
-
----
-
-### **Conclusión**
-La demanda de Cloudflare contra LaLiga pone de manifiesto la necesidad de encontrar un equilibrio entre la protección de los derechos de autor y el acceso libre a Internet. La resolución de este conflicto será crucial para definir cómo se abordarán futuras medidas contra la piratería, asegurando que no se perjudique a usuarios y empresas legítimas en el proceso.
+ [^4]: [Cloudflare lleva a los tribunales a LaLiga por los bloqueos indiscriminados contra la piratería](https://www.eldiario.es/tecnologia/cloudflare-lleva-tribunales-laliga-bloqueos-indiscriminados-pirateria_1_12065352.html)
