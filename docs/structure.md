@@ -15,6 +15,7 @@
 │   │   ├───image-actions.yml
 │   │   ├───links.yml
 │   │   └───pagespeed-insights.yml
+│   ├───.DS_Store
 │   ├───FUNDING.yml
 │   ├───PULL_REQUEST_TEMPLATE.md
 │   └───dependabot.yml
@@ -29,6 +30,8 @@
 │   │   └───config.yml
 │   ├───images/
 │   │   ├───.DS_Store
+│   │   ├───Humane AI.avif
+│   │   ├───Representación conceptual del HumaneAI Pin.avif
 │   │   ├───apple-tv-netflix.avif
 │   │   ├───blog-placeholder-1.avif
 │   │   ├───blog-placeholder-2.avif
@@ -101,6 +104,7 @@
 │   │   │   ├───apple.md
 │   │   │   ├───aws.md
 │   │   │   ├───cloudflare.md
+│   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
 │   │   │   ├───hacking.md
