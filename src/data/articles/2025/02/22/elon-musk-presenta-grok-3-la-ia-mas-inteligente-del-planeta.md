@@ -11,7 +11,7 @@ tags:
   - grok
 category: inteligencia-artificial
 featured: false
-draft: true
+draft: false
 ---
 Elon Musk, el visionario detrás de Tesla, SpaceX y X (anteriormente Twitter), ha anunciado oficialmente el lanzamiento de **Grok 3**, una nueva generación de inteligencia artificial desarrollada por xAI, su equipo especializado en IA [^1]. Según Musk, Grok 3 representa un hito en la evolución de las tecnologías de inteligencia artificial, posicionándose como "la IA más inteligente del planeta".
 
