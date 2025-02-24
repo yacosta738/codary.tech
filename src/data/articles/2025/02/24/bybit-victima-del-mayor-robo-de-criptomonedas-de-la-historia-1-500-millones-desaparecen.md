@@ -24,7 +24,7 @@ Ben Zhou, el director ejecutivo de Bybit, realizó una transmisión en vivo en l
 
 ### Investigación y Atribución
 
-Las investigaciones preliminares apuntan a que el grupo Lazarus, patrocinado por Corea del Norte, podría estar detrás del ataque. Este grupo tiene antecedentes en el robo de criptomonedas, incluyendo un ataque al videojuego Axie Infinity en 2022. La firma de seguridad Fireblocks, que está ayudando a Bybit con la investigación, ha señalado que el ataque es similar a otros realizados por Corea del Norte, lo que sugiere un atacante muy avanzado  [^3]  [^6]  [^7].
+Las investigaciones preliminares apuntan a que el grupo Lazarus, patrocinado por Corea del Norte, podría estar detrás del ataque. Este grupo tiene antecedentes en el robo de criptomonedas, incluyendo un ataque al videojuego Axie Infinity en 2022. La firma de seguridad Fireblocks, que está ayudando a Bybit con la investigación, ha señalado que el ataque es similar a otros realizados por Corea del Norte, lo que sugiere un atacante muy avanzado  [^3].
 
 ### Repercusiones en el Mercado
 
