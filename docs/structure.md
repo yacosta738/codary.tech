@@ -1,6 +1,6 @@
-## Estructura del Proyecto
+# Estructura del Proyecto
 
-```
+```plaintext
 ├───.devcontainer/
 │   ├───Dockerfile
 │   ├───devcontainer.json
@@ -28,27 +28,10 @@
 ├───public/
 │   ├───admin/
 │   │   └───config.yml
-│   ├───images/
-│   │   ├───.DS_Store
-│   │   ├───Humane AI.avif
-│   │   ├───Representación conceptual del HumaneAI Pin.avif
-│   │   ├───apple-tv-netflix.avif
-│   │   ├───blog-placeholder-1.avif
-│   │   ├───blog-placeholder-2.avif
-│   │   ├───blog-placeholder-3.avif
-│   │   ├───blog-placeholder-4.avif
-│   │   ├───cloudflare-vs-laliga-2.webp
-│   │   ├───cloudflare-vs-laliga.avif
-│   │   ├───iphone-16e-finish-unselect-gallery.avif
-│   │   ├───la-democratizacion-de-la-ia.avif
-│   │   ├───rust-programming-language.avif
-│   │   ├───whoAMI-cover.avif
-│   │   ├───whoami.avif
-│   │   ├───xAI.avif
-│   │   └───youtube-privacy.avif
 │   ├───rss/
 │   │   └───styles.xsl
 │   ├───.DS_Store
+│   ├───default-cover.avif
 │   └───logo.svg
 ├───scripts/
 │   └───organize-articles.js
@@ -57,6 +40,27 @@
 │   │   ├───font/
 │   │   │   ├───JetBrainsMono-Bold.ttf
 │   │   │   └───PlusJakartaSans-Bold.ttf
+│   │   ├───images/
+│   │   │   ├───.DS_Store
+│   │   │   ├───Humane AI.avif
+│   │   │   ├───Representación conceptual del HumaneAI Pin.avif
+│   │   │   ├───apple-tv-netflix.avif
+│   │   │   ├───blog-placeholder-1.avif
+│   │   │   ├───blog-placeholder-2.avif
+│   │   │   ├───blog-placeholder-3.avif
+│   │   │   ├───blog-placeholder-4.avif
+│   │   │   ├───bybit.avif
+│   │   │   ├───cloudflare-vs-laliga-2.webp
+│   │   │   ├───cloudflare-vs-laliga.avif
+│   │   │   ├───grok-3-elonwebp.avif
+│   │   │   ├───iphone-16e-finish-unselect-gallery.avif
+│   │   │   ├───la-democratizacion-de-la-ia.avif
+│   │   │   ├───rust-programming-language.avif
+│   │   │   ├───whoAMI-cover.avif
+│   │   │   ├───whoami.avif
+│   │   │   ├───xAI.avif
+│   │   │   └───youtube-privacy.avif
+│   │   ├───.DS_Store
 │   │   ├───astro.svg
 │   │   └───background.svg
 │   ├───components/
@@ -78,8 +82,9 @@
 │   │   │   ├───2025/
 │   │   │   │   ├───02/
 │   │   │   │   │   └───...
-│   │   │   │   └───09/
-│   │   │   │       └───...
+│   │   │   │   ├───09/
+│   │   │   │   │   └───...
+│   │   │   │   └───.DS_Store
 │   │   │   └───.DS_Store
 │   │   ├───authors/
 │   │   │   └───yuniel-acosta-perez.json
@@ -107,6 +112,7 @@
 │   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
+│   │   │   ├───grok.md
 │   │   │   ├───hacking.md
 │   │   │   ├───internet.md
 │   │   │   ├───iphone.md
@@ -124,6 +130,7 @@
 │   │   │   ├───typescript.md
 │   │   │   ├───vue.md
 │   │   │   ├───web-assembly.md
+│   │   │   ├───x.md
 │   │   │   └───youtube.md
 │   │   └───.DS_Store
 │   ├───layouts/

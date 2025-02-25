@@ -1,6 +1,6 @@
 <!-- Thank you for contributing to our Astro project! 🌠 -->
 
-## Description
+# Description
 <!-- Clearly explain the purpose of this PR and the changes made -->
 
 ## Type of Change
@@ -14,7 +14,8 @@
 - [ ] 🗑️ Code/File Removal
 
 ## Checklist
-- [ ] I have run `pnpm lint` and there are no errors
+
+- [ ] I have run `pnpm check` and there are no errors
 - [ ] I have run `pnpm test` and all tests pass
 - [ ] I have updated the relevant documentation
 - [ ] I have added tests to cover my changes
@@ -36,7 +37,8 @@
 <!-- Instructions to review the changes -->
 1. `pnpm install`
 2. `pnpm dev`
-3. Visit [relevant route](http://localhost:3000/route)
+3. Visit relevant route/component
+4. Verify that the changes are working as expected
 
 ## Additional Notes
 <!-- Any special considerations, breaking changes, etc. -->

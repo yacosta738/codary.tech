@@ -16,7 +16,6 @@ export async function getStaticPaths() {
 
 const article = Astro.props;
 const { Content } = await render(article.entry);
-const { image, alt } = article.cover;
 ---
 
 <BaseLayout title={article.title} description={article.description}>
@@ -28,7 +27,7 @@ const { image, alt } = article.cover;
         <div>
           {
             article.cover && (
-              <OptimizedCover src={image} alt={alt} />
+              <OptimizedCover src={article.cover} alt={article.coverAlt} />
             )
           }
         </div>

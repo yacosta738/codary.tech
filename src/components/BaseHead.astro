@@ -16,10 +16,8 @@ const ogImage = new URL(getOgImagePath(url.pathname), url.origin).href;
 const {
 	title,
 	description,
-	image = ogImage ?? new URL("/images/blog-placeholder-1.avif", url),
+	image = ogImage ?? new URL("/default-cover.avif", url),
 } = Astro.props;
-
-console.log({ title, description, image });
 ---
 
 <!-- Global Metadata -->
@@ -54,5 +52,6 @@ console.log({ title, description, image });
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
 
-<!-- ahrefs Web Analytics -->
-<script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key={AHREFS_KEY} async></script>
+{AHREFS_KEY && (
+	<script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key={AHREFS_KEY} async></script>
+)}

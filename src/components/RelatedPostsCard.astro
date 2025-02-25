@@ -34,7 +34,7 @@ const relatedArticles = await getRelatedArticlesByCategory();
     relatedArticles.map((article) => (
       <div class="relative mb-4 overflow-hidden rounded-xl bg-white transition-transform duration-500 hover:-translate-y-1 hover:scale-105 dark:bg-neutral-900">
         <a href={`/posts/${article.id}/`}>
-          <OptimizedCover src={article.cover.image} alt={article.cover.alt} />
+          <OptimizedCover src={article.cover} alt={article.coverAlt} />
           <div class="absolute bottom-0 end-0 start-0 bg-linear-to-t p-4 md:p-5">
             <div class="mt-16 flex items-center gap-4 text-xs text-white">
               <span>{article.tags.map(tag => tag.title).join(" ")}</span>
