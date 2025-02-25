@@ -42,6 +42,7 @@
 │   │   │   └───PlusJakartaSans-Bold.ttf
 │   │   ├───images/
 │   │   │   ├───.DS_Store
+│   │   │   ├───0b716be6-2c45-49eb-8080-4161ceaac542.avif
 │   │   │   ├───Humane AI.avif
 │   │   │   ├───Representación conceptual del HumaneAI Pin.avif
 │   │   │   ├───apple-tv-netflix.avif
@@ -109,12 +110,15 @@
 │   │   │   ├───apple.md
 │   │   │   ├───aws.md
 │   │   │   ├───centros-de-datos.md
+│   │   │   ├───china.md
 │   │   │   ├───cloudflare.md
 │   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
+│   │   │   ├───ee-uu.md
 │   │   │   ├───git.md
 │   │   │   ├───grok.md
 │   │   │   ├───hacking.md
+│   │   │   ├───industria-global.md
 │   │   │   ├───internet.md
 │   │   │   ├───inversores.md
 │   │   │   ├───iphone.md
@@ -128,6 +132,7 @@
 │   │   │   ├───python.md
 │   │   │   ├───react.md
 │   │   │   ├───rust.md
+│   │   │   ├───semiconductores.md
 │   │   │   ├───smartphones.md
 │   │   │   ├───tooling.md
 │   │   │   ├───typescript.md

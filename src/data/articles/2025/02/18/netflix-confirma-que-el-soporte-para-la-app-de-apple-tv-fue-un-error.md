@@ -4,7 +4,7 @@ description: La integración breve entre Netflix y la app de Apple TV ha sido co
 pubDate: 2025-02-18T23:28:00
 lastModified: 2025-02-18T23:27:00
 author: yuniel-acosta-perez
-cover: src/assets/images/apple-tv-netflix.avif
+cover: /src/assets/images/apple-tv-netflix.avif
 coverAlt: Captura de pantalla de la app de Apple TV mostrando contenido de Netflix antes del retiro del soporte.
 tags:
   - apple
