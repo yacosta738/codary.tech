@@ -52,5 +52,6 @@ const {
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
 
-<!-- ahrefs Web Analytics -->
-<script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key={AHREFS_KEY} async></script>
+{AHREFS_KEY && (
+	<script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key={AHREFS_KEY} async></script>
+)}
