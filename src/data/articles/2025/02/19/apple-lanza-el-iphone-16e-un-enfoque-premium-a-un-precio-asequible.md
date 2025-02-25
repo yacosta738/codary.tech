@@ -4,7 +4,7 @@ description: Apple presenta el iPhone 16e, un nuevo integrante de la familia iPh
 pubDate: 2025-02-19T22:45:00
 lastModified: 2025-02-19T22:45:00
 author: yuniel-acosta-perez
-cover: /images/iphone-16e-finish-unselect-gallery.avif
+cover: src/assets/images/iphone-16e-finish-unselect-gallery.avif
 coverAlt: Imagen del nuevo iPhone 16e con su diseño elegante y moderno.
 tags:
   - apple

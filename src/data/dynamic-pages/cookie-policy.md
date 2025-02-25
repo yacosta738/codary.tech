@@ -6,7 +6,7 @@ description: 'Política de Cookies de Codary: Descubre cómo utilizamos cookies 
 
 Última actualización: 16 de febrero de 2025
 
-Esta Política de Cookies explica cómo Codary ("Compañía", "nosotros", "nos" y "nuestro") utiliza cookies y tecnologías similares para reconocerte cuando visitas nuestro sitio web en https://www.codary.tech ("Sitio Web"). Explica qué son estas tecnologías y por qué las utilizamos, así como tus derechos para controlar nuestro uso de ellas.
+Esta Política de Cookies explica cómo Codary ("Compañía", "nosotros", "nos" y "nuestro") utiliza cookies y tecnologías similares para reconocerte cuando visitas nuestro sitio web en <https://www.codary.tech> ("Sitio Web"). Explica qué son estas tecnologías y por qué las utilizamos, así como tus derechos para controlar nuestro uso de ellas.
 
 En algunos casos, podemos utilizar cookies para recopilar información personal, o que se convierte en información personal si la combinamos con otra información.
 
@@ -28,15 +28,13 @@ El Gestor de Consentimiento de Cookies se encuentra en la barra de notificación
 
 Los tipos específicos de cookies de primera y de terceros que se sirven a través de nuestro Sitio Web y los propósitos que cumplen se describen en la tabla siguiente (ten en cuenta que las cookies servidas específicas pueden variar dependiendo de las Propiedades Online que visites):
 
-### Cookies no clasificadas:
+### Cookies no clasificadas
 
 Estas son cookies que aún no han sido clasificadas. Estamos en el proceso de clasificar estas cookies con la ayuda de sus proveedores.
 
 | Nombre   | Proveedor       | Tipo             | Caduca en     |
-
 |----------|-----------------|------------------|---------------|
-
-| theme    | www.codary.tech | html_local_storage | persistente   |
+| theme    | <https://www.codary.tech> | html_local_storage | persistente   |
 
 ## ¿Cómo puedo controlar las cookies en mi navegador?
 
@@ -52,7 +50,7 @@ Dado que los medios para rechazar cookies a través de los controles de tu naveg
 Además, la mayoría de las redes publicitarias te ofrecen una forma de optar por no recibir publicidad dirigida. Si deseas obtener más información, consulta los siguientes enlaces:
 
 - [Alianza de Publicidad Digital](https://www.aboutads.info/choices/)
-- [Alianza de Publicidad Digital de Canadá](http://youradchoices.ca/)
+- [Alianza de Publicidad Digital de Canadá](https://youradchoices.ca/)
 - [Alianza Europea de Publicidad Digital Interactiva](https://www.youronlinechoices.eu/)
 
 ## ¿Qué pasa con otras tecnologías de seguimiento, como balizas web?

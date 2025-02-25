@@ -6,7 +6,7 @@ import type { CollectionEntry } from "astro:content";
  * @property {string} title - Title of the article
  * @property {string} description - Brief description or summary of the article
  * @property {Author} author - Author of the article
- * @property {{image: string, alt: string}} cover - Cover image details for the article
+ * @property {ImageMetadata} cover - Cover image metadata for the article
  * @property {Tag[]} tags - Array of tags associated with the article
  * @property {Category} category - Category the article belongs to
  * @property {boolean} featured - Indicates if the article is featured
@@ -19,13 +19,15 @@ import type { CollectionEntry } from "astro:content";
 import type Author from "@models/Author/Author";
 import type Category from "@models/Category/Category";
 import type Tag from "@models/Tag/Tag";
+import type { ImageMetadata } from "astro";
 
 export default interface Article {
 	id: string;
 	title: string;
 	description: string;
 	author: Author;
-	cover: { image: string; alt: string };
+	cover: ImageMetadata;
+	coverAlt: string;
 	tags: Tag[];
 	category: Category;
 	featured: boolean;

@@ -4,7 +4,7 @@ description: El empresario anunció el lanzamiento de Grok 3, su nueva inteligen
 pubDate: 2025-02-22T13:37:00
 lastModified: 2025-02-22T13:37:00
 author: yuniel-acosta-perez
-cover: /images/grok-3-elonwebp.avif
+cover: src/assets/images/grok-3-elonwebp.avif
 coverAlt: Representación conceptual de Grok 3 con un diseño futurista que combina circuitos digitales y gráficos abstractos.
 tags:
   - ai

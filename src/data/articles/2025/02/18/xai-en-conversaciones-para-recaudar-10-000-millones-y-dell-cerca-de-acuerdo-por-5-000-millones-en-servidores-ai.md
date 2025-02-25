@@ -4,7 +4,7 @@ description: Elon Musk's xAI está en conversaciones para recaudar $10,000 millo
 pubDate: 2025-02-18T14:40:00
 lastModified: 2025-02-18T14:40:00
 author: yuniel-acosta-perez
-cover: /images/xAI.avif
+cover: src/assets/images/xAI.avif
 coverAlt: Ilustración representando servidores de inteligencia artificial y el logo de xAI.
 tags:
   - ai

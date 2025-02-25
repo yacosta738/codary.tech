@@ -4,7 +4,7 @@ description: Bybit sufre el mayor robo de criptomonedas de la historia, con pér
 pubDate: 2025-02-24T18:23:00
 lastModified: 2025-02-24T18:23:00
 author: yuniel-acosta-perez
-cover: /images/bybit.avif
+cover: src/assets/images/bybit.avif
 coverAlt: 'Histórico ciberataque a Bybit: Hackers roban $1.500 millones en criptomonedas. Descubre los detalles del mayor desfalco en la historia del cibercrimen.'
 tags:
   - hacking

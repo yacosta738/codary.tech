@@ -74,9 +74,6 @@ importers:
       tailwindcss:
         specifier: ^4.0.7
         version: 4.0.7
-      typescript:
-        specifier: ^5.7.3
-        version: 5.7.3
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -99,6 +96,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
 packages:
 
