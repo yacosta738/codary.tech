@@ -50,7 +50,7 @@ La demanda de Cloudflare contra LaLiga pone de manifiesto la necesidad de encont
 
 ### **Fuentes**
 
- [^1]: [Cloudflare demanda a LaLiga por bloqueos indiscriminados por la piratería del fútbol](https://www.mundoplus.tv/tv-digital/cloudflare-demanda-a-laliga-por-bloqueos-indiscriminados-por-la-pirateria-del-futbol/)
+ [^1]: Cloudflare demanda a LaLiga por bloqueos indiscriminados por la piratería del fútbol
 [^2]: [Cloudflare demanda a LaLiga: no todo vale para luchar contra la piratería](https://www.teknofilo.com/cloudflare-demanda-a-laliga-no-todo-vale-para-luchar-contra-la-pirateria/)
  [^3]: [Cloudflare inicia acciones legales contra LaLiga por sus bloqueos de IPs: "son torpes e ineficaces"](https://www.xataka.com/empresas-y-economia/cloudflare-inicia-acciones-legales-laliga-sus-bloqueos-ips-torpes-e-ineficaces)
  [^4]: [Cloudflare lleva a los tribunales a LaLiga por los bloqueos indiscriminados contra la piratería](https://www.eldiario.es/tecnologia/cloudflare-lleva-tribunales-laliga-bloqueos-indiscriminados-pirateria_1_12065352.html)
