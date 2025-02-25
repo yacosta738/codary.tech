@@ -42,9 +42,11 @@
 │   │   │   └───PlusJakartaSans-Bold.ttf
 │   │   ├───images/
 │   │   │   ├───.DS_Store
+│   │   │   ├───0b716be6-2c45-49eb-8080-4161ceaac542.avif
 │   │   │   ├───Humane AI.avif
 │   │   │   ├───Representación conceptual del HumaneAI Pin.avif
 │   │   │   ├───apple-tv-netflix.avif
+│   │   │   ├───b2e160fc-70d4-47ba-8078-60889c495ad2.avif
 │   │   │   ├───blog-placeholder-1.avif
 │   │   │   ├───blog-placeholder-2.avif
 │   │   │   ├───blog-placeholder-3.avif
@@ -55,6 +57,7 @@
 │   │   │   ├───grok-3-elonwebp.avif
 │   │   │   ├───iphone-16e-finish-unselect-gallery.avif
 │   │   │   ├───la-democratizacion-de-la-ia.avif
+│   │   │   ├───microsoft-cancela-servidores.avif
 │   │   │   ├───rust-programming-language.avif
 │   │   │   ├───whoAMI-cover.avif
 │   │   │   ├───whoami.avif
@@ -82,8 +85,6 @@
 │   │   │   ├───2025/
 │   │   │   │   ├───02/
 │   │   │   │   │   └───...
-│   │   │   │   ├───09/
-│   │   │   │   │   └───...
 │   │   │   │   └───.DS_Store
 │   │   │   └───.DS_Store
 │   │   ├───authors/
@@ -96,7 +97,8 @@
 │   │   │   ├───redes-sociales.md
 │   │   │   ├───smartphones.md
 │   │   │   ├───startups.md
-│   │   │   └───streaming.md
+│   │   │   ├───streaming.md
+│   │   │   └───tecnologia.md
 │   │   ├───config/
 │   │   │   └───config.json
 │   │   ├───dynamic-pages/
@@ -107,24 +109,33 @@
 │   │   ├───tags/
 │   │   │   ├───ai.md
 │   │   │   ├───apple.md
+│   │   │   ├───automatizacion.md
 │   │   │   ├───aws.md
+│   │   │   ├───centros-de-datos.md
+│   │   │   ├───china.md
 │   │   │   ├───cloudflare.md
 │   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
+│   │   │   ├───ee-uu.md
 │   │   │   ├───git.md
 │   │   │   ├───grok.md
 │   │   │   ├───hacking.md
+│   │   │   ├───industria-global.md
 │   │   │   ├───internet.md
+│   │   │   ├───inversores.md
 │   │   │   ├───iphone.md
 │   │   │   ├───isp.md
 │   │   │   ├───javascript.md
 │   │   │   ├───kubernetes.md
+│   │   │   ├───microsoft.md
 │   │   │   ├───netflix.md
 │   │   │   ├───node-js.md
 │   │   │   ├───politicas-de-seguridad.md
+│   │   │   ├───programacion.md
 │   │   │   ├───python.md
 │   │   │   ├───react.md
 │   │   │   ├───rust.md
+│   │   │   ├───semiconductores.md
 │   │   │   ├───smartphones.md
 │   │   │   ├───tooling.md
 │   │   │   ├───typescript.md

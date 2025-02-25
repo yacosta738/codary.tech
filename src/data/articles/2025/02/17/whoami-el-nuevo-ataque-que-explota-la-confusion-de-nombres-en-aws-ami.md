@@ -4,7 +4,7 @@ description: Investigadores descubren el ataque 'whoAMI', una técnica que explo
 pubDate: 2025-02-17T19:34:00
 lastModified: 2025-02-17T19:32:00
 author: yuniel-acosta-perez
-cover: src/assets/images/whoAMI-cover.avif
+cover: /src/assets/images/whoAMI-cover.avif
 coverAlt: whoami
 tags:
   - aws
