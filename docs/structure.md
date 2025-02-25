@@ -55,6 +55,7 @@
 │   │   │   ├───grok-3-elonwebp.avif
 │   │   │   ├───iphone-16e-finish-unselect-gallery.avif
 │   │   │   ├───la-democratizacion-de-la-ia.avif
+│   │   │   ├───microsoft-cancela-servidores.avif
 │   │   │   ├───rust-programming-language.avif
 │   │   │   ├───whoAMI-cover.avif
 │   │   │   ├───whoami.avif
@@ -82,8 +83,6 @@
 │   │   │   ├───2025/
 │   │   │   │   ├───02/
 │   │   │   │   │   └───...
-│   │   │   │   ├───09/
-│   │   │   │   │   └───...
 │   │   │   │   └───.DS_Store
 │   │   │   └───.DS_Store
 │   │   ├───authors/
@@ -96,7 +95,8 @@
 │   │   │   ├───redes-sociales.md
 │   │   │   ├───smartphones.md
 │   │   │   ├───startups.md
-│   │   │   └───streaming.md
+│   │   │   ├───streaming.md
+│   │   │   └───tecnologia.md
 │   │   ├───config/
 │   │   │   └───config.json
 │   │   ├───dynamic-pages/
@@ -108,6 +108,7 @@
 │   │   │   ├───ai.md
 │   │   │   ├───apple.md
 │   │   │   ├───aws.md
+│   │   │   ├───centros-de-datos.md
 │   │   │   ├───cloudflare.md
 │   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
@@ -115,10 +116,12 @@
 │   │   │   ├───grok.md
 │   │   │   ├───hacking.md
 │   │   │   ├───internet.md
+│   │   │   ├───inversores.md
 │   │   │   ├───iphone.md
 │   │   │   ├───isp.md
 │   │   │   ├───javascript.md
 │   │   │   ├───kubernetes.md
+│   │   │   ├───microsoft.md
 │   │   │   ├───netflix.md
 │   │   │   ├───node-js.md
 │   │   │   ├───politicas-de-seguridad.md
