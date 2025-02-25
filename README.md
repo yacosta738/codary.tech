@@ -202,7 +202,7 @@ Para desplegar el sitio en producción:
 1. **Construye el sitio:**
 
    ```bash
-   npm run build
+   pnpm run build
    ```
 
 2. **La versión de producción se genera en la carpeta `./dist/`.**

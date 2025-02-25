@@ -16,8 +16,8 @@ slug:
   sanitize_replacement: '-'
 
 
-media_folder: 'public/images'
-public_folder: '/images'
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded media
 
 collections:
   - name: 'articles'
@@ -50,6 +50,7 @@ collections:
       - name: 'cover'
         widget: 'image'
         label: 'Cover'
+        # default: '/src/assets/images/blog-placeholder-1.avif'
       - name: 'coverAlt'
         widget: 'string'
         label: 'Cover Alt'

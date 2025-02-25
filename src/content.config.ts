@@ -1,21 +1,27 @@
-import { defineCollection, reference, z } from "astro:content";
+import {
+	type SchemaContext,
+	defineCollection,
+	reference,
+	z,
+} from "astro:content";
 import { glob } from "astro/loaders";
 
 const articles = defineCollection({
 	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/data/articles" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		pubDate: z.date(),
-		lastModified: z.date().optional(),
-		author: reference("authors"),
-		cover: z.string(),
-		coverAlt: z.string(),
-		tags: z.array(reference("tags")),
-		category: reference("categories"),
-		featured: z.boolean().default(false),
-		draft: z.boolean().default(true),
-	}),
+	schema: ({ image }: SchemaContext) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			pubDate: z.date(),
+			lastModified: z.date().optional(),
+			author: reference("authors"),
+			cover: image(),
+			coverAlt: z.string(),
+			tags: z.array(reference("tags")),
+			category: reference("categories"),
+			featured: z.boolean().default(false),
+			draft: z.boolean().default(true),
+		}),
 });
 
 const tags = defineCollection({

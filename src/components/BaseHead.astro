@@ -16,10 +16,8 @@ const ogImage = new URL(getOgImagePath(url.pathname), url.origin).href;
 const {
 	title,
 	description,
-	image = ogImage ?? new URL("/images/blog-placeholder-1.avif", url),
+	image = ogImage ?? new URL("/default-cover.avif", url),
 } = Astro.props;
-
-console.log({ title, description, image });
 ---
 
 <!-- Global Metadata -->

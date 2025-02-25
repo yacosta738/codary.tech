@@ -4,7 +4,7 @@ description: Exploramos la disputa entre LaLiga, Cloudflare y Movistar que ha ll
 pubDate: 2025-02-18T12:25:00
 lastModified: 2025-02-18T12:25:00
 author: yuniel-acosta-perez
-cover: /images/cloudflare-vs-laliga.avif
+cover: src/assets/images/cloudflare-vs-laliga.avif
 coverAlt: LaLiga vs Cloudflare
 tags:
   - cloudflare
@@ -48,7 +48,7 @@ El conflicto entre LaLiga, Cloudflare y Movistar ha puesto de manifiesto la frag
 
 ### **Fuentes**
 
-[^1]: [LaLiga abre un buzón para afectados de Cloudflare y endurece sus acusaciones de "proteger a organizaciones criminales"](https://marketing4ecommerce.net/laliga-abre-un-buzon-para-afectados-de-cloudflare/) 
-[^2]: [El bloqueo de Cloudflare por parte de LaLiga y Telefónica. ¿Cómo reclamar si estás afectado?](https://telefonos.es/el-bloqueo-de-cloudflare-por-parte-de-laliga-y-telefonica-como-reclamar-si-estas-afectado/) 
+[^1]: [LaLiga abre un buzón para afectados de Cloudflare y endurece sus acusaciones de "proteger a organizaciones criminales"](https://marketing4ecommerce.net/laliga-abre-un-buzon-para-afectados-de-cloudflare/)
+[^2]: [El bloqueo de Cloudflare por parte de LaLiga y Telefónica. ¿Cómo reclamar si estás afectado?](https://telefonos.es/el-bloqueo-de-cloudflare-por-parte-de-laliga-y-telefonica-como-reclamar-si-estas-afectado/)
 [^3]: [El efecto dominó del bloqueo de Cloudflare por Movistar en España: "Tuvimos un estudio de arquitectura dos días parado"](https://www.xataka.com/empresas-y-economia/efecto-domino-bloqueo-cloudflare-espana-tuvimos-estudio-arquitectura-dos-dias-parado)
 [^4]: [Guerra LaLiga vs Cloudflare: por qué no puedes acceder a ciertas webs](https://www.lavanguardia.com/andro4all/operadoras/guerra-laliga-vs-cloudflare-por-que-no-puedes-acceder-a-ciertas-webs)
