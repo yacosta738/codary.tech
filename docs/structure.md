@@ -49,8 +49,10 @@
 │   │   │   ├───blog-placeholder-2.avif
 │   │   │   ├───blog-placeholder-3.avif
 │   │   │   ├───blog-placeholder-4.avif
+│   │   │   ├───bybit.avif
 │   │   │   ├───cloudflare-vs-laliga-2.webp
 │   │   │   ├───cloudflare-vs-laliga.avif
+│   │   │   ├───grok-3-elonwebp.avif
 │   │   │   ├───iphone-16e-finish-unselect-gallery.avif
 │   │   │   ├───la-democratizacion-de-la-ia.avif
 │   │   │   ├───rust-programming-language.avif
@@ -110,6 +112,7 @@
 │   │   │   ├───dispositivos-wearable.md
 │   │   │   ├───docker.md
 │   │   │   ├───git.md
+│   │   │   ├───grok.md
 │   │   │   ├───hacking.md
 │   │   │   ├───internet.md
 │   │   │   ├───iphone.md
@@ -127,6 +130,7 @@
 │   │   │   ├───typescript.md
 │   │   │   ├───vue.md
 │   │   │   ├───web-assembly.md
+│   │   │   ├───x.md
 │   │   │   └───youtube.md
 │   │   └───.DS_Store
 │   ├───layouts/
