@@ -46,6 +46,7 @@
 │   │   │   ├───Humane AI.avif
 │   │   │   ├───Representación conceptual del HumaneAI Pin.avif
 │   │   │   ├───apple-tv-netflix.avif
+│   │   │   ├───b2e160fc-70d4-47ba-8078-60889c495ad2.avif
 │   │   │   ├───blog-placeholder-1.avif
 │   │   │   ├───blog-placeholder-2.avif
 │   │   │   ├───blog-placeholder-3.avif
@@ -108,6 +109,7 @@
 │   │   ├───tags/
 │   │   │   ├───ai.md
 │   │   │   ├───apple.md
+│   │   │   ├───automatizacion.md
 │   │   │   ├───aws.md
 │   │   │   ├───centros-de-datos.md
 │   │   │   ├───china.md
@@ -129,6 +131,7 @@
 │   │   │   ├───netflix.md
 │   │   │   ├───node-js.md
 │   │   │   ├───politicas-de-seguridad.md
+│   │   │   ├───programacion.md
 │   │   │   ├───python.md
 │   │   │   ├───react.md
 │   │   │   ├───rust.md
