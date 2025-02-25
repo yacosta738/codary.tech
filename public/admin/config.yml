@@ -50,7 +50,7 @@ collections:
       - name: 'cover'
         widget: 'image'
         label: 'Cover'
-        # default: '/src/assets/images/blog-placeholder-1.avif'
+        default: '/src/assets/images/blog-placeholder-1.avif'
       - name: 'coverAlt'
         widget: 'string'
         label: 'Cover Alt'

@@ -4,7 +4,7 @@ description: Descubre cómo YouTube está implementando políticas más estricta
 pubDate: 2025-02-18T00:53:00
 lastModified: 2025-02-18T00:53:00
 author: yuniel-acosta-perez
-cover: src/assets/images/youtube-privacy.avif
+cover: /src/assets/images/youtube-privacy.avif
 coverAlt: Captura de pantalla mostrando el proceso de verificación de teléfono en YouTube.
 tags:
   - youtube

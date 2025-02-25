@@ -4,7 +4,7 @@ description: Explora cómo Rust está reemplazando herramientas tradicionales de
 pubDate: 2025-02-18T14:57:00
 lastModified: 2025-02-18T14:57:00
 author: yuniel-acosta-perez
-cover: src/assets/images/rust-programming-language.avif
+cover: /src/assets/images/rust-programming-language.avif
 coverAlt: Representación visual de Rust integrándose en el ecosistema de desarrollo web.
 tags:
   - javascript

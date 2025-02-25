@@ -4,7 +4,7 @@ description: Cloudflare ha iniciado acciones legales contra LaLiga por los bloqu
 pubDate: 2025-02-21T17:32:00
 lastModified: 2025-02-21T17:32:00
 author: yuniel-acosta-perez
-cover: src/assets/images/cloudflare-vs-laliga-2.webp
+cover: /src/assets/images/cloudflare-vs-laliga-2.webp
 coverAlt: Imagen representando la demanda de Cloudflare contra LaLiga por bloqueos indiscriminados.
 tags:
   - cloudflare
