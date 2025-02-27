@@ -8,6 +8,8 @@ cover: /src/assets/images/511bf45f-270c-409d-97f2-87159a38eb93.avif
 coverAlt: OpenAI Expande Función de Memoria de ChatGPT a Más Usuarios en Dispositivos Móviles y de Escritorio
 tags:
   - ai
+  - openai
+  - chatgpt
 category: inteligencia-artificial
 featured: false
 draft: false
