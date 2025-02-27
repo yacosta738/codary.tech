@@ -4,7 +4,7 @@ description: Descubre cómo la función de memoria mejorada de ChatGPT está alc
 pubDate: 2025-02-27T16:21:00
 lastModified: 2025-02-27T16:20:00
 author: yuniel-acosta-perez
-cover: /src/assets/images/511bf45f-270c-409d-97f2-87159a38eb93.avif
+cover: /src/assets/images/dfcf9bb1-fbf6-4f74-bb38-0b53dd8db595.avif
 coverAlt: OpenAI Expande Función de Memoria de ChatGPT a Más Usuarios en Dispositivos Móviles y de Escritorio
 tags:
   - ai
