@@ -4,7 +4,7 @@ description: Microsoft ha retirado la extensión Material Theme de VS Code por r
 pubDate: 2025-02-27T15:53:00
 lastModified: 2025-02-27T15:53:00
 author: yuniel-acosta-perez
-cover: /src/assets/images/7685ac6f-88ae-4c5b-92e9-9f489fde35d9.avif
+cover: /src/assets/images/7762799e-0693-4292-a309-f6a4eec57dc9.avif
 coverAlt: Ilustración futurista con circuitos en tonos azules y morados, representando un entorno de código seguro.
 tags:
   - hacking
