@@ -8,6 +8,8 @@ cover: /src/assets/images/7685ac6f-88ae-4c5b-92e9-9f489fde35d9.avif
 coverAlt: Ilustración futurista con circuitos en tonos azules y morados, representando un entorno de código seguro.
 tags:
   - hacking
+  - seguridad
+  - vs-code
 category: ciberseguridad
 featured: false
 draft: false
