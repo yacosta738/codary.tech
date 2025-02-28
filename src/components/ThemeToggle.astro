@@ -8,15 +8,15 @@ import { Icon } from "astro-icon/components";
   class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
   aria-label="Toggle theme"
 >
-  <Icon 
-    id="themeIconLight" 
-    class="w-5 h-5 theme-icon theme-icon-light" 
-    name="tabler:sun-filled" 
+  <Icon
+    id="themeIconLight"
+    class="w-5 h-5 theme-icon theme-icon-light"
+    name="tabler:sun-filled"
   />
-  <Icon 
-    id="themeIconDark" 
-    class="w-5 h-5 theme-icon theme-icon-dark" 
-    name="tabler:moon-filled" 
+  <Icon
+    id="themeIconDark"
+    class="w-5 h-5 theme-icon theme-icon-dark"
+    name="tabler:moon-filled"
   />
 </button>
 
@@ -49,8 +49,10 @@ import { Icon } from "astro-icon/components";
 
 <script>
   const button = document.getElementById("themeToggle") as HTMLButtonElement;
-  const theme = localStorage.getItem("theme") || "light";
-  
+    // Check for saved theme preference, otherwise use system preference
+    const theme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
   function setTheme(theme: "light" | "dark") {
     document.documentElement.classList.remove("light", "dark");
     document.documentElement.classList.add(theme);

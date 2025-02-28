@@ -4,19 +4,24 @@ import BaseHead from "@components/BaseHead.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
 
+interface Props {
+	title: string;
+	description: string;
+}
+
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es"  class="h-full dark">
   <head>
     <BaseHead title={title} description={description} />
   </head>
   <body
-    class="flex flex-col min-h-screen mx-auto max-w-7xl px-4 dark:prose-invert sm:px-6 lg:px-8 dark:bg-neutral-900"
+    class="flex flex-col min-h-screen mx-auto px-4 dark:prose-invert sm:px-6 lg:px-8 dark:bg-neutral-900"
   >
     <Header />
-    <main class="grow">
+    <main class="grow my-2">
       <slot />
     </main>
 

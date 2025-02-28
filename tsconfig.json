@@ -14,6 +14,7 @@
 			"@models/*": ["src/models/*"],
 			"@utils/*": ["src/utils/*"],
 			"@styles/*": ["src/styles/*"],
+			"@lib/*": ["src/lib/*"],
 			"@consts": ["src/site.config.ts", "src/content.config.ts"]
 		}
 	}

@@ -1,8 +1,8 @@
-import { getCategories } from "@models/Category";
+// import { getCategories } from "@models/Category";
 import { getConfig } from "@models/Config";
 
 const config = await getConfig();
-const categories = await getCategories();
+// const categories = await getCategories();
 
 // Base Page Metadata, src/layouts/BaseLayout.astro
 export const BRAND_NAME = config.brand_name;
@@ -28,12 +28,19 @@ export function getCategoryMetadata(category: string) {
 		description: `Explora todos los artículos bajo la categoría ${category} en ${BRAND_NAME}`,
 	};
 }
+export type MenuItem = {
+	title: string;
+	href?: string;
+	icon?: string;
+	subMenu?: MenuItem[];
+};
 
 // Header Links, src/components/Header.astro
-export const HeaderLinks = categories.map((category) => ({
-	href: `/category/${category.id}/1/`,
-	title: category.title,
-}));
+export const HeaderLinks: MenuItem[] = [
+	{ href: "/newsletter", title: "Newsletter" },
+	{ href: "/apps", title: "Aplicaciones" },
+	// { href: "/podcast", title: "Podcast" },
+];
 
 // Footer Links, src/components/Footer.astro
 export const FooterLinks = config.footer.links.map((link) => ({

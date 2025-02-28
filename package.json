@@ -16,6 +16,7 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.9.4",
+		"@astrojs/cloudflare": "^12.2.2",
 		"@astrojs/mdx": "^4.0.8",
 		"@astrojs/partytown": "^2.1.3",
 		"@astrojs/rss": "^4.0.11",
@@ -25,6 +26,7 @@
 		"@fontsource-variable/plus-jakarta-sans": "^5.1.1",
 		"@fontsource/roboto": "^5.1.1",
 		"@iconify-json/tabler": "^1.2.16",
+		"@supabase/supabase-js": "^2.49.1",
 		"@tailwindcss/vite": "^4.0.9",
 		"astro": "^5.3.1",
 		"astro-icon": "^1.1.5",
@@ -33,10 +35,10 @@
 		"iconify-icon": "^2.3.0",
 		"mdast-util-to-string": "^4.0.0",
 		"pagefind": "^1.3.0",
+		"preact": "^10.25.4",
 		"reading-time": "^1.5.0",
 		"sanitize-html": "^2.14.0",
-		"tailwindcss": "^4.0.9",
-		"preact": "^10.25.4"
+		"tailwindcss": "^4.0.9"
 	},
 	"packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af",
 	"devDependencies": {

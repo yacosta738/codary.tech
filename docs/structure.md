@@ -23,6 +23,11 @@
 │   ├───extensions.json
 │   ├───launch.json
 │   └───settings.json
+├───.wrangler/
+│   └───state/
+│       └───v3/
+│           └───workflows/
+├───content-type-example/
 ├───docs/
 │   └───structure.md
 ├───public/
@@ -75,6 +80,7 @@
 │   │   ├───FormattedDate.astro
 │   │   ├───Header.astro
 │   │   ├───HeroCard.astro
+│   │   ├───HeroNewsletter.astro
 │   │   ├───Links.astro
 │   │   ├───OptimizedPicture.astro
 │   │   ├───Pagination.astro
@@ -146,6 +152,8 @@
 │   │   └───.DS_Store
 │   ├───layouts/
 │   │   └───BaseLayout.astro
+│   ├───lib/
+│   │   └───supabase.ts
 │   ├───models/
 │   │   ├───Article/
 │   │   │   ├───Article.ts
@@ -179,9 +187,20 @@
 │   │   │   └───index.ts
 │   │   └───.DS_Store
 │   ├───pages/
+│   │   ├───api/
+│   │   │   ├───auth/
+│   │   │   │   ├───callback.ts
+│   │   │   │   ├───register.ts
+│   │   │   │   ├───signin.ts
+│   │   │   │   └───signout.ts
+│   │   │   └───user/
+│   │   │       ├───profile.ts
+│   │   │       └───update.ts
 │   │   ├───category/
 │   │   │   └───[category]/
 │   │   │       └───[page].astro
+│   │   ├───newsletter/
+│   │   │   └───index.astro
 │   │   ├───open-graph/
 │   │   │   └───[...slug].png.ts
 │   │   ├───page/
@@ -195,11 +214,15 @@
 │   │   ├───.DS_Store
 │   │   ├───404.astro
 │   │   ├───[slug].astro
+│   │   ├───account.astro
 │   │   ├───admin.astro
+│   │   ├───apps.astro
 │   │   ├───index.astro
+│   │   ├───register.astro
 │   │   ├───robots.txt.ts
 │   │   ├───rss.xml.js
-│   │   └───search.astro
+│   │   ├───search.astro
+│   │   └───signin.astro
 │   ├───styles/
 │   │   ├───github-markdown.css
 │   │   └───global.css
@@ -210,6 +233,16 @@
 │   ├───.DS_Store
 │   ├───content.config.ts
 │   └───site.config.ts
+├───supabase/
+│   ├───.branches/
+│   │   └───_current_branch
+│   ├───.temp/
+│   │   └───cli-latest
+│   ├───migrations/
+│   │   ├───20250227195823_user_management_starter.sql
+│   │   └───20250227200050_newsletter_subscriptions.sql
+│   ├───.gitignore
+│   └───config.toml
 ├───.gitignore
 ├───.lycheeignore
 ├───.npmrc

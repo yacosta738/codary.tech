@@ -8,22 +8,36 @@ import pagefind from "astro-pagefind";
 import { defineConfig, envField, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://codary.tech",
 	compressHTML: true,
+	output: "server",
+	adapter: cloudflare(),
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
 	},
+
 	env: {
 		schema: {
 			AHREFS_KEY: envField.string({
 				context: "client",
 				access: "public",
 			}),
+			SUPABASE_URL: envField.string({
+				context: "server",
+				access: "secret",
+			}),
+			SUPABASE_ANON_KEY: envField.string({
+				context: "server",
+				access: "secret",
+			}),
 		},
 	},
+
 	image: {
 		service: passthroughImageService(),
 		remotePatterns: [
@@ -33,6 +47,7 @@ export default defineConfig({
 			},
 		],
 	},
+
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -49,9 +64,11 @@ export default defineConfig({
 			},
 		}),
 	],
+
 	vite: {
 		plugins: [tailwindcss()],
 	},
+
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 	},
