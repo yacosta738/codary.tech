@@ -73,6 +73,8 @@
 │   │   └───background.svg
 │   ├───components/
 │   │   ├───.DS_Store
+│   │   ├───ArticleGrid.astro
+│   │   ├───AuthButton.astro
 │   │   ├───BaseHead.astro
 │   │   ├───Card.astro
 │   │   ├───CommonCard.astro
@@ -154,6 +156,8 @@
 │   │   └───BaseLayout.astro
 │   ├───lib/
 │   │   └───supabase.ts
+│   ├───middleware/
+│   │   └───index.ts
 │   ├───models/
 │   │   ├───Article/
 │   │   │   ├───Article.ts

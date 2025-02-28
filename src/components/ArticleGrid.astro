@@ -1,0 +1,141 @@
+---
+const articles = [
+	{
+		date: { day: 21, month: "FEBRERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (21 Febrero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 21 de febrero de 2025",
+		author: "Yuniel Acosta",
+	},
+	{
+		date: { day: 14, month: "FEBRERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (14 Febrero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 14 de febrero de 2025",
+		author: "Yuniel Acosta",
+	},
+	{
+		date: { day: 7, month: "FEBRERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (7 Febrero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 7 de febrero de 2025",
+		author: "Yuniel Acosta",
+	},
+	{
+		date: { day: 31, month: "ENERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (31 Enero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 31 de enero de 2025",
+		author: "Yuniel Acosta",
+	},
+	{
+		date: { day: 24, month: "ENERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (24 Enero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 24 de enero de 2025",
+		author: "Yuniel Acosta",
+	},
+	{
+		date: { day: 17, month: "ENERO", year: 2025 },
+		title: "Esta Semana en Auto-Hospedaje (17 Enero 2025)",
+		description:
+			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 17 de enero de 2025",
+		author: "Yuniel Acosta",
+	},
+];
+
+const ITEMS_PER_PAGE = 4;
+---
+
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-xl mb-8">Explore Latest Posts</h2>
+
+    <div class="grid md:grid-cols-2 gap-8" id="articles-grid">
+      {articles.slice(0, ITEMS_PER_PAGE).map(article => (
+        <article class="group cursor-pointer">
+          <div class="p-6 flex gap-6 transition-colors">
+            <div class="hidden md:flex text-center min-w-[120px] bg-gray-50 dark:bg-[#1E1F23] flex-col justify-center items-center p-4">
+              <div class="text-5xl font-bold">{article.date.day}</div>
+              <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                {article.date.month},<br/>{article.date.year}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                {article.title}
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-4 text-base leading-relaxed">{article.description}</p>
+              <div class="text-sm text-gray-500 flex items-center gap-2">
+                <span>By {article.author}</span>
+                <span class="text-gray-400 dark:text-gray-600">-</span>
+                <span class="uppercase tracking-wider text-xs">This Week in Self-Hosted</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="text-center mt-12">
+      <button
+        id="load-more"
+        class="bg-[#1E1F23] text-white px-8 py-3 hover:bg-[#25262B] transition-colors rounded-md font-medium"
+        style="display: none;"
+      >
+        Load More
+      </button>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ articles }}>
+    let currentPage = 1;
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(articles.length / itemsPerPage);
+
+    const loadMoreButton = document.getElementById('load-more');
+    const articlesGrid = document.getElementById('articles-grid');
+
+    // Mostrar botón si hay más páginas
+    if (totalPages > 1) {
+        loadMoreButton.style.display = 'inline-block';
+    }
+
+    loadMoreButton.addEventListener('click', () => {
+        currentPage++;
+        const start = itemsPerPage * (currentPage - 1);
+        const end = start + itemsPerPage;
+
+        const newArticles = articles.slice(start, end).map(article => `
+            <article class="group cursor-pointer">
+                <div class="p-6 flex gap-6 transition-colors">
+                    <div class="hidden md:flex text-center min-w-[120px] bg-gray-50 dark:bg-[#1E1F23] flex-col justify-center items-center p-4">
+                        <div class="text-5xl font-bold">${article.date.day}</div>
+                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            ${article.date.month},<br/>${article.date.year}
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                            ${article.title}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-base leading-relaxed">${article.description}</p>
+                        <div class="text-sm text-gray-500 flex items-center gap-2">
+                            <span>Por ${article.author}</span>
+                            <span class="text-gray-400 dark:text-gray-600">-</span>
+                            <span class="uppercase tracking-wider text-xs">Esta Semana en Auto-Hospedaje</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        `).join('');
+
+        articlesGrid.insertAdjacentHTML('beforeend', newArticles);
+
+        // Ocultar botón si hemos llegado a la última página
+        if (currentPage >= totalPages) {
+            loadMoreButton.style.display = 'none';
+        }
+    });
+</script>

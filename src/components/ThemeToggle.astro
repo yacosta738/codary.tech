@@ -2,68 +2,46 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<button
-  id="themeToggle"
-  type="button"
-  class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-  aria-label="Toggle theme"
->
-  <Icon
-    id="themeIconLight"
-    class="w-5 h-5 theme-icon theme-icon-light"
-    name="tabler:sun-filled"
-  />
-  <Icon
-    id="themeIconDark"
-    class="w-5 h-5 theme-icon theme-icon-dark"
-    name="tabler:moon-filled"
-  />
+<button id="theme-toggle" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent text-black hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 transition disabled:opacity-50 disabled:pointer-events-none" aria-label="Toggle theme">
+  <Icon name="tabler:sun" id="theme-toggle-light-icon" class="size-5 block dark:hidden" />
+  <Icon name="tabler:moon" id="theme-toggle-dark-icon" class="size-5 hidden dark:block" />
 </button>
 
-<style>
-  :global(.dark) {
-    color-scheme: dark;
-  }
-
-  .theme-icon {
-    position: absolute;
-    transition: opacity 0.3s ease;
-  }
-
-  :global(.dark) .theme-icon-light {
-    opacity: 0;
-  }
-
-  :global(.dark) .theme-icon-dark {
-    opacity: 1;
-  }
-
-  .theme-icon-dark {
-    opacity: 0;
-  }
-
-  .theme-icon-light {
-    opacity: 1;
-  }
-</style>
-
 <script>
-  const button = document.getElementById("themeToggle") as HTMLButtonElement;
-    // Check for saved theme preference, otherwise use system preference
-    const theme = localStorage.getItem('theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-  function setTheme(theme: "light" | "dark") {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", theme);
+  // Obtener el tema actual del sistema o localstorage
+  function getTheme(): 'dark' | 'light' {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || theme === 'light') {
+        return theme;
+      }
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  // Set initial theme
-  setTheme(theme as "light" | "dark");
+  // Aplicar el tema actual
+  function applyTheme(theme: 'dark' | 'light') {
+    const rootEl = document.documentElement;
 
-  button.addEventListener("click", () => {
-    const currentTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    setTheme(currentTheme);
+    if (theme === 'dark') {
+      rootEl.classList.add('dark');
+    } else {
+      rootEl.classList.remove('dark');
+    }
+
+    localStorage.setItem('theme', theme);
+  }
+
+  // Configurar el tema inicial
+  document.addEventListener('DOMContentLoaded', () => {
+    const theme = getTheme();
+    applyTheme(theme);
+  });
+
+  // Alternar tema cuando se hace clic en el botón
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const currentTheme = getTheme();
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
   });
 </script>
