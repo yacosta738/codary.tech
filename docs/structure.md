@@ -197,6 +197,8 @@
 │   │   │   │   ├───register.ts
 │   │   │   │   ├───signin.ts
 │   │   │   │   └───signout.ts
+│   │   │   ├───newsletter/
+│   │   │   │   └───subscribe.ts
 │   │   │   └───user/
 │   │   │       ├───profile.ts
 │   │   │       └───update.ts

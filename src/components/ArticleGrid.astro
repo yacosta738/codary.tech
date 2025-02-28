@@ -1,45 +1,40 @@
 ---
+import { BRAND_NAME } from "@consts";
 const articles = [
 	{
 		date: { day: 21, month: "FEBRERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (21 Febrero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 21 de febrero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (21 Febrero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 21 de febrero de 2025`,
 		author: "Yuniel Acosta",
 	},
 	{
 		date: { day: 14, month: "FEBRERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (14 Febrero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 14 de febrero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (14 Febrero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 14 de febrero de 2025`,
 		author: "Yuniel Acosta",
 	},
 	{
 		date: { day: 7, month: "FEBRERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (7 Febrero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 7 de febrero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (7 Febrero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 7 de febrero de 2025`,
 		author: "Yuniel Acosta",
 	},
 	{
 		date: { day: 31, month: "ENERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (31 Enero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 31 de enero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (31 Enero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 31 de enero de 2025`,
 		author: "Yuniel Acosta",
 	},
 	{
 		date: { day: 24, month: "ENERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (24 Enero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 24 de enero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (24 Enero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 24 de enero de 2025`,
 		author: "Yuniel Acosta",
 	},
 	{
 		date: { day: 17, month: "ENERO", year: 2025 },
-		title: "Esta Semana en Auto-Hospedaje (17 Enero 2025)",
-		description:
-			"Noticias, actualizaciones, lanzamientos y contenido de auto-hospedaje para la semana que termina el viernes 17 de enero de 2025",
+		title: `Esta Semana en ${BRAND_NAME} (17 Enero 2025)`,
+		description: `Noticias, actualizaciones, lanzamientos y contenido de ${BRAND_NAME} para la semana que termina el viernes 17 de enero de 2025`,
 		author: "Yuniel Acosta",
 	},
 ];
@@ -49,7 +44,7 @@ const ITEMS_PER_PAGE = 4;
 
 <section class="py-16">
   <div class="container mx-auto px-4">
-    <h2 class="text-xl mb-8">Explore Latest Posts</h2>
+    <h2 class="text-xl mb-8">Explorar Últimas Publicaciones</h2>
 
     <div class="grid md:grid-cols-2 gap-8" id="articles-grid">
       {articles.slice(0, ITEMS_PER_PAGE).map(article => (
@@ -67,9 +62,9 @@ const ITEMS_PER_PAGE = 4;
               </h3>
               <p class="text-zinc-600 dark:text-zinc-400 mb-4 text-base leading-relaxed">{article.description}</p>
               <div class="text-sm text-zinc-500 flex items-center gap-2">
-                <span>By {article.author}</span>
+                <span>Por {article.author}</span>
                 <span class="text-zinc-400 dark:text-zinc-600">-</span>
-                <span class="uppercase tracking-wider text-xs">This Week in Self-Hosted</span>
+                <span class="uppercase tracking-wider text-xs">Esta Semana en {BRAND_NAME}</span>
               </div>
             </div>
           </div>
@@ -83,7 +78,7 @@ const ITEMS_PER_PAGE = 4;
         class="bg-zinc-900 text-white px-8 py-3 hover:bg-zinc-800 transition-colors rounded-md font-medium"
         style="display: none;"
       >
-        Load More
+        Cargar Más
       </button>
     </div>
   </div>
@@ -124,7 +119,7 @@ const ITEMS_PER_PAGE = 4;
                         <div class="text-sm text-zinc-500 flex items-center gap-2">
                             <span>Por ${article.author}</span>
                             <span class="text-zinc-400 dark:text-zinc-600">-</span>
-                            <span class="uppercase tracking-wider text-xs">Esta Semana en Auto-Hospedaje</span>
+                            <span class="uppercase tracking-wider text-xs">Esta Semana en {BRAND_NAME}</span>
                         </div>
                     </div>
                 </div>
