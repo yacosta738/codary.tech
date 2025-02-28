@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 import { HeaderLinks, SITE_TITLE } from "src/site.config";
 ---
 
-<header class="border-b border-gray-100 dark:border-gray-800 py-4">
+<header class="border-b border-zinc-100 dark:border-zinc-800 py-4 bg-zinc-50 dark:bg-zinc-900">
   <div class="container mx-auto px-4 flex items-center">
     <div class="md:hidden">
       <button id="mobile-toggle-button" type="button" aria-label="Toggle navigation" class="size-[38px] mr-1 flex justify-center items-center text-sm font-semibold rounded-xl text-black hover:bg-neutral-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700">
@@ -21,7 +21,7 @@ import { HeaderLinks, SITE_TITLE } from "src/site.config";
 
     <nav class="hidden md:flex items-center space-x-8">
       {HeaderLinks.map((link) => (
-        <Link href={link.href || '#'} class="hover:text-gray-600 dark:hover:text-gray-300">
+        <Link href={link.href || '#'} class="hover:text-zinc-600 dark:hover:text-zinc-300">
           {link.title}
         </Link>
       ))}
@@ -40,7 +40,7 @@ import { HeaderLinks, SITE_TITLE } from "src/site.config";
   <div id="navbar-collapse" class="hidden md:hidden overflow-hidden transition-all duration-300 basis-full grow md:w-auto md:basis-auto md:order-2 md:col-span-6">
     <nav class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
       {HeaderLinks.map((link) => (
-        <Link href={link.href || '#'} class="hover:text-gray-600 dark:hover:text-gray-300">
+        <Link href={link.href || '#'} class="hover:text-zinc-600 dark:hover:text-zinc-300">
           {link.title}
         </Link>
       ))}

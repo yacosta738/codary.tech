@@ -55,20 +55,20 @@ const ITEMS_PER_PAGE = 4;
       {articles.slice(0, ITEMS_PER_PAGE).map(article => (
         <article class="group cursor-pointer">
           <div class="p-6 flex gap-6 transition-colors">
-            <div class="hidden md:flex text-center min-w-[120px] bg-gray-50 dark:bg-[#1E1F23] flex-col justify-center items-center p-4">
+            <div class="hidden md:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-800 flex-col justify-center items-center p-4">
               <div class="text-5xl font-bold">{article.date.day}</div>
-              <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {article.date.month},<br/>{article.date.year}
               </div>
             </div>
             <div class="flex-1">
-              <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+              <h3 class="text-xl font-semibold mb-2 text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
                 {article.title}
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-4 text-base leading-relaxed">{article.description}</p>
-              <div class="text-sm text-gray-500 flex items-center gap-2">
+              <p class="text-zinc-600 dark:text-zinc-400 mb-4 text-base leading-relaxed">{article.description}</p>
+              <div class="text-sm text-zinc-500 flex items-center gap-2">
                 <span>By {article.author}</span>
-                <span class="text-gray-400 dark:text-gray-600">-</span>
+                <span class="text-zinc-400 dark:text-zinc-600">-</span>
                 <span class="uppercase tracking-wider text-xs">This Week in Self-Hosted</span>
               </div>
             </div>
@@ -80,7 +80,7 @@ const ITEMS_PER_PAGE = 4;
     <div class="text-center mt-12">
       <button
         id="load-more"
-        class="bg-[#1E1F23] text-white px-8 py-3 hover:bg-[#25262B] transition-colors rounded-md font-medium"
+        class="bg-zinc-900 text-white px-8 py-3 hover:bg-zinc-800 transition-colors rounded-md font-medium"
         style="display: none;"
       >
         Load More
@@ -110,20 +110,20 @@ const ITEMS_PER_PAGE = 4;
         const newArticles = articles.slice(start, end).map(article => `
             <article class="group cursor-pointer">
                 <div class="p-6 flex gap-6 transition-colors">
-                    <div class="hidden md:flex text-center min-w-[120px] bg-gray-50 dark:bg-[#1E1F23] flex-col justify-center items-center p-4">
+                    <div class="hidden md:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-900 flex-col justify-center items-center p-4">
                         <div class="text-5xl font-bold">${article.date.day}</div>
-                        <div class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                        <div class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                             ${article.date.month},<br/>${article.date.year}
                         </div>
                     </div>
                     <div class="flex-1">
-                        <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors">
+                        <h3 class="text-xl font-semibold mb-2 text-zinc-900 dark:text-white group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition-colors">
                             ${article.title}
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400 mb-4 text-base leading-relaxed">${article.description}</p>
-                        <div class="text-sm text-gray-500 flex items-center gap-2">
+                        <p class="text-zinc-600 dark:text-zinc-400 mb-4 text-base leading-relaxed">${article.description}</p>
+                        <div class="text-sm text-zinc-500 flex items-center gap-2">
                             <span>Por ${article.author}</span>
-                            <span class="text-gray-400 dark:text-gray-600">-</span>
+                            <span class="text-zinc-400 dark:text-zinc-600">-</span>
                             <span class="uppercase tracking-wider text-xs">Esta Semana en Auto-Hospedaje</span>
                         </div>
                     </div>

@@ -8,12 +8,12 @@ const isAuthenticated = !!accessToken;
 
 <div id="auth-button-container">
   {isAuthenticated ? (
-    <a href="/account" class="auth-button account-button bg-[#1E1F23] text-white dark:bg-white dark:text-[#1E1F23] px-4 py-2 rounded-lg font-medium hover:bg-[#25262B] dark:hover:bg-gray-200 transition-colors flex items-center gap-2">
+    <a href="/account" class="auth-button account-button bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 px-4 py-2 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors flex items-center gap-2">
       <Icon name="tabler:user" class="size-5" />
       Mi cuenta
     </a>
   ) : (
-    <a href="/signin" class="auth-button signin-button bg-[#1E1F23] text-white dark:bg-white dark:text-[#1E1F23] px-4 py-2 rounded-lg font-medium hover:bg-[#25262B] dark:hover:bg-gray-200 transition-colors">
+    <a href="/signin" class="auth-button signin-button bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 px-4 py-2 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors">
       Iniciar sesión
     </a>
   )}
@@ -47,7 +47,7 @@ const isAuthenticated = !!accessToken;
 
     if (isAuthenticated) {
       container.innerHTML = `
-        <a href="/account" class="auth-button account-button bg-[#1E1F23] text-white dark:bg-white dark:text-[#1E1F23] px-4 py-2 rounded-lg font-medium hover:bg-[#25262B] dark:hover:bg-gray-200 transition-colors flex items-center gap-2">
+        <a href="/account" class="auth-button account-button bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 px-4 py-2 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors flex items-center gap-2">
           <span class="size-5 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -60,7 +60,7 @@ const isAuthenticated = !!accessToken;
       `;
     } else {
       container.innerHTML = `
-        <a href="/signin" class="auth-button signin-button bg-[#1E1F23] text-white dark:bg-white dark:text-[#1E1F23] px-4 py-2 rounded-lg font-medium hover:bg-[#25262B] dark:hover:bg-gray-200 transition-colors">
+        <a href="/signin" class="auth-button signin-button bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 px-4 py-2 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors">
           Iniciar sesión
         </a>
       `;
