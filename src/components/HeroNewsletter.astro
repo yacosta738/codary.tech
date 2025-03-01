@@ -1,14 +1,20 @@
 ---
-import { BRAND_NAME } from "@consts";
+import { ACCESS_TOKEN } from "@configs";
 import { Icon } from "astro-icon/components";
+import { BRAND_NAME } from "src/site.config";
+
+// Verificar si el usuario está autenticado mediante cookies (solo para SSR inicial)
+const accessToken = Astro.cookies.get(ACCESS_TOKEN)?.value;
+const isAuthenticated = !!accessToken;
 ---
-<section class="py-20 text-center bg-white dark:bg-zinc-900">
+
+  <section class="py-20 text-center bg-white dark:bg-zinc-900">
     <div class="container mx-auto px-4">
       <h1 class="text-7xl font-bold mb-6 text-zinc-900 dark:text-white">Esta Semana en {BRAND_NAME}</h1>
       <p class="text-xl text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
         Únete a miles de lectores que descubren las últimas novedades en software y contenido {BRAND_NAME} cada viernes
       </p>
-
+      {!isAuthenticated && (
       <form id="newsletter-form" class="max-w-md mx-auto">
         <div class="flex gap-2">
           <input
@@ -29,10 +35,11 @@ import { Icon } from "astro-icon/components";
         </div>
         <p id="form-message" class="hidden mt-2 px-1 text-left text-sm text-zinc-700 dark:text-zinc-300"></p>
       </form>
+      )}
     </div>
   </section>
 
-  <style>
+<style>
 .loading {
   opacity: 0.7;
   cursor: not-allowed;
@@ -58,9 +65,9 @@ import { Icon } from "astro-icon/components";
     transform: rotate(360deg);
   }
 }
-  </style>
+</style>
 
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("newsletter-form") as HTMLFormElement;
   const emailInput = document.getElementById("email") as HTMLInputElement;
@@ -114,4 +121,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-  </script>
+</script>

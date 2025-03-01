@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
 import type { APIRoute } from "astro";
 import { supabase } from "../../../lib/supabase";
 

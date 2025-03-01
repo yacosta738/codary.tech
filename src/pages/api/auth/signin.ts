@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
+import { ACCESS_TOKEN, BASE_URL, REFRESH_TOKEN } from "@configs";
 import type { Provider } from "@supabase/supabase-js";
 import type { APIRoute } from "astro";
 import { supabase } from "../../../lib/supabase";
@@ -10,14 +10,10 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 	const provider = formData.get("provider")?.toString();
 
 	if (provider) {
-		const localUrl = "http://localhost:4321";
-		const prodUrl = "https://codary.tech";
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: provider as Provider,
 			options: {
-				redirectTo: import.meta.env.DEV
-					? `${localUrl}/api/auth/callback`
-					: `${prodUrl}/api/auth/callback`,
+				redirectTo: `${BASE_URL}/api/auth/callback`,
 			},
 		});
 

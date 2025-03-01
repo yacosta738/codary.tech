@@ -1,5 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
 import micromatch from "micromatch";
 import { supabase } from "../lib/supabase";
 

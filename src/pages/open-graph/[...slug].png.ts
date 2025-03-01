@@ -1,9 +1,10 @@
-import { SITE_TITLE } from "@consts";
+export const prerender = true;
 import { getArticles } from "@models/Article";
 import { getCategories } from "@models/Category";
 import { getTags } from "@models/Tag";
 import generateOgImage, { type OgData } from "@utils/openGraph";
 import type { APIRoute, GetStaticPaths, GetStaticPathsItem } from "astro";
+import { SITE_TITLE } from "src/site.config";
 
 interface StaticPaths extends OgData {
 	slug: string;

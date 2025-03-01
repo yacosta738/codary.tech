@@ -1,6 +1,6 @@
 // With `output: 'static'` configured:
 // export const prerender = false;
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
 import type { APIRoute } from "astro";
 
 export const GET: APIRoute = async ({ cookies, redirect }) => {

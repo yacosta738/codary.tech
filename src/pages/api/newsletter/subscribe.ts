@@ -1,3 +1,4 @@
+import { BASE_URL } from "@configs";
 import { supabase } from "@lib/supabase";
 import type { APIRoute } from "astro";
 
@@ -25,10 +26,26 @@ export const POST: APIRoute = async ({ request }) => {
 			);
 		}
 
+		//Sign in a user with a magic link
+		const { data, error } = await supabase.auth.signInWithOtp({
+			email: email,
+			options: {
+				emailRedirectTo: BASE_URL,
+			},
+		});
+
+		if (error) {
+			throw error;
+		}
+
+		// The OTP sign-in doesn't return user data immediately, it only sends the email
+		// We need to create a user ID another way or handle this differently
+		const userId = crypto.randomUUID(); // Generate a unique ID for this subscription
+
 		// Insert new subscriber
 		const { error: subscriptionError } = await supabase
 			.from("newsletter_subscriptions")
-			.insert([{ email }]);
+			.insert([{ email, user_id: userId }]);
 
 		if (subscriptionError) {
 			throw subscriptionError;
