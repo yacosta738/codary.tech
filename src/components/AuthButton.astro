@@ -1,8 +1,9 @@
 ---
+import { ACCESS_TOKEN } from "@consts";
 import { Icon } from "astro-icon/components";
 
 // Verificar si el usuario está autenticado mediante cookies (solo para SSR inicial)
-const accessToken = Astro.cookies.get("sb-access-token")?.value;
+const accessToken = Astro.cookies.get(ACCESS_TOKEN)?.value;
 const isAuthenticated = !!accessToken;
 ---
 

@@ -1,4 +1,5 @@
 import { defineMiddleware } from "astro:middleware";
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
 import micromatch from "micromatch";
 import { supabase } from "../lib/supabase";
 
@@ -10,15 +11,15 @@ declare global {
 	}
 }
 
-const protectedRoutes = ["/dashboard(|/)"];
+const protectedRoutes = ["/account(|/)"];
 const redirectRoutes = ["/signin(|/)", "/register(|/)"];
 const protectedAPIRoutes = ["/api/guestbook(|/)"];
 
 export const onRequest = defineMiddleware(
 	async ({ locals, url, cookies, redirect }, next) => {
 		if (micromatch.isMatch(url.pathname, protectedRoutes)) {
-			const accessToken = cookies.get("sb-access-token");
-			const refreshToken = cookies.get("sb-refresh-token");
+			const accessToken = cookies.get(ACCESS_TOKEN);
+			const refreshToken = cookies.get(REFRESH_TOKEN);
 
 			if (!accessToken || !refreshToken) {
 				return redirect("/signin");
@@ -30,22 +31,22 @@ export const onRequest = defineMiddleware(
 			});
 
 			if (error) {
-				cookies.delete("sb-access-token", {
+				cookies.delete(ACCESS_TOKEN, {
 					path: "/",
 				});
-				cookies.delete("sb-refresh-token", {
+				cookies.delete(REFRESH_TOKEN, {
 					path: "/",
 				});
 				return redirect("/signin");
 			}
 
 			locals.email = data.user?.email ?? "";
-			cookies.set("sb-access-token", data?.session?.access_token ?? "", {
+			cookies.set(ACCESS_TOKEN, data?.session?.access_token ?? "", {
 				sameSite: "strict",
 				path: "/",
 				secure: true,
 			});
-			cookies.set("sb-refresh-token", data?.session?.refresh_token ?? "", {
+			cookies.set(REFRESH_TOKEN, data?.session?.refresh_token ?? "", {
 				sameSite: "strict",
 				path: "/",
 				secure: true,
@@ -53,8 +54,8 @@ export const onRequest = defineMiddleware(
 		}
 
 		if (micromatch.isMatch(url.pathname, redirectRoutes)) {
-			const accessToken = cookies.get("sb-access-token");
-			const refreshToken = cookies.get("sb-refresh-token");
+			const accessToken = cookies.get(ACCESS_TOKEN);
+			const refreshToken = cookies.get(REFRESH_TOKEN);
 
 			if (accessToken && refreshToken) {
 				return redirect("/dashboard");
@@ -62,8 +63,8 @@ export const onRequest = defineMiddleware(
 		}
 
 		if (micromatch.isMatch(url.pathname, protectedAPIRoutes)) {
-			const accessToken = cookies.get("sb-access-token");
-			const refreshToken = cookies.get("sb-refresh-token");
+			const accessToken = cookies.get(ACCESS_TOKEN);
+			const refreshToken = cookies.get(REFRESH_TOKEN);
 
 			// Check for tokens
 			if (!accessToken || !refreshToken) {

@@ -1,11 +1,11 @@
 ---
-import { SITE_TITLE } from "@consts";
+import { ACCESS_TOKEN, REFRESH_TOKEN, SITE_TITLE } from "@consts";
 import Layout from "@layouts/BaseLayout.astro";
 
 const { cookies, redirect } = Astro;
 
-const accessToken = cookies.get("sb-access-token");
-const refreshToken = cookies.get("sb-refresh-token");
+const accessToken = cookies.get(ACCESS_TOKEN);
+const refreshToken = cookies.get(REFRESH_TOKEN);
 
 if (accessToken && refreshToken) {
 	return redirect("/");

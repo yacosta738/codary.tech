@@ -1,11 +1,12 @@
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
 import type { APIRoute } from "astro";
 import { supabase } from "../../../lib/supabase";
 
 // GET: Fetch user profile data
 export const GET: APIRoute = async ({ request, cookies }) => {
 	// Get access token from cookies
-	const accessToken = cookies.get("sb-access-token")?.value;
-	const refreshToken = cookies.get("sb-refresh-token")?.value;
+	const accessToken = cookies.get(ACCESS_TOKEN)?.value;
+	const refreshToken = cookies.get(REFRESH_TOKEN)?.value;
 
 	if (!accessToken || !refreshToken) {
 		return new Response(JSON.stringify({ error: "Unauthorized" }), {
@@ -72,8 +73,8 @@ export const GET: APIRoute = async ({ request, cookies }) => {
 // PUT: Update user profile data
 export const PUT: APIRoute = async ({ request, cookies }) => {
 	// Get access token from cookies
-	const accessToken = cookies.get("sb-access-token")?.value;
-	const refreshToken = cookies.get("sb-refresh-token")?.value;
+	const accessToken = cookies.get(ACCESS_TOKEN)?.value;
+	const refreshToken = cookies.get(REFRESH_TOKEN)?.value;
 
 	if (!accessToken || !refreshToken) {
 		return new Response(JSON.stringify({ error: "Unauthorized" }), {

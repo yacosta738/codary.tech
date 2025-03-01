@@ -1,12 +1,13 @@
 ---
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
 import Layout from "@layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 
 const { cookies, redirect } = Astro;
 
 // Verificar si el usuario está autenticado
-const accessToken = cookies.get("sb-access-token")?.value;
-const refreshToken = cookies.get("sb-refresh-token")?.value;
+const accessToken = cookies.get(ACCESS_TOKEN)?.value;
+const refreshToken = cookies.get(REFRESH_TOKEN)?.value;
 
 // Si no hay tokens, redirigir al login
 if (!accessToken || !refreshToken) {
@@ -65,8 +66,8 @@ if (Astro.request.method === "POST") {
 
 			// Si hubo error de autenticación, redirigir al login
 			if (result.status === 401) {
-				cookies.delete("sb-access-token", { path: "/" });
-				cookies.delete("sb-refresh-token", { path: "/" });
+				cookies.delete(ACCESS_TOKEN, { path: "/" });
+				cookies.delete(REFRESH_TOKEN, { path: "/" });
 				return redirect("/signin");
 			}
 		}
@@ -96,8 +97,8 @@ if (!userData.id) {
 
 			// Si hay un error de autenticación, redirigir al login
 			if (result.status === 401) {
-				cookies.delete("sb-access-token", { path: "/" });
-				cookies.delete("sb-refresh-token", { path: "/" });
+				cookies.delete(ACCESS_TOKEN, { path: "/" });
+				cookies.delete(REFRESH_TOKEN, { path: "/" });
 				return redirect("/signin");
 			}
 		}

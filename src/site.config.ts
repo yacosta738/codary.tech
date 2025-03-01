@@ -58,3 +58,7 @@ export const SocialLinks = config.social.map((link) => ({
 // Search Page Metadata, src/pages/search.astro
 export const SEARCH_PAGE_TITLE = `${SITE_TITLE} - Búsqueda del sitio`;
 export const SEARCH_PAGE_DESCRIPTION = `Busca todo el contenido en ${SITE_TITLE}`;
+
+// cookies identifiers
+export const ACCESS_TOKEN = "sb-access-token";
+export const REFRESH_TOKEN = "sb-refresh-token";

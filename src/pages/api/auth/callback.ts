@@ -1,3 +1,4 @@
+import { ACCESS_TOKEN, REFRESH_TOKEN } from "@consts";
 import type { APIRoute } from "astro";
 import { supabase } from "../../../lib/supabase";
 
@@ -17,13 +18,13 @@ export const GET: APIRoute = async ({ url, cookies, redirect }) => {
 
 	const { access_token, refresh_token } = data.session;
 
-	cookies.set("sb-access-token", access_token, {
+	cookies.set(ACCESS_TOKEN, access_token, {
 		sameSite: "strict",
 		path: "/",
 		secure: true,
 	});
 
-	cookies.set("sb-refresh-token", refresh_token, {
+	cookies.set(REFRESH_TOKEN, refresh_token, {
 		sameSite: "strict",
 		path: "/",
 		secure: true,
