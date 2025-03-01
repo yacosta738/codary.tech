@@ -1,11 +1,11 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import Pagefind from "astro-pagefind/components/Search";
 import {
 	SEARCH_PAGE_DESCRIPTION,
 	SEARCH_PAGE_TITLE,
 	SITE_TITLE,
-} from "src/site.config";
+} from "@configs";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Pagefind from "astro-pagefind/components/Search";
 ---
 
 <BaseLayout title={SEARCH_PAGE_TITLE} description={SEARCH_PAGE_DESCRIPTION}>

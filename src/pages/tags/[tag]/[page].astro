@@ -2,10 +2,10 @@
 export const prerender = true;
 import PostCard from "@components/CommonCard.astro";
 import Pagination from "@components/Pagination.astro";
+import { getTagMetadata } from "@configs";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
 import { getTags } from "@models/Tag";
-import { getTagMetadata } from "src/site.config";
 
 export async function getStaticPaths() {
 	const allArticles = await getArticles();

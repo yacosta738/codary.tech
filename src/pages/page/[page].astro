@@ -3,9 +3,9 @@ export const prerender = true;
 import PostCard from "@components/CommonCard.astro";
 import HeroCard from "@components/HeroCard.astro";
 import Pagination from "@components/Pagination.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@configs";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
-import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
 
 export async function getStaticPaths() {
 	const allArticles = await getArticles();

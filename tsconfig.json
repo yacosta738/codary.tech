@@ -15,11 +15,7 @@
 			"@utils/*": ["src/utils/*"],
 			"@styles/*": ["src/styles/*"],
 			"@lib/*": ["src/lib/*"],
-			"@configs": [
-				"src/basic.config.ts",
-				"src/site.config.ts",
-				"src/content.config.ts"
-			]
+			"@configs": ["src/config.ts"]
 		}
 	}
 }

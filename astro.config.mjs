@@ -6,7 +6,7 @@ import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 // @ts-check
 import { defineConfig, envField, passthroughImageService } from "astro/config";
-import { BASE_URL } from "./src/basic.config.ts";
+import { BASE_URL } from "./src/base.config.ts";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 
 import cloudflare from "@astrojs/cloudflare";

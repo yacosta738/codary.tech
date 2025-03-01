@@ -237,7 +237,8 @@
 │   │   ├───openGraph.tsx
 │   │   └───remark-reading-time.mjs
 │   ├───.DS_Store
-│   ├───basic.config.ts
+│   ├───base.config.ts
+│   ├───config.ts
 │   ├───content.config.ts
 │   └───site.config.ts
 ├───supabase/
