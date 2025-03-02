@@ -195,6 +195,7 @@
 │   │   │   ├───auth/
 │   │   │   │   ├───callback.ts
 │   │   │   │   ├───register.ts
+│   │   │   │   ├───session.ts
 │   │   │   │   ├───signin.ts
 │   │   │   │   └───signout.ts
 │   │   │   ├───newsletter/
@@ -228,7 +229,8 @@
 │   │   ├───robots.txt.ts
 │   │   ├───rss.xml.js
 │   │   ├───search.astro
-│   │   └───signin.astro
+│   │   ├───signin.astro
+│   │   └───verify-otp.astro
 │   ├───styles/
 │   │   ├───github-markdown.css
 │   │   └───global.css
@@ -249,6 +251,8 @@
 │   ├───migrations/
 │   │   ├───20250227195823_user_management_starter.sql
 │   │   └───20250227200050_newsletter_subscriptions.sql
+│   ├───.DS_Store
+│   ├───.env
 │   ├───.gitignore
 │   └───config.toml
 ├───.gitignore

@@ -1,0 +1,96 @@
+---
+import Layout from "@layouts/BaseLayout.astro";
+---
+
+<Layout title="Verificando acceso">
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+      <h1 class="text-2xl font-bold text-center mb-6">Verificando tu acceso</h1>
+      <div id="message" class="text-center">
+        <p class="mb-4">Estamos verificando tu acceso...</p>
+        <div class="flex justify-center">
+          <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Esta función se ejecuta cuando el documento está listo
+  document.addEventListener('DOMContentLoaded', async () => {
+    const messageElement = document.getElementById('message');
+
+    try {
+      // Extraer tokens del fragmento de URL (parte después del #)
+      const hash = window.location.hash.substring(1);
+      if (!hash) {
+        showError('No se encontró información de autenticación');
+        return;
+      }
+
+      // Parsear los parámetros del fragmento
+      const params = new URLSearchParams(hash);
+      const accessToken = params.get('access_token');
+      const refreshToken = params.get('refresh_token');
+      const tokenType = params.get('type') || 'magiclink';
+
+      if (!accessToken || !refreshToken) {
+        showError('Tokens de autenticación incompletos');
+        return;
+      }
+
+      // Verificar que la sesión se estableció correctamente
+      const sessionResponse = await fetch('/api/auth/session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ access_token:accessToken, refresh_token:refreshToken, token_type:tokenType }),
+      });
+
+      const sessionData = await sessionResponse.json();
+
+      if (!sessionResponse.ok || !sessionData.session) {
+        showError('No se pudo establecer la sesión');
+        return;
+      }
+
+      // Si todo va bien, redirigir a la página de newsletter
+      showSuccess('Verificación exitosa. Redirigiendo...');
+      setTimeout(() => {
+        window.location.href = '/newsletter';
+      }, 1500);
+
+    } catch (error) {
+      console.error('Error al procesar la verificación:', error);
+      showError('Ocurrió un error inesperado. Por favor, intenta de nuevo.');
+    }
+  });
+
+  function showError(message: string) {
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+      messageElement.innerHTML = `
+        <div class="text-red-500 font-medium mb-4">
+          ${message}
+        </div>
+        <a href="/newsletter" class="text-blue-500 underline">Volver al inicio</a>
+      `;
+    }
+  }
+
+  function showSuccess(message: string) {
+    const messageElement = document.getElementById('message');
+    if (messageElement) {
+      messageElement.innerHTML = `
+        <div class="text-green-500 font-medium mb-4">
+          ${message}
+        </div>
+        <div class="flex justify-center">
+          <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-green-500"></div>
+        </div>
+      `;
+    }
+  }
+</script>

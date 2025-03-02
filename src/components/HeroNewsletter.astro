@@ -15,55 +15,70 @@ const isAuthenticated = !!accessToken;
         Únete a miles de lectores que descubren las últimas novedades en software y contenido {BRAND_NAME} cada viernes
       </p>
       {!isAuthenticated && (
-      <form id="newsletter-form" class="max-w-md mx-auto">
-        <div class="flex gap-2">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Ingresa tu correo electrónico"
-            required
-            class="flex-1 px-4 py-2 rounded bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-500 transition-colors text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400"
-          />
-          <button
-            type="submit"
-            class="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-2 rounded font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors relative flex items-center gap-2"
-          >
-            <span class="uppercase">Suscribirse</span>
-            <Icon name="tabler:chevron-right" class="size-5" />
-          </button>
+      <div id="newsletter-container">
+        <form id="newsletter-form" class="max-w-md mx-auto">
+          <div class="flex gap-2">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Ingresa tu correo electrónico"
+              required
+              class="flex-1 px-4 py-2 rounded bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 focus:outline-none focus:border-zinc-400 dark:focus:border-zinc-500 transition-colors text-zinc-900 dark:text-white placeholder-zinc-500 dark:placeholder-zinc-400"
+            />
+            <button
+              type="submit"
+              class="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-2 rounded font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors relative flex items-center gap-2"
+            >
+              <div class="button-content flex items-center gap-2">
+                <span class="uppercase">Suscribirse</span>
+                <Icon name="tabler:chevron-right" class="size-5" />
+              </div>
+              <div class="button-loading hidden items-center justify-center">
+                <Icon name="tabler:loader-2" class="size-5 animate-spin" />
+              </div>
+            </button>
+          </div>
+          <p id="form-message" class="hidden mt-2 px-1 text-left text-sm text-zinc-700 dark:text-zinc-300"></p>
+        </form>
+
+        <div id="success-message" class="max-w-md mx-auto hidden">
+          <div class="text-center">
+            <div class="mb-4 inline-flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-2">
+              <Icon name="tabler:check" class="size-8 text-green-600 dark:text-green-500" />
+            </div>
+            <h2 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-white">¡Éxito! Ahora revisa tu correo</h2>
+            <p class="text-zinc-600 dark:text-zinc-400 mb-6">
+              Para completar la suscripción, haz clic en el enlace de confirmación en tu bandeja de entrada. Si no llega en 3 minutos, revisa tu carpeta de spam.
+            </p>
+            <button
+              id="ok-thanks-button"
+              class="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-6 py-2 rounded font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors inline-flex items-center gap-2"
+            >
+              <span>OK, GRACIAS</span>
+              <Icon name="tabler:chevron-right" class="size-5" />
+            </button>
+          </div>
         </div>
-        <p id="form-message" class="hidden mt-2 px-1 text-left text-sm text-zinc-700 dark:text-zinc-300"></p>
-      </form>
+      </div>
       )}
     </div>
   </section>
 
 <style>
 .loading {
-  opacity: 0.7;
+  opacity: 0.8;
   cursor: not-allowed;
-  position: relative;
-}
-
-.loading::after {
-  content: "";
-  width: 16px;
-  height: 16px;
-  border: 2px solid white;
-  border-top-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 </style>
 
@@ -72,14 +87,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("newsletter-form") as HTMLFormElement;
   const emailInput = document.getElementById("email") as HTMLInputElement;
   const submitButton = form?.querySelector("button[type='submit']") as HTMLButtonElement;
+  const buttonContent = submitButton?.querySelector(".button-content") as HTMLElement;
+  const buttonLoading = submitButton?.querySelector(".button-loading") as HTMLElement;
   const formMessage = document.getElementById("form-message");
+  const newsletterContainer = document.getElementById("newsletter-container");
+  const successMessage = document.getElementById("success-message");
+  const okThanksButton = document.getElementById("ok-thanks-button");
 
-  if (!form || !emailInput || !submitButton || !formMessage) return;
+  if (!form || !emailInput || !submitButton || !buttonContent || !buttonLoading || !formMessage || !newsletterContainer || !successMessage || !okThanksButton) return;
 
   const toggleLoading = (isLoading: boolean): void => {
     submitButton.disabled = isLoading;
     emailInput.disabled = isLoading;
     submitButton.classList.toggle("loading", isLoading);
+
+    if (isLoading) {
+      buttonContent.classList.add("hidden");
+      buttonLoading.classList.remove("hidden");
+      buttonLoading.classList.add("flex");
+    } else {
+      buttonContent.classList.remove("hidden");
+      buttonLoading.classList.add("hidden");
+      buttonLoading.classList.remove("flex");
+    }
   };
 
   const showMessage = (message: string, isError = false): void => {
@@ -111,14 +141,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Error al suscribirse");
 
-      showMessage("¡Te has suscrito correctamente!");
-      form.reset();
+      // Show success UI directly without showing the message
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : "Error al suscribirse";
       showMessage(errorMessage, true);
     } finally {
       toggleLoading(false);
     }
+  });
+
+  // Handle the "OK, THANKS" button click
+  okThanksButton.addEventListener("click", () => {
+    // Reset the form and show it again
+    form.reset();
+    form.classList.remove("hidden");
+    successMessage.classList.add("hidden");
   });
 });
 </script>
