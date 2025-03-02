@@ -84,6 +84,7 @@
 │   │   ├───HeroCard.astro
 │   │   ├───HeroNewsletter.astro
 │   │   ├───Links.astro
+│   │   ├───NewsletterForm.astro
 │   │   ├───OptimizedPicture.astro
 │   │   ├───Pagination.astro
 │   │   ├───RelatedPostsCard.astro
