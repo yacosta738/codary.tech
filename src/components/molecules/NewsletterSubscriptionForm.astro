@@ -16,7 +16,7 @@ const isAuthenticated = !!session;
   {!isAuthenticated && (
      <form
         id="newsletter-form"
-        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+        class="flex gap-2 max-w-md mx-auto"
       >
         <EmailInput />
         <SubscribeButton />
@@ -32,7 +32,7 @@ const isAuthenticated = !!session;
     <p class="text-zinc-600 dark:text-zinc-400 mb-6">
       Para completar la suscripción, haz clic en el enlace de confirmación en tu bandeja de entrada. Si no llega en 3 minutos, revisa tu carpeta de spam.
     </p>
-    <LinkButton href="/">
+    <LinkButton href="/" class="mx-auto block w-48">
       <span>OK, GRACIAS</span>
       <Icon name="tabler:chevron-right" class="size-5" />
     </LinkButton>

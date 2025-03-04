@@ -1,4 +1,5 @@
 ---
+import Button from "@atoms/Button.astro";
 import { BRAND_NAME } from "@configs";
 
 const articles = [
@@ -47,11 +48,11 @@ const ITEMS_PER_PAGE = 4;
   <div class="container mx-auto px-4">
     <h2 class="text-xl mb-8">Explorar Últimas Publicaciones</h2>
 
-    <div class="grid md:grid-cols-2 gap-8" id="articles-grid">
+    <div class="grid lg:grid-cols-2 gap-8" id="articles-grid">
       {articles.slice(0, ITEMS_PER_PAGE).map(article => (
         <article class="group cursor-pointer">
           <div class="p-6 flex gap-6 transition-colors">
-            <div class="hidden md:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-800 flex-col justify-center items-center p-4">
+            <div class="hidden lg:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-800 flex-col justify-center items-center p-4">
               <div class="text-5xl font-bold">{article.date.day}</div>
               <div class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 {article.date.month},<br/>{article.date.year}
@@ -74,13 +75,11 @@ const ITEMS_PER_PAGE = 4;
     </div>
 
     <div class="text-center mt-12">
-      <button
+      <Button
         id="load-more"
-        class="bg-zinc-900 text-white px-8 py-3 hover:bg-zinc-800 transition-colors rounded-md font-medium"
-        style="display: none;"
       >
         Cargar Más
-      </button>
+      </Button>
     </div>
   </div>
 </section>
@@ -106,7 +105,7 @@ const ITEMS_PER_PAGE = 4;
         const newArticles = articles.slice(start, end).map(article => `
             <article class="group cursor-pointer">
                 <div class="p-6 flex gap-6 transition-colors">
-                    <div class="hidden md:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-900 flex-col justify-center items-center p-4">
+                    <div class="hidden lg:flex text-center min-w-[120px] bg-zinc-50 dark:bg-zinc-900 flex-col justify-center items-center p-4">
                         <div class="text-5xl font-bold">${article.date.day}</div>
                         <div class="text-xs text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                             ${article.date.month},<br/>${article.date.year}
