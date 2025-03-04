@@ -1,4 +1,4 @@
-import { SITE_TITLE } from "@consts";
+import { SITE_TITLE } from "@configs";
 import { getArticles } from "@models/Article";
 import { getCategories } from "@models/Category";
 import { getTags } from "@models/Tag";

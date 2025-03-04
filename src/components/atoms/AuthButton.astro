@@ -1,0 +1,27 @@
+---
+import LinkButton from "@atoms/LinkButton.astro";
+import { supabase } from "@lib/supabase";
+import { Icon } from "astro-icon/components";
+
+// Check if user is authenticated
+const {
+	data: { session },
+} = await supabase.auth.getSession();
+const isAuthenticated = !!session;
+
+// Define the button properties based on authentication status
+const buttonText = isAuthenticated ? "ACCOUNT" : "SIGN IN";
+const buttonHref = isAuthenticated ? "/account" : "/signin";
+---
+
+<LinkButton  href={buttonHref} ariaLabel={isAuthenticated ? "Go to your account" : "Sign in to your account"}>
+  <span>{buttonText}</span>
+  <Icon name="tabler:chevron-right" class="size-5" />
+</LinkButton>
+
+<style>
+  a {
+    min-width: 120px;
+    text-align: center;
+  }
+</style>

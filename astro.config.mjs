@@ -6,24 +6,39 @@ import icon from "astro-icon";
 import pagefind from "astro-pagefind";
 // @ts-check
 import { defineConfig, envField, passthroughImageService } from "astro/config";
+import { BASE_URL } from "./src/base.config.ts";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://codary.tech",
+	site: BASE_URL,
 	compressHTML: true,
+	output: "server",
+	adapter: cloudflare(),
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: "viewport",
 	},
+
 	env: {
 		schema: {
 			AHREFS_KEY: envField.string({
 				context: "client",
 				access: "public",
 			}),
+			SUPABASE_URL: envField.string({
+				context: "client",
+				access: "public",
+			}),
+			SUPABASE_ANON_KEY: envField.string({
+				context: "client",
+				access: "public",
+			}),
 		},
 	},
+
 	image: {
 		service: passthroughImageService(),
 		remotePatterns: [
@@ -33,6 +48,7 @@ export default defineConfig({
 			},
 		],
 	},
+
 	integrations: [
 		mdx(),
 		sitemap(),
@@ -49,9 +65,11 @@ export default defineConfig({
 			},
 		}),
 	],
+
 	vite: {
 		plugins: [tailwindcss()],
 	},
+
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 	},

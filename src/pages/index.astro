@@ -1,10 +1,11 @@
 ---
+export const prerender = true;
 import Card from "@components/CommonCard.astro";
 import HeroCard from "@components/HeroCard.astro";
 import Pagination from "@components/Pagination.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@configs";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getArticles } from "@models/Article";
-import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
 
 const allArticles = await getArticles();
 const sortedArticles = allArticles.sort(
@@ -21,7 +22,7 @@ const basePath = "/page/";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="grid grid-cols-1">
+  <div class="grid grid-cols-1 max-w-7xl mx-auto">
     <div class="col-span-1 mb-4">
       {heroArticle && <HeroCard article={heroArticle} />}
     </div>
