@@ -3,12 +3,15 @@
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"],
 	"compilerOptions": {
-		"jsx": "react-jsx",
+		"jsx": "preserve",
 		"jsxImportSource": "preact",
-		"strictNullChecks": true, // add if using `base` template
-		"allowJs": true, // required, and included with all Astro templates
+		"strictNullChecks": true,
+		"allowJs": true,
 		"baseUrl": ".",
 		"paths": {
+			"@atoms/*": ["src/components/atoms/*"],
+			"@molecules/*": ["src/components/molecules/*"],
+			"@organisms/*": ["src/components/organisms/*"],
 			"@components/*": ["src/components/*"],
 			"@layouts/*": ["src/layouts/*"],
 			"@models/*": ["src/models/*"],

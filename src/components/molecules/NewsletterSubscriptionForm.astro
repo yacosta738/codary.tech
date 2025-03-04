@@ -1,0 +1,82 @@
+---
+import { supabase } from "@lib/supabase";
+import { Icon } from "astro-icon/components";
+
+import EmailInput from "@atoms/EmailInput.astro";
+import LinkButton from "@atoms/LinkButton.astro";
+import SubscribeButton from "@atoms/SubscribeButton.astro";
+
+// Check if user is authenticated
+const {
+	data: { session },
+} = await supabase.auth.getSession();
+const isAuthenticated = !!session;
+---
+<div id="newsletter-container">
+  {!isAuthenticated && (
+     <form
+        id="newsletter-form"
+        class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+      >
+        <EmailInput />
+        <SubscribeButton />
+      </form>
+  ) }
+
+<div class="max-w-md mx-auto hidden" id="success-message">
+  <div class="text-center">
+    <div class="mb-4 inline-flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 rounded-full p-2">
+      <Icon name="tabler:check" class="size-8 text-green-600 dark:text-green-500" />
+    </div>
+    <h2 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-white">¡Éxito! Ahora revisa tu correo</h2>
+    <p class="text-zinc-600 dark:text-zinc-400 mb-6">
+      Para completar la suscripción, haz clic en el enlace de confirmación en tu bandeja de entrada. Si no llega en 3 minutos, revisa tu carpeta de spam.
+    </p>
+    <LinkButton href="/">
+      <span>OK, GRACIAS</span>
+      <Icon name="tabler:chevron-right" class="size-5" />
+    </LinkButton>
+  </div>
+</div>
+</div>
+
+<script>
+  // Add client-side form handling
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('newsletter-form');
+    const successMessage = document.getElementById('success-message');
+
+    if (form && successMessage) {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form as HTMLFormElement);
+        const email = formData.get('email');
+
+        try {
+          const response = await fetch('/api/newsletter/subscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email }),
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            // Hide form and show success message
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+          } else {
+            // Handle error - could show an inline message
+            alert(result.error || 'Failed to subscribe. Please try again.');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      });
+    }
+  });
+</script>

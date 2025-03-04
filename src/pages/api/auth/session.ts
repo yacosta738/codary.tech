@@ -1,10 +1,11 @@
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
+import { supabase } from "@lib/supabase";
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
 
-export const POST: APIRoute = async ({ request, cookies, redirect }) => {
+export const POST: APIRoute = async (context) => {
 	try {
-		const { access_token, refresh_token, token_type } = await request.json();
+		const { request, cookies } = context;
+		const { access_token, refresh_token } = await request.json();
 
 		if (!access_token || !refresh_token) {
 			return new Response(JSON.stringify({ error: "Unauthorized" }), {
@@ -50,4 +51,23 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 			status: 500,
 		});
 	}
+};
+
+export const GET: APIRoute = async (_) => {
+	const { data, error } = await supabase.auth.getSession();
+
+	if (error) {
+		return new Response(JSON.stringify({ error: "Invalid session" }), {
+			status: 401,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
+
+	return new Response(
+		JSON.stringify({
+			session: true,
+			user: data,
+		}),
+		{ status: 200 },
+	);
 };

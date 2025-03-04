@@ -1,4 +1,3 @@
-export const prerender = true;
 import { SITE_TITLE } from "@configs";
 import { getArticles } from "@models/Article";
 import { getCategories } from "@models/Category";

@@ -29,12 +29,12 @@ export default defineConfig({
 				access: "public",
 			}),
 			SUPABASE_URL: envField.string({
-				context: "server",
-				access: "secret",
+				context: "client",
+				access: "public",
 			}),
 			SUPABASE_ANON_KEY: envField.string({
-				context: "server",
-				access: "secret",
+				context: "client",
+				access: "public",
 			}),
 		},
 	},

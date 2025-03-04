@@ -85,7 +85,7 @@ const ITEMS_PER_PAGE = 4;
   </div>
 </section>
 
-<script define:vars={{ articles }}>
+<script is:inline define:vars={{ articles }}>
     let currentPage = 1;
     const itemsPerPage = 4;
     const totalPages = Math.ceil(articles.length / itemsPerPage);

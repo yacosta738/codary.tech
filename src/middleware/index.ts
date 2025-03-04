@@ -1,19 +1,19 @@
 import { defineMiddleware } from "astro:middleware";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
+import { supabase } from "@lib/supabase";
 import micromatch from "micromatch";
-import { supabase } from "../lib/supabase";
 
 declare global {
 	namespace App {
 		interface Locals {
-			email: string;
+			email?: string;
 		}
 	}
 }
 
 const protectedRoutes = ["/account(|/)"];
 const redirectRoutes = ["/signin(|/)", "/register(|/)"];
-const protectedAPIRoutes = ["/api/guestbook(|/)"];
+const proptectedAPIRoutes = ["/api/guestbook(|/)"];
 
 export const onRequest = defineMiddleware(
 	async ({ locals, url, cookies, redirect }, next) => {
@@ -40,17 +40,25 @@ export const onRequest = defineMiddleware(
 				return redirect("/signin");
 			}
 
-			locals.email = data.user?.email ?? "";
-			cookies.set(ACCESS_TOKEN, data?.session?.access_token ?? "", {
-				sameSite: "strict",
-				path: "/",
-				secure: true,
-			});
-			cookies.set(REFRESH_TOKEN, data?.session?.refresh_token ?? "", {
-				sameSite: "strict",
-				path: "/",
-				secure: true,
-			});
+			if (data.user?.email) {
+				locals.email = data.user.email;
+			}
+
+			if (data.session?.access_token) {
+				cookies.set(ACCESS_TOKEN, data.session.access_token, {
+					sameSite: "strict",
+					path: "/",
+					secure: true,
+				});
+			}
+
+			if (data.session?.refresh_token) {
+				cookies.set(REFRESH_TOKEN, data.session.refresh_token, {
+					sameSite: "strict",
+					path: "/",
+					secure: true,
+				});
+			}
 		}
 
 		if (micromatch.isMatch(url.pathname, redirectRoutes)) {
@@ -58,11 +66,11 @@ export const onRequest = defineMiddleware(
 			const refreshToken = cookies.get(REFRESH_TOKEN);
 
 			if (accessToken && refreshToken) {
-				return redirect("/dashboard");
+				return redirect("/newsletter");
 			}
 		}
 
-		if (micromatch.isMatch(url.pathname, protectedAPIRoutes)) {
+		if (micromatch.isMatch(url.pathname, proptectedAPIRoutes)) {
 			const accessToken = cookies.get(ACCESS_TOKEN);
 			const refreshToken = cookies.get(REFRESH_TOKEN);
 

@@ -1,8 +1,9 @@
+import { supabase } from "@lib/supabase";
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async (context) => {
 	try {
+		const { request } = context;
 		// Verificar si el usuario está autenticado
 		const {
 			data: { user },

@@ -27,7 +27,6 @@
 │   └───state/
 │       └───v3/
 │           └───workflows/
-├───content-type-example/
 ├───docs/
 │   └───structure.md
 ├───public/
@@ -72,19 +71,28 @@
 │   │   ├───astro.svg
 │   │   └───background.svg
 │   ├───components/
+│   │   ├───atoms/
+│   │   │   ├───AuthButton.astro
+│   │   │   ├───BaseHead.astro
+│   │   │   ├───Button.astro
+│   │   │   ├───EmailInput.astro
+│   │   │   ├───Input.astro
+│   │   │   ├───Link.astro
+│   │   │   ├───LinkButton.astro
+│   │   │   └───SubscribeButton.astro
+│   │   ├───molecules/
+│   │   │   ├───Header.astro
+│   │   │   └───NewsletterSubscriptionForm.astro
+│   │   ├───organisms/
 │   │   ├───.DS_Store
 │   │   ├───ArticleGrid.astro
-│   │   ├───AuthButton.astro
-│   │   ├───BaseHead.astro
 │   │   ├───Card.astro
 │   │   ├───CommonCard.astro
 │   │   ├───Footer.astro
 │   │   ├───FormattedDate.astro
-│   │   ├───Header.astro
 │   │   ├───HeroCard.astro
 │   │   ├───HeroNewsletter.astro
 │   │   ├───Links.astro
-│   │   ├───NewsletterForm.astro
 │   │   ├───OptimizedPicture.astro
 │   │   ├───Pagination.astro
 │   │   ├───RelatedPostsCard.astro

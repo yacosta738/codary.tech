@@ -1,9 +1,10 @@
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
+import { supabase } from "@lib/supabase";
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
 
 // GET: Fetch user profile data
-export const GET: APIRoute = async ({ request, cookies }) => {
+export const GET: APIRoute = async (context) => {
+	const { request, cookies } = context;
 	// Get access token from cookies
 	const accessToken = cookies.get(ACCESS_TOKEN)?.value;
 	const refreshToken = cookies.get(REFRESH_TOKEN)?.value;
@@ -71,7 +72,8 @@ export const GET: APIRoute = async ({ request, cookies }) => {
 };
 
 // PUT: Update user profile data
-export const PUT: APIRoute = async ({ request, cookies }) => {
+export const PUT: APIRoute = async (context) => {
+	const { request, cookies } = context;
 	// Get access token from cookies
 	const accessToken = cookies.get(ACCESS_TOKEN)?.value;
 	const refreshToken = cookies.get(REFRESH_TOKEN)?.value;

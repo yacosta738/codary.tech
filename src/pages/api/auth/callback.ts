@@ -1,8 +1,9 @@
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "@configs";
+import { supabase } from "@lib/supabase";
 import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
 
-export const GET: APIRoute = async ({ url, cookies, redirect }) => {
+export const GET: APIRoute = async (context) => {
+	const { url, cookies, redirect } = context;
 	const authCode = url.searchParams.get("code");
 
 	if (!authCode) {
