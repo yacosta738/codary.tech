@@ -1,16 +1,21 @@
 ---
-import { supabase } from "@lib/supabase";
 import { Icon } from "astro-icon/components";
 
 import EmailInput from "@atoms/EmailInput.astro";
 import LinkButton from "@atoms/LinkButton.astro";
 import SubscribeButton from "@atoms/SubscribeButton.astro";
 
-// Check if user is authenticated
-const {
-	data: { session },
-} = await supabase.auth.getSession();
-const isAuthenticated = !!session;
+// Use absolute URL with try/catch for robustness
+let isAuthenticated = false;
+try {
+	// Get the current URL to build the absolute URL
+	const url = new URL("/api/auth/session", Astro.url.origin);
+	const response = await fetch(url.toString());
+	const data = await response.json();
+	isAuthenticated = !!data?.session;
+} catch (error) {
+	console.error("Failed to check authentication status:", error);
+}
 ---
 <div id="newsletter-container">
   {!isAuthenticated && (
