@@ -1,3 +1,3 @@
-export * from "./Author";
-export * from "./AuthorMapper";
-export * from "./AuthorService";
+export * from "./author.model";
+export * from "./author.mapper";
+export * from "./author.service";

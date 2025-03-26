@@ -1,29 +1,53 @@
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import pagefind from "astro-pagefind";
-// @ts-check
 import { defineConfig, envField, passthroughImageService } from "astro/config";
+import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/i18n/locales";
+
+import tailwindcss from "@tailwindcss/vite";
+
+import cloudflare from "@astrojs/cloudflare";
+import vue from "@astrojs/vue";
+import { BASE_URL } from "./src/consts.ts";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://codary.tech",
+	// Set your site's URL
+	site: BASE_URL,
 	compressHTML: true,
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: "viewport",
+	output: "server",
+	adapter: cloudflare(),
+
+	i18n: {
+		defaultLocale: DEFAULT_LOCALE_SETTING,
+		locales: Object.keys(LOCALES_SETTING),
+		routing: {
+			prefixDefaultLocale: true,
+			redirectToDefaultLocale: false,
+		},
 	},
+
 	env: {
 		schema: {
 			AHREFS_KEY: envField.string({
 				context: "client",
 				access: "public",
 			}),
+			SUPABASE_URL: envField.string({
+				context: "client",
+				access: "public",
+			}),
+			SUPABASE_ANON_KEY: envField.string({
+				context: "client",
+				access: "public",
+			}),
 		},
 	},
+
 	image: {
 		service: passthroughImageService(),
 		remotePatterns: [
@@ -33,9 +57,9 @@ export default defineConfig({
 			},
 		],
 	},
+
 	integrations: [
 		mdx(),
-		sitemap(),
 		pagefind(),
 		partytown({
 			config: {
@@ -43,12 +67,25 @@ export default defineConfig({
 				debug: false,
 			},
 		}),
+		sitemap({
+			i18n: {
+				defaultLocale: DEFAULT_LOCALE_SETTING,
+				locales: Object.fromEntries(
+					Object.entries(LOCALES_SETTING).map(([key, value]) => [
+						key,
+						value.lang ?? key,
+					]),
+				),
+			},
+		}),
+		vue(),
 		icon({
 			include: {
 				tabler: ["*"],
 			},
 		}),
 	],
+
 	vite: {
 		plugins: [tailwindcss()],
 	},

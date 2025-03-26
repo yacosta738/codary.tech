@@ -17,6 +17,7 @@
 			"dist",
 			"out",
 			"public",
+			".vscode",
 			"src/styles/global.css"
 		]
 	},

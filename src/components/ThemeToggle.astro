@@ -1,67 +1,81 @@
 ---
+import { type Lang, useTranslations } from "@/i18n";
+import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+import IconButton from "./IconButton.astro";
+
+export interface Props extends HTMLAttributes<"button"> {}
+const t = useTranslations(Astro.currentLocale as Lang);
+const { id = "theme-toggle", class: className, ...attrs } = Astro.props;
 ---
 
-<button
-  id="themeToggle"
-  type="button"
-  class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-  aria-label="Toggle theme"
->
-  <Icon 
-    id="themeIconLight" 
-    class="w-5 h-5 theme-icon theme-icon-light" 
-    name="tabler:sun-filled" 
-  />
-  <Icon 
-    id="themeIconDark" 
-    class="w-5 h-5 theme-icon theme-icon-dark" 
-    name="tabler:moon-filled" 
-  />
-</button>
-
-<style>
-  :global(.dark) {
-    color-scheme: dark;
-  }
-
-  .theme-icon {
-    position: absolute;
-    transition: opacity 0.3s ease;
-  }
-
-  :global(.dark) .theme-icon-light {
-    opacity: 0;
-  }
-
-  :global(.dark) .theme-icon-dark {
-    opacity: 1;
-  }
-
-  .theme-icon-dark {
-    opacity: 0;
-  }
-
-  .theme-icon-light {
-    opacity: 1;
-  }
-</style>
+<theme-toggle data-id={id} data-label={t("theme.toggle.button")} data-tooltip={t("theme.toggle.tooltip")}>
+  <IconButton
+  id={id}
+  class={cn(className)}
+    aria-label={t("theme.toggle.button")}
+    title={t("theme.toggle.tooltip")}
+    {...attrs}
+  >
+    <Icon name="tabler:sun" class="size-5 block dark:hidden text-main-light dark:text-main-dark cursor-pointer" />
+    <Icon name="tabler:moon" class="size-5 hidden dark:block text-main-light dark:text-main-dark cursor-pointer" />
+  </IconButton>
+</theme-toggle>
 
 <script>
-  const button = document.getElementById("themeToggle") as HTMLButtonElement;
-  const theme = localStorage.getItem("theme") || "light";
-  
-  function setTheme(theme: "light" | "dark") {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", theme);
+type ColorScheme = 'dark' | 'light';
+
+  class ThemeToggle extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      // Get button inside component
+      const button = this.querySelector('button');
+
+      // Apply ID from data attribute
+      if (this.dataset.id && button) {
+        button.id = this.dataset.id;
+      }
+
+      // Set up initial theme
+      const theme = this.getTheme();
+      this.applyTheme(theme);
+
+      // Add event listener to toggle theme
+      button?.addEventListener('click', () => {
+        const currentTheme = this.getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.applyTheme(newTheme);
+      });
+    }
+
+    // Get the current theme
+    getTheme(): ColorScheme {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || theme === 'light') {
+          return theme;
+        }
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Apply the theme
+    applyTheme(theme: ColorScheme) {
+      const rootEl = document.documentElement;
+
+      if (theme === 'dark') {
+        rootEl.classList.add('dark');
+      } else {
+        rootEl.classList.remove('dark');
+      }
+
+      localStorage.setItem('theme', theme);
+    }
   }
 
-  // Set initial theme
-  setTheme(theme as "light" | "dark");
-
-  button.addEventListener("click", () => {
-    const currentTheme = document.documentElement.classList.contains("dark") ? "light" : "dark";
-    setTheme(currentTheme);
-  });
+  customElements.define('theme-toggle', ThemeToggle);
 </script>

@@ -1,58 +1,192 @@
 ---
-import Link from "@components/Links.astro";
-import ThemeToggle from "@components/ThemeToggle.astro";
+import { type Lang, useTranslations } from "@/i18n";
+import { cn } from "@/lib/utils";
+import {
+	type AuthInfo,
+	dropdownMenuItems,
+	filterMenuItems,
+	mainMenuItems,
+} from "@/models/menu";
 import { Icon } from "astro-icon/components";
-import { HeaderLinks, SITE_TITLE } from "src/site.config";
+import type { HTMLAttributes } from "astro/types";
+import IconButton from "./IconButton.astro";
+import Link from "./Link.astro";
+import Logo from "./Logo.astro";
+import Navigation from "./Navigation.astro";
+import SearchButton from "./SearchButton.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+
+interface Props extends HTMLAttributes<"header"> {
+	// Add any additional props if needed
+}
+const { ...attrs } = Astro.props as Props;
+
+// Determine if the user is logged in
+let isLoggedIn = false;
+
+// Attempt to get user data from server-side if possible
+try {
+	const response = await fetch(`${Astro.url.origin}/api/user`, {
+		headers: {
+			cookie: Astro.request.headers.get("cookie") || "",
+		},
+	});
+	const data = await response.json();
+	isLoggedIn = data.isLoggedIn;
+} catch (error) {
+	console.error("Error fetching user:", error);
+}
+
+// Filter menu items based on conditions
+const filteredMainMenuItems = filterMenuItems(mainMenuItems);
+const filteredDropdownMenuItems = filterMenuItems(dropdownMenuItems);
+
+// Authentication info to pass to Navigation component for mobile menu
+const authInfo: AuthInfo = {
+	isLoggedIn,
+	authPath: isLoggedIn ? "/account" : "/signin",
+	authText: isLoggedIn ? "header.account" : "header.auth",
+};
 ---
 
-<header class="flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full py-7">
-  <nav class="relative max-w-7xl w-full flex flex-wrap md:grid md:grid-cols-12 basis-full items-center px-4 mx-auto" aria-label="Global">
-    <div class="md:col-span-3">
-      <a class="flex-none text-xl font-semibold text-neutral-900 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200" href="/" aria-label="Codary">
-        {SITE_TITLE}
-      </a>
-    </div>
+<header id="header"
+ class={cn(
+	"fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out",
+	"border-b border-b-secondary-foreground-light transition-all duration-400 ease-in-out [transition-property:top,background-color,border-bottom-color]",
+ )}
+ {...attrs}
+ >
+    <div class="container mx-auto px-4 flex items-center h-20 relative">
+      <!-- Header Identity - Logo and Site Title -->
+      <div class="flex items-center mr-10">
+        <IconButton
+          class="md:hidden mr-4"
+          id="mobile-menu-button"
+          aria-label={t("header.menu")}
+        >
+          <Icon name="tabler:menu-2" class="size-6 text-main-light dark:text-main-dark" />
+        </IconButton>
 
-    <div class="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
-      <button type="button" aria-label="Search" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent text-black hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 transition disabled:opacity-50 disabled:pointer-events-none" onclick="window.location.href='/search/'">
-        <Icon name="tabler:search" class="icon-base" />
-      </button>
-      <ThemeToggle />
-
-      <div class="md:hidden">
-        <button id="mobile-toggle-button" type="button" aria-label="Toggle navigation" class="size-[38px] flex justify-center items-center text-sm font-semibold rounded-xl text-black hover:bg-neutral-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700">
-          <Icon name="tabler:menu" id="menu-icon" class="shrink-0 size-4" />
-          <Icon name="tabler:x" id="close-icon" class="shrink-0 size-4 hidden" />
-        </button>
+        <Logo />
       </div>
 
+      <!-- Using the Navigation component with filtered menu items -->
+      <Navigation
+        mainItems={filteredMainMenuItems}
+        dropdownItems={filteredDropdownMenuItems}
+        authInfo={authInfo}
+      />
+
+      <!-- Header Actions -->
+      <div class="flex items-center justify-center space-x-4 ml-auto">
+        <SearchButton id="search-button" />
+        <ThemeToggle />
+
+        <!-- Main button with special colored-hero styles applied via JS -->
+        <Link href={isLoggedIn ? "/account" : "/signin"} class="md:flex hidden">
+          <span>{t(isLoggedIn ? "header.account" : "header.auth")}</span>
+          <Icon name="tabler:chevron-right" class="size-5" />
+        </Link>
+      </div>
     </div>
 
-    <div id="navbar-collapse" class="hidden overflow-hidden transition-all duration-300 basis-full grow md:block md:w-auto md:basis-auto md:order-2 md:col-span-6">
-      <div class="flex flex-col gap-y-4 gap-x-0 mt-5 md:flex-row md:justify-center md:items-center md:gap-y-0 md:gap-x-7 md:mt-0">
-        {
-            HeaderLinks.slice(0, 4).map((link) => (
-            <Link
-              href={link.href}
-              class="px-4 py-3 font-medium text-neutral-900 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200"
-            >
-              {link.title}
-            </Link>
-            ))
+  </header>
+
+  <style>
+    /* Reference main styles to access Tailwind's theme, utilities, and variants */
+    @reference "../styles/global.css";
+
+    /* Header states */
+    header {
+      background-color: transparent;
+      transform: translateY(0);
+    }
+
+    header.scrolled {
+      @apply bg-bg-light dark:bg-bg-dark border-b border-section-border-light/12 dark:border-section-border-dark;
+    }
+
+    /* Alternative approach using CSS variables */
+    header.scrolled #site-title,
+    header.scrolled nav a,
+    header.scrolled button:not(.bg-primary-light):not(.bg-primary-dark) {
+      color: var(--colors-main-light);
+    }
+
+    :global(.dark) header.scrolled #site-title,
+    :global(.dark) header.scrolled nav a,
+    :global(.dark) header.scrolled button:not(.bg-primary-light):not(.bg-primary-dark) {
+      color: var(--colors-main-dark);
+    }
+
+    header.scrolled nav a:hover {
+      @apply text-secondary-foreground-light dark:text-secondary-foreground-dark;
+    }
+
+    header.hide {
+      transform: translateY(-100%);
+    }
+  </style>
+
+  <script>
+    // Handle colored-hero classes for button styling
+    const header = document.getElementById('header');
+    const heroSection = document.querySelector('.hero-section');
+
+    // Check if we're on a page with a colored hero
+    if (heroSection && heroSection.classList.contains('colored-hero')) {
+      document.body.classList.add('colored-hero');
+    }
+
+    // Header scroll behavior
+    let lastScrollY = 0;
+
+    const handleHeaderVisibility = () => {
+      if (window.scrollY === 0) {
+        header?.classList.remove("hide", "scrolled");
+      } else if (window.scrollY > 50) {
+        if (window.scrollY < lastScrollY) {
+          header?.classList.remove("hide");
+          header?.classList.add("scrolled");
+        } else {
+          header?.classList.add("hide");
         }
-      </div>
-    </div>
-  </nav>
-</header>
-<script is:inline>
-  const toggleButton = document.getElementById('mobile-toggle-button');
-  const collapseContainer = document.getElementById('navbar-collapse');
-  const menuIcon = document.getElementById('menu-icon');
-  const closeIcon = document.getElementById('close-icon');
+      }
+      lastScrollY = window.scrollY;
+    };
 
-  toggleButton.addEventListener('click', () => {
-    collapseContainer.classList.toggle('hidden');
-    menuIcon.classList.toggle('hidden');
-    closeIcon.classList.toggle('hidden');
-  });
-</script>
+    // Initialize header state
+    handleHeaderVisibility();
+
+    // Use passive event listener for better performance
+    window.addEventListener("scroll", handleHeaderVisibility, { passive: true });
+
+    // Check if user is logged in on client-side as well
+    async function checkUserStatus() {
+      try {
+        const response = await fetch('/api/user');
+        const data = await response.json();
+
+        // Update the auth button if needed
+        if (data.isLoggedIn) {
+          const authLink = document.querySelector('a[href="/signin"]');
+          if (authLink) {
+            authLink.setAttribute('href', '/account');
+            const textSpan = authLink.querySelector('span');
+            if (textSpan) {
+              // Translate based on current language
+              const currentLang = document.documentElement.lang || 'en';
+              textSpan.textContent = currentLang === 'es' ? 'Cuenta' : 'Account';
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Error checking user status:", error);
+      }
+    }
+
+    // Run on load
+    checkUserStatus();
+  </script>

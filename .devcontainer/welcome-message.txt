@@ -1,5 +1,5 @@
-👋 Bienvenido a codary.tech en GitHub Codespaces!
+👋 Welcome to ASTRO_STARTER_CMS in GitHub Codespaces!
 
-🛠️  Tu entorno de desarrollo está configurado especialmente para el proyecto codary.tech.
+🛠️  Your development environment is specially configured for the ASTRO_STARTER_CMS project.
 
-🚀 La aplicación de ejemplo debería iniciarse pronto. ¡Explora el repositorio y comienza a crear!
+🚀 The example application should start soon. Explore the repository and start creating!

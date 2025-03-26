@@ -1,48 +1,80 @@
 ---
-import Link from "@components/Links.astro";
-import { Icon } from "astro-icon/components";
-import { BRAND_NAME, FooterLinks, SocialLinks } from "src/site.config";
-const today = new Date();
+// Footer UI displayed on each page.
+import { SITE_TITLE } from "@/consts";
+import { type Lang, useTranslations } from "@/i18n";
+import { filterMenuItems, navLinks } from "@/models/menu";
+import Logo from "./Logo.astro";
+import NavLink from "./NavLink.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+const t = useTranslations(Astro.currentLocale as Lang);
+
+const socials = [
+	{
+		name: "Twitter",
+		url: "https://twitter.com/codary",
+		icon: "tabler:brand-x",
+	},
+	{
+		name: "GitHub",
+		url: "https://github.com/codary",
+		icon: "tabler:brand-github",
+	},
+	{ name: "RSS", url: "/rss.xml", icon: "tabler:rss" },
+];
+
+// Filter menu items based on conditions
+const filteredNavLinks = filterMenuItems(navLinks);
+
+// Calculate optimal grid structure based on number of links
+// This helps maintain a balanced two-column layout when possible
+const totalLinks = filteredNavLinks.length;
+const optimalColumns = totalLinks <= 4 ? 1 : 2;
+const columnsClass = optimalColumns === 1 ? "md:grid-cols-1" : "md:grid-cols-2";
 ---
-<footer class="mt-auto w-full max-w-[85rem] py-10 mx-auto">
-  <nav class="mx-auto w-full max-w-[85rem] px-4" aria-label="Footer">
-    <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-      <div id="navbar-alignment" class="internal-links sm:order-2">
-        <div
-          class="mt-2 flex flex-row gap-5 sm:mt-0 sm:flex-row sm:items-center sm:ps-5"
-        >
-          {
-            FooterLinks.map((link) => (
-              <Link
-                href={link.href}
-                class="inline-flex gap-x-2 text-sm text-neutral-500 hover:text-neutral-800 dark:text-neutral-500 dark:hover:text-neutral-200"
-              >
-                {link.title}
-              </Link>
-            ))
-          }
-        </div>
-      </div>
 
-      <div class="mt-2 flex flex-wrap gap-2 sm:order-3 sm:mb-0 sm:gap-0">
-        {
-          SocialLinks.map((link) => (
-            <a
-              href={link.href}
-              class="inline-flex h-12 w-12 items-center justify-center gap-x-2 bg-white text-neutral-500 hover:text-neutral-800 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-500 dark:hover:text-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-900"
-              aria-label={link.label}
-            >
-              <Icon name={link.icon} class="icon-base" />
-            </a>
-          ))
-        }
-      </div>
-
-      <div class="mt-2 sm:order-1 sm:mb-0">
-        <a class="flex-none text-sm text-neutral-500 hover:text-neutral-800 dark:text-neutral-500 dark:hover:text-neutral-200" href="/" aria-label="Brand"
-          >{BRAND_NAME} &copy; {today.getFullYear()}</a
-        >
-      </div>
-    </div>
-  </nav>
+<footer
+	class="relative flex justify-center items-center px-4 py-8 bg-bg-light dark:bg-bg-dark transition-colors duration-350"
+>
+	<div class="container mx-auto px-4">
+		<div class="mb-6 md:mb-10 flex justify-between flex-wrap gap-6">
+			<div class="w-full max-w-80">
+				<Logo />
+				<p
+					class="mt-2.5 mb-5 font-inter text-sm font-normal text-footer-description-light dark:text-footer-description-dark"
+				>
+					{t("footer.description")}
+				</p>
+				<SocialLinks socials={socials} />
+			</div>
+			<div class="w-full md:w-auto">
+				<nav>
+						<ul
+						class={`grid grid-cols-1 ${columnsClass} gap-x-12 gap-y-3 auto-rows-auto`}
+						style={optimalColumns === 2 ? `grid-template-rows: repeat(${Math.ceil(totalLinks / 2)}, auto)` : ""}
+					>
+						{
+							filteredNavLinks.map((link) => (
+								<li>
+									<NavLink
+										href={link.href}
+										translationKey={link.translationKey}
+										ariaLabelKey={link.ariaLabelKey}
+										target={link.target}
+										variant="footer"
+									/>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<p
+				class="text-footer-copyright-light dark:text-footer-copyright-dark text-xs font-inter font-normal leading-[140%] tracking-normal"
+			>
+				{t("footer.copyright")} © {new Date().getFullYear()}
+				{SITE_TITLE}
+			</p>
+	</div>
 </footer>

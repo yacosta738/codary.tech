@@ -1,3 +1,3 @@
-export * from "./Article";
-export * from "./ArticleMapper";
-export * from "./ArticleService";
+export * from "./article.model";
+export * from "./article.mapper";
+export * from "./article.service";

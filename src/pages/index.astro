@@ -1,46 +1,82 @@
 ---
-import Card from "@components/CommonCard.astro";
-import HeroCard from "@components/HeroCard.astro";
-import Pagination from "@components/Pagination.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { getArticles } from "@models/Article";
-import { SITE_DESCRIPTION, SITE_TITLE } from "src/site.config";
+// Redirect to Top page for user's system locale
+// Basically, you don't need to edit this file.
+export const prerender = true;
+import { SITE_DESCRIPTION, SITE_TITLE, X_ACCOUNT } from "@/consts";
+import {
+	DEFAULT_LOCALE,
+	LOCALES,
+	type Lang,
+	getLocalePaths,
+	useTranslations,
+} from "@i18n";
 
-const allArticles = await getArticles();
-const sortedArticles = allArticles.sort(
-	(a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf(),
-);
-
-const heroArticle = sortedArticles[0];
-const featuredArticles = sortedArticles.slice(1, 3);
-const regularArticles = sortedArticles.slice(3);
-
-const postsPerPage = 15;
-const totalPages = Math.ceil(sortedArticles.length / postsPerPage);
-const basePath = "/page/";
+const t = useTranslations(Astro.currentLocale as Lang);
+const langs = Object.keys(LOCALES);
+const baseUrl = import.meta.env.PROD ? Astro.site : "/";
+const defaultLocale = DEFAULT_LOCALE;
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <div class="grid grid-cols-1">
-    <div class="col-span-1 mb-4">
-      {heroArticle && <HeroCard article={heroArticle} />}
-    </div>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>redirect...</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+    {
+      getLocalePaths(Astro.url).map((props) => (
+        <link
+          rel="alternate"
+          hreflang={LOCALES[props.lang].lang || props.lang}
+          href={Astro.site?.origin + props.path}
+        />
+      ))
+    }
 
-    <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2">
-      {featuredArticles.map((post) => <Card article={post} />)}
-    </div>
+    <!-- icon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" sizes="192x192" href="/android-chrome.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="color-scheme" content="light dark" />
 
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {regularArticles.map((post) => <Card article={post} />)}
-    </div>
-  </div>
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t(SITE_TITLE)} />
+    <meta property="og:site_name" content={t(SITE_TITLE)} />
+    <meta property="og:description" content={t(SITE_DESCRIPTION)} />
+    <meta property="og:image" content={Astro.site + "ogp.png"} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:locale" content={DEFAULT_LOCALE} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content={t(X_ACCOUNT)} />
 
-  <Pagination
-    currentPage={1}
-    lastPage={totalPages}
-    urlPrev={null}
-    urlNext={totalPages > 1 ? `/page/2` : null}
-    basePath={basePath}
-    maxDisplayedPages={5}
-  />
-</BaseLayout>
+    <noscript>
+      <meta
+        http-equiv="refresh"
+        content={`0;url=${baseUrl + DEFAULT_LOCALE}/`}
+      />
+    </noscript>
+
+    <script is:inline define:vars={{ langs, baseUrl, defaultLocale }}>
+      if (
+        localStorage.selectedLang &&
+        langs.includes(localStorage.selectedLang)
+      ) {
+        location.href = `${baseUrl + localStorage.selectedLang}/`;
+      } else {
+        const browserLang = navigator.language.toLowerCase();
+
+        if (langs.includes(browserLang)) {
+          location.href = `${baseUrl + browserLang}/`;
+        } else if (langs.includes(browserLang.split("-")[0])) {
+          location.href = `${baseUrl + browserLang.split("-")[0]}/`;
+        } else {
+          location.href = `${baseUrl + defaultLocale}/`;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>redirect...</h1>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+---
+// Layout for pages such as articles or documents
+// Nested in BaseLayout layout
+
+import HeaderProgressBar from "@/components/HeaderProgressBar.astro";
+import BaseLayout from "@/layouts/General.astro";
+import type Post from "@/models/post/post.model";
+
+interface Props extends Post {
+	url: string;
+	minutesRead: string;
+}
+
+const {
+	title,
+	description,
+	tags = [],
+	url = Astro.request.url,
+	minutesRead,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description}>
+	<div class="fixed" slot="subheader">
+		<HeaderProgressBar
+			title={title}
+			description={description}
+			url={url}
+			tags={tags.map((tag) => tag.title)}
+			minutesRead={minutesRead}
+		/>
+	</div>
+	<article class="py-28">
+		<slot />
+	</article>
+</BaseLayout>

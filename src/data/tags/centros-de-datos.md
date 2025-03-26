@@ -1,3 +1,0 @@
----
-title: Centros de datos
----

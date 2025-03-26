@@ -37,8 +37,7 @@
 <!-- Instructions to review the changes -->
 1. `pnpm install`
 2. `pnpm dev`
-3. Visit relevant route/component
-4. Verify that the changes are working as expected
+3. Visit relevant route
 
 ## Additional Notes
 <!-- Any special considerations, breaking changes, etc. -->
