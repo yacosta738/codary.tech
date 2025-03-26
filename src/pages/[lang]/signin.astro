@@ -33,9 +33,9 @@ const t = useTranslations(Astro.currentLocale as Lang);
         <div class="flex flex-col gap-10 justify-center items-center p-4 container mx-auto max-w-md text-main-light dark:text-main-dark">
             <h1 class="text-5xl font-bold text-center">{t('signin.title')}</h1>
             <p class="text-center">{t('signin.description')}</p>
-            <SubscriptionForm
-                formId="signin-form"
-                buttonText={t('signin.submit')}
+            <SubscriptionForm 
+                formId="signin-form" 
+                buttonText={t('signin.submit')} 
                 inputClass='bg-main-light dark:bg-main-dark text-main-dark dark:text-main-light'
                 inputContainerClass="flex-col gap-10 w-full"
                 buttonClass='w-full max-w-full'

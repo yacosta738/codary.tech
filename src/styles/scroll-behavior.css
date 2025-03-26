@@ -1,7 +1,7 @@
 /* Reference the main CSS file for access to Tailwind utilities */
 @reference "../styles/global.css";
 
-/* Modern CSS for scroll behavior
+/* Modern CSS for scroll behavior 
    This can be imported in your Base layout */
 
 @supports (animation-timeline: scroll()) {

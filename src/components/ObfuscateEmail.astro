@@ -40,7 +40,7 @@ const obfuscatedEmail = email
 <script>
     const copyEmailBtn = document.getElementById('copy-email-btn');
     const emailTooltip = document.getElementById('email-tooltip');
-
+    
     // Helper function to decode base64 strings safely
     function decodeBase64(base64String: string): string {
         try {
@@ -58,27 +58,27 @@ const obfuscatedEmail = email
             return '';
         }
     }
-
+    
     if (copyEmailBtn && emailTooltip) {
         copyEmailBtn.addEventListener('click', async () => {
             // Get the obfuscated email and decode it
             const obfuscatedEmail = copyEmailBtn.getAttribute('data-email') || '';
             const decodedEmail = decodeBase64(obfuscatedEmail);
             const originalEmail = decodedEmail.split('').reverse().join('');
-
+            
             try {
                 // Copy to clipboard
                 await navigator.clipboard.writeText(originalEmail);
-
+                
                 // Show tooltip
                 emailTooltip.classList.remove('hidden');
                 emailTooltip.classList.add('inline-block');
-
+                
                 // Position tooltip near the button
                 const btnRect = copyEmailBtn.getBoundingClientRect();
                 emailTooltip.style.left = `${btnRect.left}px`;
                 emailTooltip.style.top = `${btnRect.top - 30}px`;
-
+                
                 // Hide tooltip after 2 seconds
                 setTimeout(() => {
                     emailTooltip.classList.add('hidden');
