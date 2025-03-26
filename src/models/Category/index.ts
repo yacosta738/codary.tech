@@ -1,3 +1,3 @@
-export * from "./Category";
-export * from "./CategoryMapper";
-export * from "./CategoryService";
+export * from "./category.model";
+export * from "./category.mapper";
+export * from "./category.service";

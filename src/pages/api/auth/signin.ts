@@ -1,54 +1,72 @@
-import { ACCESS_TOKEN, BASE_URL, REFRESH_TOKEN } from "@configs";
-import { supabase } from "@lib/supabase";
-import type { Provider } from "@supabase/supabase-js";
+import { signInWithMagicLink } from "@/lib/supabase.helper";
 import type { APIRoute } from "astro";
 
-export const POST: APIRoute = async (context) => {
-	const { request, cookies, redirect } = context;
-	const formData = await request.formData();
-	const email = formData.get("email")?.toString();
-	const password = formData.get("password")?.toString();
-	const provider = formData.get("provider")?.toString();
+export const POST: APIRoute = async ({ request }) => {
+	try {
+		const data = await request.json();
+		const { email } = data;
 
-	if (provider) {
-		const { data, error } = await supabase.auth.signInWithOAuth({
-			provider: provider as Provider,
-			options: {
-				redirectTo: `${BASE_URL}/api/auth/callback`,
-			},
-		});
-
-		if (error) {
-			return new Response(error.message, { status: 500 });
+		if (!email) {
+			return new Response(
+				JSON.stringify({ success: false, message: "Email is required" }),
+				{
+					status: 400,
+					headers: {
+						"Content-Type": "application/json",
+					},
+				},
+			);
 		}
 
-		return redirect(data.url);
+		// Sign in a user with a magic link but don't create a new user
+		const { data: signInData, error } = await signInWithMagicLink(email, false);
+
+		if (error) {
+			console.error("Supabase auth error:", error);
+
+			// More specific error handling
+			const errorMessage = error.message || "Failed to process sign-in";
+			const statusCode = error.status || 500;
+
+			return new Response(
+				JSON.stringify({ success: false, message: errorMessage }),
+				{
+					status: statusCode,
+					headers: {
+						"Content-Type": "application/json",
+					},
+				},
+			);
+		}
+
+		return new Response(
+			JSON.stringify({
+				success: true,
+				message: "Please check your email for the sign-in link",
+				data: signInData,
+			}),
+			{
+				status: 200,
+				headers: {
+					"Content-Type": "application/json",
+				},
+			},
+		);
+	} catch (error) {
+		console.error("Error in user sign-in:", error);
+
+		// More detailed error handling for unexpected errors
+		const errorMessage =
+			error instanceof Error ? error.message : "Internal server error";
+
+		return new Response(
+			JSON.stringify({ success: false, message: errorMessage }),
+			{
+				status: 500,
+				headers: {
+					"Content-Type": "application/json",
+				},
+			},
+		);
 	}
-
-	if (!email || !password) {
-		return new Response("Email and password are required", { status: 400 });
-	}
-
-	const { data, error } = await supabase.auth.signInWithPassword({
-		email,
-		password,
-	});
-
-	if (error) {
-		return new Response(error.message, { status: 500 });
-	}
-
-	const { access_token, refresh_token } = data.session;
-	cookies.set(ACCESS_TOKEN, access_token, {
-		sameSite: "strict",
-		path: "/",
-		secure: true,
-	});
-	cookies.set(REFRESH_TOKEN, refresh_token, {
-		sameSite: "strict",
-		path: "/",
-		secure: true,
-	});
-
-	return redirect("/");
 };

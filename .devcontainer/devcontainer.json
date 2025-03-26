@@ -1,5 +1,5 @@
 {
-	"name": "codary.tech Dev Container",
+	"name": "ASTRO_STARTER_CMS Dev Container",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},

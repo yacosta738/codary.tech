@@ -1,24 +1,51 @@
 ---
+// Redirect to 404 page for user's system locale
+// Basically, you don't need to edit this file.
 export const prerender = true;
-import BaseLayout from "@layouts/BaseLayout.astro";
-import { Icon } from "astro-icon/components";
+import { DEFAULT_LOCALE, LOCALES } from "@/i18n";
 
-const title = "Error 404";
-const description = "Error 404";
+const langs = Object.keys(LOCALES);
+const baseUrl = import.meta.env.PROD ? Astro.site : "/";
+const defaultLocale = DEFAULT_LOCALE;
 ---
 
-<BaseLayout title={title} description={description}>
-  <main id="content">
-    <div class="text-center py-10 px-4 sm:px-6 lg:px-8">
-      <h1 class="block text-7xl font-bold text-zinc-800 sm:text-9xl dark:text-white">404</h1>
-      <p class="mt-3 text-zinc-600 dark:text-neutral-400">Oops, something went wrong.</p>
-      <p class="text-zinc-600 dark:text-neutral-400">Sorry, we couldn't find your page.</p>
-      <div class="mt-5 flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-3">
-        <a class="w-full sm:w-auto py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-neutral-400 text-white hover:bg-neutral-600 disabled:opacity-50 disabled:pointer-events-none" href="/">
-          <Icon name="tabler:chevron-left" class="icon-base" />
-          Back to homepage
-        </a>
-      </div>
-    </div>
-  </main>
-</BaseLayout>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>404 PAGE NOT FOUND</title>
+    <link rel="canonical" href={Astro.site} />
+
+    <noscript>
+      <meta
+        http-equiv="refresh"
+        content={`0;url=${baseUrl + DEFAULT_LOCALE}/404/`}
+      />
+    </noscript>
+
+    <script is:inline define:vars={{ langs, baseUrl, defaultLocale }}>
+      const urlHasLang = langs.includes(location.pathname.split("/")[1]);
+      const localStorageHasLang =
+        localStorage.selectedLang && langs.includes(localStorage.selectedLang);
+      const referrerHasLang =
+        document.referrer &&
+        new URL(document.referrer).host == location.host &&
+        langs.includes(new URL(document.referrer).pathname.split("/")[1]);
+
+      if (urlHasLang) {
+        localStorage.userAccessPath = location.pathname;
+        location.href = `${baseUrl + location.pathname.split("/")[1]}/404/`;
+      } else if (localStorageHasLang) {
+        location.href = baseUrl + localStorage.selectedLang + location.pathname;
+      } else if (referrerHasLang) {
+        const referrerLang = new URL(document.referrer).pathname.split("/")[1];
+        location.href = baseUrl + referrerLang + location.pathname;
+      } else {
+        location.href = baseUrl + defaultLocale + location.pathname;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>404 PAGE NOT FOUND</h1>
+    <a href={baseUrl}>TOP PAGE</a>
+  </body>
+</html>

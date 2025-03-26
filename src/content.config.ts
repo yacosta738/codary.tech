@@ -12,15 +12,35 @@ const articles = defineCollection({
 		z.object({
 			title: z.string(),
 			description: z.string(),
-			pubDate: z.date(),
-			lastModified: z.date().optional(),
+			date: z.coerce.date(),
+			lastModified: z.coerce
+				.date()
+				.optional()
+				.default(() => new Date()),
+			cover: image().optional(),
 			author: reference("authors"),
-			cover: image(),
-			coverAlt: z.string(),
 			tags: z.array(reference("tags")),
 			category: reference("categories"),
-			featured: z.boolean().default(false),
-			draft: z.boolean().default(true),
+			draft: z.boolean().optional().default(false),
+			featured: z.boolean().optional().default(false),
+		}),
+});
+
+const newsletter = defineCollection({
+	loader: glob({ pattern: "**/[^_]*.{md,mdx}", base: "./src/data/newsletter" }),
+	schema: ({ image }: SchemaContext) =>
+		z.object({
+			title: z.string(),
+			description: z.string(),
+			date: z.coerce.date(),
+			lastModified: z.coerce
+				.date()
+				.optional()
+				.default(() => new Date()),
+			cover: image().optional(),
+			author: reference("authors"),
+			tags: z.array(reference("tags")),
+			draft: z.boolean().optional().default(false),
 		}),
 });
 
@@ -45,50 +65,16 @@ const authors = defineCollection({
 		name: z.string(),
 		email: z.string(),
 		avatar: z.string(),
-	}),
-});
-
-const config = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.json", base: "./src/data/config" }),
-	schema: z.object({
-		brand_name: z.string(),
-		title: z.string(),
-		description: z.string(),
-		tag_title: z.string(),
-		tag_description: z.string(),
-		search_title: z.string(),
-		search_description: z.string(),
-		footer: z.object({
-			links: z.array(
-				z.object({
-					title: z.string(),
-					url: z.string(),
-				}),
-			),
-		}),
-		social: z.array(
+		bio: z.string(),
+		location: z.string(),
+		socials: z.array(
 			z.object({
-				label: z.string(),
-				icon: z.string(),
+				name: z.string(),
 				url: z.string(),
+				icon: z.string(),
 			}),
 		),
 	}),
 });
 
-const dynamicPages = defineCollection({
-	loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/dynamic-pages" }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-	}),
-});
-
-export const collections = {
-	articles,
-	tags,
-	categories,
-	authors,
-	config,
-	dynamicPages,
-};
+export const collections = { articles, tags, categories, authors, newsletter };

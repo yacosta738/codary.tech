@@ -3,22 +3,14 @@
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"],
 	"compilerOptions": {
-		"jsx": "preserve",
-		"jsxImportSource": "preact",
-		"strictNullChecks": true,
-		"allowJs": true,
 		"baseUrl": ".",
+		"strictNullChecks": true,
 		"paths": {
-			"@atoms/*": ["src/components/atoms/*"],
-			"@molecules/*": ["src/components/molecules/*"],
-			"@organisms/*": ["src/components/organisms/*"],
-			"@components/*": ["src/components/*"],
-			"@layouts/*": ["src/layouts/*"],
-			"@models/*": ["src/models/*"],
-			"@utils/*": ["src/utils/*"],
-			"@styles/*": ["src/styles/*"],
+			"@/*": ["src/*"],
+			"@i18n": ["src/i18n/index.ts"],
 			"@lib/*": ["src/lib/*"],
-			"@configs": ["src/config.ts"]
-		}
+			"@models/*": ["src/lib/models/*"]
+		},
+		"jsx": "preserve"
 	}
 }

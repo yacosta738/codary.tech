@@ -1,25 +1,34 @@
 import mdx from "@astrojs/mdx";
-import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import pagefind from "astro-pagefind";
-// @ts-check
 import { defineConfig, envField, passthroughImageService } from "astro/config";
-import { BASE_URL } from "./src/base.config.ts";
-import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import { DEFAULT_LOCALE_SETTING, LOCALES_SETTING } from "./src/i18n/locales";
+
+import tailwindcss from "@tailwindcss/vite";
 
 import cloudflare from "@astrojs/cloudflare";
+import vue from "@astrojs/vue";
+import { BASE_URL } from "./src/consts.ts";
+import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
+	// Set your site's URL
 	site: BASE_URL,
 	compressHTML: true,
 	output: "server",
 	adapter: cloudflare(),
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: "viewport",
+
+	i18n: {
+		defaultLocale: DEFAULT_LOCALE_SETTING,
+		locales: Object.keys(LOCALES_SETTING),
+		routing: {
+			prefixDefaultLocale: true,
+			redirectToDefaultLocale: false,
+		},
 	},
 
 	env: {
@@ -51,7 +60,6 @@ export default defineConfig({
 
 	integrations: [
 		mdx(),
-		sitemap(),
 		pagefind(),
 		partytown({
 			config: {
@@ -59,6 +67,18 @@ export default defineConfig({
 				debug: false,
 			},
 		}),
+		sitemap({
+			i18n: {
+				defaultLocale: DEFAULT_LOCALE_SETTING,
+				locales: Object.fromEntries(
+					Object.entries(LOCALES_SETTING).map(([key, value]) => [
+						key,
+						value.lang ?? key,
+					]),
+				),
+			},
+		}),
+		vue(),
 		icon({
 			include: {
 				tabler: ["*"],
@@ -69,7 +89,6 @@ export default defineConfig({
 	vite: {
 		plugins: [tailwindcss()],
 	},
-
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 	},

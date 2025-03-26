@@ -1,47 +1,81 @@
 ---
+import { type Lang, useTranslations } from "@/i18n";
+import { cn } from "@/lib/utils";
 import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+import IconButton from "./IconButton.astro";
+
+export interface Props extends HTMLAttributes<"button"> {}
+const t = useTranslations(Astro.currentLocale as Lang);
+const { id = "theme-toggle", class: className, ...attrs } = Astro.props;
 ---
 
-<button id="theme-toggle" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl border border-transparent text-black hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-700 transition disabled:opacity-50 disabled:pointer-events-none" aria-label="Toggle theme">
-  <Icon name="tabler:sun" id="theme-toggle-light-icon" class="size-5 block dark:hidden" />
-  <Icon name="tabler:moon" id="theme-toggle-dark-icon" class="size-5 hidden dark:block" />
-</button>
+<theme-toggle data-id={id} data-label={t("theme.toggle.button")} data-tooltip={t("theme.toggle.tooltip")}>
+  <IconButton
+  id={id}
+  class={cn(className)}
+    aria-label={t("theme.toggle.button")}
+    title={t("theme.toggle.tooltip")}
+    {...attrs}
+  >
+    <Icon name="tabler:sun" class="size-5 block dark:hidden text-main-light dark:text-main-dark cursor-pointer" />
+    <Icon name="tabler:moon" class="size-5 hidden dark:block text-main-light dark:text-main-dark cursor-pointer" />
+  </IconButton>
+</theme-toggle>
 
 <script>
-  // Obtener el tema actual del sistema o localstorage
-  function getTheme(): 'dark' | 'light' {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      const theme = localStorage.getItem('theme');
-      if (theme === 'dark' || theme === 'light') {
-        return theme;
+type ColorScheme = 'dark' | 'light';
+
+  class ThemeToggle extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      // Get button inside component
+      const button = this.querySelector('button');
+
+      // Apply ID from data attribute
+      if (this.dataset.id && button) {
+        button.id = this.dataset.id;
       }
+
+      // Set up initial theme
+      const theme = this.getTheme();
+      this.applyTheme(theme);
+
+      // Add event listener to toggle theme
+      button?.addEventListener('click', () => {
+        const currentTheme = this.getTheme();
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.applyTheme(newTheme);
+      });
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+    // Get the current theme
+    getTheme(): ColorScheme {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark' || theme === 'light') {
+          return theme;
+        }
+      }
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // Apply the theme
+    applyTheme(theme: ColorScheme) {
+      const rootEl = document.documentElement;
+
+      if (theme === 'dark') {
+        rootEl.classList.add('dark');
+      } else {
+        rootEl.classList.remove('dark');
+      }
+
+      localStorage.setItem('theme', theme);
+    }
   }
 
-  // Aplicar el tema actual
-  function applyTheme(theme: 'dark' | 'light') {
-    const rootEl = document.documentElement;
-
-    if (theme === 'dark') {
-      rootEl.classList.add('dark');
-    } else {
-      rootEl.classList.remove('dark');
-    }
-
-    localStorage.setItem('theme', theme);
-  }
-
-  // Configurar el tema inicial
-  document.addEventListener('DOMContentLoaded', () => {
-    const theme = getTheme();
-    applyTheme(theme);
-  });
-
-  // Alternar tema cuando se hace clic en el botón
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    const currentTheme = getTheme();
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-  });
+  customElements.define('theme-toggle', ThemeToggle);
 </script>
