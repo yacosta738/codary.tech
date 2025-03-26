@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@plugin "@midudev/tailwind-animations";
 
 @custom-variant dark (&:is(.dark *));
 
